@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
+    get 'homes/index'
+  end
   devise_for :members, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'

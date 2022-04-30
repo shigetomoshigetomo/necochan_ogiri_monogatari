@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  member: one
+  recruiting_status: false
+
+two:
+  title: MyText
+  member: two
+  recruiting_status: false

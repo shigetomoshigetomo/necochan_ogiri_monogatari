@@ -1,4 +1,40 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'reports/index'
+  end
+  namespace :admin do
+    get 'genres/index'
+  end
+  namespace :admin do
+    get 'members/index'
+    get 'members/show'
+    get 'members/edit'
+  end
+  namespace :admin do
+    get 'items/new'
+    get 'items/index'
+    get 'items/show'
+    get 'items/edit'
+  end
+  namespace :public do
+    get 'reports/new'
+  end
+  namespace :public do
+    get 'posts/show'
+    get 'posts/index'
+  end
+  namespace :public do
+    get 'threads/index'
+    get 'threads/new'
+    get 'threads/show'
+  end
+  namespace :public do
+    get 'items/index'
+  end
+  namespace :public do
+    get 'members/show'
+    get 'members/edit'
+  end
   namespace :public do
     get 'homes/top'
     get 'homes/about'

@@ -234,8 +234,8 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
-  image_processing (~> 1.2)
   dotenv-rails
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   puma (~> 5.0)

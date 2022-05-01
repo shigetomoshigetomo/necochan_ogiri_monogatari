@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  having_exp: 1
+  price: 1
+  genre: one
+
+two:
+  name: MyString
+  having_exp: 1
+  price: 1
+  genre: two

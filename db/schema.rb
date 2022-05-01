@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_30_101526) do
+ActiveRecord::Schema.define(version: 2022_05_01_064428) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2022_04_30_101526) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -59,6 +60,15 @@ ActiveRecord::Schema.define(version: 2022_04_30_101526) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_boards_on_member_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_favorites_on_member_id"
+    t.index ["post_id"], name: "index_favorites_on_post_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -77,6 +87,13 @@ ActiveRecord::Schema.define(version: 2022_04_30_101526) do
     t.index ["genre_id"], name: "index_items_on_genre_id"
   end
 
+  create_table "levels", force: :cascade do |t|
+    t.integer "level", null: false
+    t.integer "threshold", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -85,7 +102,13 @@ ActiveRecord::Schema.define(version: 2022_04_30_101526) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.integer "exp", default: 0
+    t.integer "money", default: 0
+    t.integer "level", default: 1
+    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_members_on_email", unique: true
+    t.index ["name"], name: "index_members_on_name", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
@@ -98,9 +121,18 @@ ActiveRecord::Schema.define(version: 2022_04_30_101526) do
     t.index ["member_id"], name: "index_orders_on_member_id"
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boards", "members"
+  add_foreign_key "favorites", "members"
+  add_foreign_key "favorites", "posts"
   add_foreign_key "items", "genres"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "members"

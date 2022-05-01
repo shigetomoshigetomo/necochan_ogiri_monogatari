@@ -1,50 +1,26 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'boards/index'
-    get 'boards/show'
-    get 'boards/new'
+
+  scope module: :public do
+    root 'homes#top'
+    get 'homes/about'
+    get 'homes/index'
+    resources :members, only: [:show, :edit, :update]
+    resources :boards, only: [:index, :show, :new, :create]
+    resources :posts, only: [:show, :index, :create]
+    resources :items, only: [:index, :show]
   end
+
   namespace :admin do
-    get 'reports/index'
+    resources :reports, only: [:index, :show, :update]
+    resources :genres, only: [:index, :new, :create, :edit, :update]
+    resources :items, only: [:index, :show, :edit, :new, :create]
+    resources :members, only: [:index, :show, :update]
   end
-  namespace :admin do
-    get 'genres/index'
-  end
-  namespace :admin do
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
-  end
-  namespace :admin do
-    get 'items/new'
-    get 'items/index'
-    get 'items/show'
-    get 'items/edit'
-  end
+
   namespace :public do
     get 'reports/new'
   end
-  namespace :public do
-    get 'posts/show'
-    get 'posts/index'
-  end
-  namespace :public do
-    get 'threads/index'
-    get 'threads/new'
-    get 'threads/show'
-  end
-  namespace :public do
-    get 'items/index'
-  end
-  namespace :public do
-    get 'members/show'
-    get 'members/edit'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-    get 'homes/index'
-  end
+
   devise_for :members, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'

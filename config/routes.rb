@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'boards/index'
+    get 'boards/show'
+    get 'boards/new'
+  end
   namespace :admin do
     get 'reports/index'
   end

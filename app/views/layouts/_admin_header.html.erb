@@ -1,0 +1,29 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "ユーザー一覧", admin_members_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "報告一覧", admin_reports_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "商品一覧", admin_items_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

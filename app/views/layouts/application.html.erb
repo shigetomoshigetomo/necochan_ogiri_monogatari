@@ -16,6 +16,7 @@
     <% elsif member_signed_in? %>
       <%= render "layouts/member_header" %>
     <% else %>
+      <%= render "layouts/header" %>
     <% end %>
     <%= yield %>
   </body>

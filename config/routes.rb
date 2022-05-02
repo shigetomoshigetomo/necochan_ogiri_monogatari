@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     get 'reports/new'
   end
 
+  devise_scope :member do
+    post 'members/guest_sign_in', to: 'members/sessions#guest_sign_in'
+  end
+
   devise_for :members, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -29,5 +33,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :index, :create]
     resources :items, only: [:index, :show]
   end
+
+  # devise_scope :member do
+  #   post 'members/guest_sign_in', to: 'members/sessions#guest_sign_in'
+  # end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

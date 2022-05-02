@@ -1,2 +1,11 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div>
+  <%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, class: "btn btn-secondary sign_in", method: :post %>
+</div>
+
+<div>
+  <%= link_to 'ログイン', new_member_session_path, class: "btn btn-info sign_in" %>
+</div>
+
+<div>
+  <%= link_to '新規登録（無料）', new_member_registration_path, class: "btn btn-info sign_in" %>
+</div>

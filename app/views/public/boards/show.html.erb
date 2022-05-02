@@ -4,3 +4,11 @@
     <%= image_tag @board.get_image(50,70) %>
   <% end %>
 </div>
+
+<%= form_with model:[@board, @post] do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, rows:'4', class:"form-control" %><br>
+    <%= f.file_field :image, accept: "image/*" %>
+    <%= f.submit "送信", class: "btn btn-info" %>
+  </div>
+<% end %>

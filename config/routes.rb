@@ -29,13 +29,11 @@ Rails.application.routes.draw do
     get 'homes/about'
     get 'homes/index'
     resources :members, only: [:show, :edit, :update, :index]
-    resources :boards, only: [:index, :show, :new, :create]
-    resources :posts, only: [:show, :index, :create]
+    resources :boards, only: [:index, :show, :new, :create] do
+      resources :posts, only: [:show, :index, :create]
+    end
     resources :items, only: [:index, :show]
   end
 
-  # devise_scope :member do
-  #   post 'members/guest_sign_in', to: 'members/sessions#guest_sign_in'
-  # end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

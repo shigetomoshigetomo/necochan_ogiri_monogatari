@@ -7,6 +7,7 @@ class Public::BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @post = Post.new
   end
 
   def new
@@ -26,6 +27,6 @@ class Public::BoardsController < ApplicationController
   private
 
     def board_params
-      params.require(:board).permit(:title, :member_id, :image)
+      params.require(:board).permit(:title, :image)
     end
 end

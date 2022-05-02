@@ -19,5 +19,20 @@
     <% if post.image.attached? %>
       <%= image_tag post.get_image(50,70) %>
     <% end %>
+
+    <% if post.favorited_by?(current_member) %>
+      <p>
+        <%= link_to board_post_favorites_path(@board, post), method: :delete, style:"text-decoration:none;" do %>
+          <i class="fas fa-paw" style="color:red;"></i><span style="color:red;"><%= post.favorites.count %></span>
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to board_post_favorites_path(@board, post), method: :post, style:"text-decoration:none;" do %>
+          <i class="fas fa-paw text-primary"></i><%= post.favorites.count %>
+        <% end %>
+      </p>
+    <% end %>
+
   </div>
 <% end %>

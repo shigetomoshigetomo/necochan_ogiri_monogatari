@@ -30,7 +30,9 @@ Rails.application.routes.draw do
     get 'homes/index'
     resources :members, only: [:show, :edit, :update, :index]
     resources :boards, only: [:index, :show, :new, :create] do
-      resources :posts, only: [:show, :index, :create]
+      resources :posts, only: [:show, :index, :create] do
+        resource :favorites, only: [:create, :destroy]
+      end
     end
     resources :items, only: [:index, :show]
   end

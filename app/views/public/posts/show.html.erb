@@ -3,6 +3,7 @@
   <% if @post.image.attached? %>
     <%= image_tag @post.get_image(50,70) %>
   <% end %>
+  <%= link_to @post.member.name, member_path(@post.member_id) %>
 
   <% if @post.favorited_by?(current_member) %>
     <p>

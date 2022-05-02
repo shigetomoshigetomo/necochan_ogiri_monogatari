@@ -1,2 +1,15 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<div>
+  <%= @member.name %>
+  <%= @member.level %>
+  <%= @member.money %>
+</div>
+
+<% if @member != current_member %>
+  <div>
+    <% if current_member.following?(@member) %>
+      <%= link_to "フォロー外す", member_relationships_path(@member), method: :delete, class:"btn btn-info btn-sm" %>
+    <% else %>
+      <%= link_to "フォローする", member_relationships_path(@member), method: :post, class:"btn btn-success btn-sm" %>
+    <% end %>
+  </div>
+<% end %>

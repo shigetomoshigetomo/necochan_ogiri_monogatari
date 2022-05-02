@@ -12,3 +12,12 @@
     <%= f.submit "送信", class: "btn btn-info" %>
   </div>
 <% end %>
+
+<% @board.posts.each do |post| %>
+  <div>
+    <%= link_to post.content, board_post_path(@board, post) %>
+    <% if post.image.attached? %>
+      <%= image_tag post.get_image(50,70) %>
+    <% end %>
+  </div>
+<% end %>

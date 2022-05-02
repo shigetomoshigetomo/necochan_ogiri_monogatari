@@ -1,2 +1,6 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div>
+  <%= @post.content %>
+  <% if @post.image.attached? %>
+    <%= image_tag @post.get_image(50,70) %>
+  <% end %>
+</div>

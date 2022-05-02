@@ -1,4 +1,6 @@
 <div>
   <%= @board.title %>
-  <%= image_tag @board.get_image(50,70) %>
+  <% if @board.image.attached? %>
+    <%= image_tag @board.get_image(50,70) %>
+  <% end %>
 </div>

@@ -1,1 +1,10 @@
 <%= link_to "お題を投稿", new_board_path, class: "btn btn-info" %>
+
+<% @boards.each do |board| %>
+  <div>
+    <%= link_to board.title, board_path(board) %>
+    <% if board.image.attached? %>
+      <%= image_tag board.get_image(50,70) %>
+    <% end %>
+  </div>
+<% end %>

@@ -4,6 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :boards, dependent: :destroy
+
   def self.guest
     find_or_create_by!(name: 'ゲスト' ,email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64

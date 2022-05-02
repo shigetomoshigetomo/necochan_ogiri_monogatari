@@ -2,9 +2,11 @@ class Public::BoardsController < ApplicationController
   before_action :authenticate_member!, only: [:new, :create]
 
   def index
+    @boards = Board.all
   end
 
   def show
+    @board = Board.find(params[:id])
   end
 
   def new
@@ -24,6 +26,6 @@ class Public::BoardsController < ApplicationController
   private
 
     def board_params
-      params.require(:board).permit(:title, :member_id)
+      params.require(:board).permit(:title, :member_id, :image)
     end
 end

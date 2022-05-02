@@ -14,7 +14,7 @@
             <%= link_to "新規登録（無料）", new_member_registration_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "ゲストログイン", members_guest_sign_in_path, class: "nav-link" %>
+            <%= link_to "ゲストログイン", public_guest_sign_in_path, class: "nav-link", method: :post %>
           </li>
           <li class="nav-item">
             <%= link_to "遊び方", homes_about_path, class: "nav-link" %>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   devise_scope :member do
-    post 'members/guest_sign_in', to: 'members/sessions#guest_sign_in'
+    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
   devise_for :members, controllers: {

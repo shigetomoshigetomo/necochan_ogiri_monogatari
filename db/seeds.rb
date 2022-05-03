@@ -9,3 +9,18 @@
 Admin.create!(email: ENV['ADMIN_EMAIL'],
               password: ENV['ADMIN_PASSWORD']
               )
+
+Level.create!(level: 1,
+              threshold: 1
+              )
+
+100.times do |n|
+  n = 2
+  before_level = Level.find(n-1)
+  current_level = n + 1
+  a = before_level.threshold * 1.1
+  b = current_level * 15
+  Level.create!(level: n + 1,
+                threshold: (a + b) / 2
+                )
+end

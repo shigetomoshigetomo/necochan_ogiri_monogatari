@@ -11,10 +11,6 @@ class Post < ApplicationRecord
     validates :board_id
   end
 
-  def get_image(width, height)
-    image.variant(resize_to_limit: [width, height]).processed
-  end
-
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end

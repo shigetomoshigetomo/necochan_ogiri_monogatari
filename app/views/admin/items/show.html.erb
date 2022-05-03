@@ -1,2 +1,35 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="row pt-5">
+  <div class="col-3 offset-1">
+    <%= image_tag @item.get_image(400,300) %>
+  </div>
+  <div class="col-5">
+    <table class="table table-borderless offset-2">
+      <tbody>
+        <tr>
+          <td><h6>商品名</h6></td>
+          <td><h5><%= @item.name %></h5></td>
+        </tr>
+        <tr>
+          <td><h6>商品説明</h6></td>
+          <td><h5><%= @item.introduction %></h5></td>
+        </tr>
+        <tr>
+          <td><h6>ジャンル</h6></td>
+          <td><h5><%= @item.genre.name %></h5></td>
+        </tr>
+        <tr>
+          <td>価格</td>
+          <td><h5><%= @item.price %>マネー</h5></td>
+        </tr>
+        <tr>
+          <td>経験値</td>
+          <td><h5><%= @item.having_exp %></h5></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="col-2 offset-5">
+  <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success btn-lg px-5" %>
+</div>

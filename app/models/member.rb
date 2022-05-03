@@ -13,6 +13,19 @@ class Member < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+   with_options presence: true do
+    validates :name
+    validates :email
+    validates :exp
+    validates :money
+    validates :level
+  end
+
+  with_options uniqueness: true do
+    validates :name
+    validates :email
+  end
+
   #ゲストユーザー作成
   def self.guest
     find_or_create_by!(name: 'ゲスト' ,email: 'guest@example.com') do |member|

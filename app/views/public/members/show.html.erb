@@ -1,8 +1,12 @@
 <div>
-  <%= @member.name %>
-  <%= @member.level %>
-  <%= @member.exp %>
-  <%= @member.money %>
+  名前<%= @member.name %>
+  レベル<%= @member.level %>
+  経験値<%= @member.exp %>
+  マネー<% if @member.money.to_i > 0 %>
+          <%= @member.money %>
+        <% else %>
+          0
+        <% end %>
 </div>
 
 <% if @member != current_member %>

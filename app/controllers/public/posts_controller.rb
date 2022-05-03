@@ -18,7 +18,7 @@ class Public::PostsController < ApplicationController
       get_exp = rand(1..5)
       get_money = rand(3..6)
       total_exp = get_exp + member.exp
-      total_money = get_money + member.money
+      total_money = get_money.to_i + member.money.to_i
       member.update_attribute(:exp, total_exp)
       member.update_attribute(:money, total_money)
       #一つ上のレベルを探し、比較していく
@@ -31,7 +31,7 @@ class Public::PostsController < ApplicationController
       if member.saved_change_to_level?
         flash[:notice] = "答えを投稿し、経験値#{get_exp}と#{get_money}マネーを獲得！レベルが#{member.level}になった！"
       else
-        flash[:notice] = "答えを投稿し、経験値#{get_exp}と#{get_money}を獲得！"
+        flash[:notice] = "答えを投稿し、経験値#{get_exp}と#{get_money}マネーを獲得！"
       end
       redirect_to request.referer
     else

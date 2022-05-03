@@ -1,13 +1,27 @@
 class Public::OrdersController < ApplicationController
   def create
+    @item = Item.find(params[:item_id])
     @order = Order.new(order_params)
     @order.member_id = current_member.id
-    @remainder = current_member.money - @order.item.price
-    @exp = current_member.exp + @order.item.having_exp
-    if @remainder >= 0
+    remainder = current_member.money.to_i - @order.item.price.to_i
+    new_exp = current_member.exp + @order.item.having_exp
+    if remainder >= 0
       @order.save
-      @member.update_attribute(:money, @remainder)
-      @member.update_attribute(:exp, @exp)
+      member = current_member
+      member.update_attribute(:money, @remainder)
+      member.update_attribute(:exp, new_exp)
+      #一つ上のレベルを探し、比較していく
+      near_level = Level.find_by(level: member.level + 1)
+      while near_level.threshold <= member.exp
+        member.update_attribute(:level, member.level + 1)
+        near_level = Level.find_by(level: member.level + 1)
+      end
+
+      if member.saved_change_to_level?
+        flash[:notice] = "#{@item.name}を手に入れ、経験値#{@item.having_exp}を獲得！レベルが#{member.level}になった！"
+      else
+        flash[:notice] = "#{@item.name}を手に入れ、経験値#{@item.having_exp}を獲得！"
+      end
       redirect_to items_path
     else
       flash[:notice] = "マネーが足りません。"

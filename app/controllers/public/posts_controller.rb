@@ -13,7 +13,27 @@ class Public::PostsController < ApplicationController
     @post = current_member.posts.new(post_params)
     @post.board_id = @board.id
     if @post.save
-      redirect_to request.referer, notice: "答えを投稿しました。"
+      member = current_member
+      #ランダムに経験値とマネーが加算される
+      get_exp = rand(1..5)
+      get_money = rand(3..6)
+      total_exp = get_exp + member.exp
+      total_money = get_money + member.money
+      member.update_attribute(:exp, total_exp)
+      member.update_attribute(:money, total_money)
+      #一つ上のレベルを探し、比較していく
+      near_level = Level.find_by(level: member.level + 1)
+      while near_level.threshold <= member.exp
+        member.update_attribute(:level, member.level + 1)
+        near_level = Level.find_by(level: member.level + 1)
+      end
+
+      if member.saved_change_to_level?
+        flash[:notice] = "答えを投稿し、経験値#{get_exp}と#{get_money}マネーを獲得！レベルが#{member.level}になった！"
+      else
+        flash[:notice] = "答えを投稿し、経験値#{get_exp}と#{get_money}を獲得！"
+      end
+      redirect_to request.referer
     else
       render "board/show"
     end

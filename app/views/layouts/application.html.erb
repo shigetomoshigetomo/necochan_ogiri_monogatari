@@ -11,13 +11,20 @@
   </head>
 
   <body>
-    <% if admin_signed_in? %>
-      <%= render "layouts/admin_header" %>
-    <% elsif member_signed_in? %>
-      <%= render "layouts/member_header" %>
-    <% else %>
-      <%= render "layouts/header" %>
-    <% end %>
-    <%= yield %>
+    <div class="min-vh-100">
+      <% if admin_signed_in? %>
+        <%= render "layouts/admin_header" %>
+      <% elsif member_signed_in? %>
+        <%= render "layouts/member_header" %>
+      <% else %>
+        <%= render "layouts/header" %>
+      <% end %>
+      <main>
+        <div id="flash-success">
+          <%=render "layouts/notice" %>
+        </div>
+      </main>
+      <%= yield %>
+    </div>
   </body>
 </html>

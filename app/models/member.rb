@@ -13,6 +13,7 @@ class Member < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  #ゲストユーザー作成
   def self.guest
     find_or_create_by!(name: 'ゲスト' ,email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64
@@ -20,6 +21,7 @@ class Member < ApplicationRecord
     end
   end
 
+  #フォロー・フォロワー機能
   def follow(member_id)
     relationships.create(followed_id:member_id)
   end

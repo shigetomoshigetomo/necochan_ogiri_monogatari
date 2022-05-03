@@ -1,0 +1,19 @@
+<div class="col-4 ml-5 mt-5">
+  <%= image_tag @item.get_image(400,280) %>
+<div class="my-4 ml-3">
+  <h3><%= @item.name %></h3>
+  <%= @item.introduction %>
+</div>
+<div class="ml-3">
+  <p><%= @item.price %>マネー</p>
+  <%= form_with model:[@item, @order], url: item_orders(@item), method: :post do |f| %>
+    <div class="d-flex align-items-end mt-3">
+      <div class="form-group">
+        <%= f.hidden_field :item_id, :value => @item.id %>
+      </div>
+      <div class="form-group offset-1">
+        <%= f.submit "購入する", class: 'btn btn-success', data: { confirm: "#{@item}を購入しますか？" } %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  scope module: :public do
-    resources :members, only: [:show, :edit, :update, :index] do
-      resource :relationships, only: [:create, :destroy]
-  	  get 'followings' => 'relationships#followings'
-  	  get 'followers' => 'relationships#followers'
-    end
-  end
-
   devise_for :members, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -20,6 +12,16 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+
+
+  scope module: :public do
+    resources :members, only: [:show, :edit, :update, :index] do
+      resource :relationships, only: [:create, :destroy]
+  	  get 'followings' => 'relationships#followings'
+  	  get 'followers' => 'relationships#followers'
+    end
+  end
+
 
   namespace :admin do
     resources :reports, only: [:index, :show, :update]

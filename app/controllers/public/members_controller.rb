@@ -5,4 +5,8 @@ class Public::MembersController < ApplicationController
 
   def edit
   end
+
+  def index
+    @members = Member.all
+  end
 end

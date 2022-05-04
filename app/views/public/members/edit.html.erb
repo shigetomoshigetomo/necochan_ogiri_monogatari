@@ -1,2 +1,18 @@
-<h1>Public::Members#edit</h1>
-<p>Find me in app/views/public/members/edit.html.erb</p>
+<div class="px-5 mx-5 row">
+  <div class="col-9">
+    <%= form_with model:@member, url: admin_member_path(@member), method: :patch do |f| %>
+      
+      <div class="form-gropu row">
+        <%= f.label :is_deleted, '会員ステータス', class: "col-3" %>
+        <div class="custom-control custom-radio">
+          <%= f.radio_button :is_deleted, false %> <%= f.label :is_active, "有効", class:"mr-3" %>
+          <%= f.radio_button :is_deleted, true %> <%= f.label :is_active, "退会" %>
+        </div>
+      </div>
+
+      <div class="actions mb-5 mt-5">
+        <%= f.submit "変更を保存", class: "btn btn-success btn-lg col-2 offset-3" %>
+      </div>
+    <% end %>
+  </div>
+</div>

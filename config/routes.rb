@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :reports, only: [:index, :show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items
-    resources :members, only: [:index, :show, :update]
+    resources :members, only: [:index, :show, :update, :edit]
   end
 
   namespace :public do

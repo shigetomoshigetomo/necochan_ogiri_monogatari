@@ -48,4 +48,9 @@ class Member < ApplicationRecord
   def following?(member)
     followings.include?(member)
   end
+
+  def active_for_authentication?
+    # is_deletedがfalseならtrueを返すようにする
+    super && (is_deleted == false)
+  end
 end

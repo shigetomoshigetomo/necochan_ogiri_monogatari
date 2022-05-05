@@ -1,5 +1,8 @@
-<div class="row mx-5">
-  <table class="table mx-5 table-borderless col-6">
+<div class="box row">
+  <div class="col-lg-4 text-center">
+    <%= image_tag @member.get_profile_image(300) %>
+  </div>
+  <table class="table table-borderless text-white col-lg-7 offset-lg-1">
     <tbody>
       <tr>
         <td>会員ID</td>
@@ -31,7 +34,7 @@
           <% if @member.active_for_authentication? %>
             <b class="text-success">有効</b>
           <% else %>
-            <b class="text-muted">退会</b>
+            <b class="text-white">退会</b>
           <% end %>
         </td>
       </tr>
@@ -39,4 +42,6 @@
   </table>
 </div>
 
-<%= link_to "編集する", edit_admin_member_path(@member), class: "btn btn-success mr-3" %>
+<div class="row mt-5">
+  <%= link_to "編集する", edit_admin_member_path(@member), class: "btn btn-success mx-auto" %>
+</div>

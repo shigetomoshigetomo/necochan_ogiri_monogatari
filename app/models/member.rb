@@ -4,6 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :profile_image
+
   has_many :boards, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -52,5 +54,13 @@ class Member < ApplicationRecord
   def active_for_authentication?
     # is_deletedがfalseならtrueを返すようにする
     super && (is_deleted == false)
+  end
+
+  def get_profile_image(width)
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/nyan.png')
+      profile_image.attach(io: File.open(file_path), filename: 'nyan.png', content_type: 'image/png')
+    end
+    profile_image.variant(resize: [width]).processed
   end
 end

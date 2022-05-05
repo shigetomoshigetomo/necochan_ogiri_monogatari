@@ -3,6 +3,8 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    near_level = Level.find_by(level: @member.level + 1)
+    @gap_exp = near_level.threshold - @member.exp
   end
 
   def edit
@@ -10,12 +12,12 @@ class Public::MembersController < ApplicationController
   end
 
   def update
-    @member = current_member
+    @member = Member.find(params[:id])
     if @member.update(member_params)
       flash[:notice] = "会員情報を更新しました"
       redirect_to action: :show
     else
-      @member = current_member
+      @member = Member.find(params[:id])
       render "public/members/edit"
     end
   end
@@ -27,6 +29,6 @@ class Public::MembersController < ApplicationController
   private
 
     def member_params
-      params.require(:member).permit(:name, :email)
+      params.require(:member).permit(:name, :email, :profile_image)
     end
 end

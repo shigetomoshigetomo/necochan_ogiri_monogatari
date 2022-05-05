@@ -1,7 +1,7 @@
 <div>
   <%= @post.content %>
   <% if @post.image.attached? %>
-    <%= image_tag @post.image.variant(resize: "100") %>
+    <%= image_tag @post.image.variant(resize: "100").processed %>
   <% end %>
   <%= link_to @post.member.name, member_path(@post.member_id) %>
 

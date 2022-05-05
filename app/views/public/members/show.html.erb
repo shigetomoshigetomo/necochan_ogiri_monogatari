@@ -1,15 +1,45 @@
-<div>
-  名前<%= @member.name %>
-  レベル<%= @member.level %>
-  経験値<%= @member.exp %>
-  マネー<% if @member.money.to_i > 0 %>
-          <%= @member.money %>
-        <% else %>
-          0
-        <% end %>
-</div>
+<div class="box">
+  <%= image_tag @member.get_profile_image(300) %>
+  <table class="table table-borderless text-white">
+    <tbody>
+      <tr>
+        <td>名前</td>
+        <td><%= @member.name %></td>
+      </tr>
+      <tr>
+        <td>レベル</td>
+        <td>Lv.<%= @member.level %></td>
+      </tr>
+      <tr>
+        <td>経験値</td>
+        <td><%= @member.exp %>　EXP</td>
+      </tr>
+      <tr>
+        <td>マネー</td>
+        <td>
+          <% if @member.money.to_i > 0 %>
+            <%= @member.money %>　マネー
+          <% else %>
+            0　マネー
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>お題を投稿した数</td>
+        <td><%= @member.boards.count %></td>
+      </tr>
+      <tr>
+        <td>答えを投稿した数</td>
+        <td><%= @member.posts.count %></td>
+      </tr>
+      <tr>
+        <td>次のレベルまでの必要経験値</td>
+        <td><%= @gap_exp %>　EXP</td>
+      </tr>
+    </tbody>
+  </table>
 
-<% if @member != current_member %>
+  <% if @member != current_member %>
   <div>
     <% if current_member.following?(@member) %>
       <%= link_to "フォロー外す", member_relationships_path(@member), method: :delete, class:"btn btn-info btn-sm" %>
@@ -19,4 +49,12 @@
   </div>
 <% end %>
 
-<%= link_to "編集する", edit_member_path(current_member) %>
+</div>
+
+
+<div class="box">
+  <%= link_to "プロフィール編集", edit_member_path(current_member) %>
+  <%= link_to "お買い物する", items_path %>
+  <%= link_to "仲間たちをみる", href="#" %>
+  <%= link_to "お気に入りをみる", href="#" %>
+</div>

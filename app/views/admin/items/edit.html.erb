@@ -1,32 +1,36 @@
-<%= form_with model:@item, url: admin_item_path(@item), method: :patch do |f| %>
-  <div class="field form-group row">
-    <%= f.label :商品画像, class: "col-3" %>
-    <%= f.file_field :image, accept: "image/*", class:"col-8 p-0" %>
+<div class="box row">
+  <div class="mx-auto">
+    <%= form_with model:@item, url: admin_item_path(@item), method: :patch do |f| %>
+      <div class="form-group row">
+        <%= f.label :商品画像, class: "col-4" %>
+        <%= f.file_field :image, accept: "image/*", class:"col-8 p-0" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :商品名, class: "col-4" %>
+        <%= f.text_field :name, class:"col-8" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :商品説明, class: "col-4" %>
+        <%= f.text_area :introduction, rows:"6", class:"col-8" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :ジャンル, class: "col-4" %>
+        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { prompt: '選択してください' } %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :価格（マネー）, class: "col-4" %>
+        <%= f.text_field :price, class:"col-8" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :経験値, class: "col-4" %>
+        <%= f.text_field :having_exp, class:"col-8" %>
+      </div>
+      <div class="form-group row mt-5">
+        <div class="mx-auto">
+          <%= f.submit "更新", class:"btn btn-success" %>
+          <%= link_to "削除する", admin_item_path(@item), method: :delete, data: { confirm: "#{@item.name}を削除しますか？" }, class: "btn btn-danger ml-3" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <div class="field form-group row">
-    <%= f.label :商品名, class: "col-3" %>
-    <%= f.text_field :name, placeholder: "商品名", class:"col-8" %>
-  </div>
-  <div class="field form-group row">
-    <%= f.label :商品説明, class: "col-3" %>
-    <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", rows:"6", class:"col-8" %>
-  </div>
-  <div class="field form-group row">
-    <%= f.label :ジャンル, class: "col-3" %>
-    <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { prompt: '選択してください' } %>
-  </div>
-  <div class="field form-group row">
-    <%= f.label :価格, class: "col-3" %>
-    <%= f.text_field :price, placeholder: "10", class:"col-8" %> マネー
-  </div>
-  <div class="field form-group row">
-    <%= f.label :経験値, class: "col-3" %>
-    <%= f.text_field :having_exp, placeholder: "10", class:"col-8" %>
-  </div>
-  <div class="actions form-group row mt-5">
-    <div class="col-4 offset-4">
-      <%= f.submit "更新", class:"btn btn-success btn-lg px-5" %>
-    </div>
-  </div>
-<% end %>
-<%= link_to "削除する", admin_item_path(@item), method: :delete, data: { confirm: "#{@item}を削除しますか？" } %>
+</div>

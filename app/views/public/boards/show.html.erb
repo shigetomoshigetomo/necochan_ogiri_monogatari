@@ -17,7 +17,7 @@
   <div>
     <%= link_to post.content, board_post_path(@board, post) %>
     <% if post.image.attached? %>
-      <%= image_tag post.image.variant(resize: "100").processed %>
+      <%#= image_tag post.image.variant(resize: "100").processed %>
     <% end %>
 
     <% if post.favorited_by?(current_member) %>

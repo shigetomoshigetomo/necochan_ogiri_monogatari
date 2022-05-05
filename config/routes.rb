@@ -13,16 +13,6 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-
-  scope module: :public do
-    resources :members, only: [:show, :edit, :update, :index] do
-      resource :relationships, only: [:create, :destroy]
-  	  get 'followings' => 'relationships#followings'
-  	  get 'followers' => 'relationships#followers'
-    end
-  end
-
-
   namespace :admin do
     resources :reports, only: [:index, :show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
@@ -38,6 +28,11 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'homes/about'
     get 'homes/index'
+    resources :members, only: [:show, :edit, :update, :index] do
+      resource :relationships, only: [:create, :destroy]
+  	  get 'followings' => 'relationships#followings', as: "followings"
+  	  get 'followers' => 'relationships#followers', as: "followers"
+    end
     resources :boards, only: [:index, :show, :new, :create] do
       resources :posts, only: [:show, :index, :create] do
         resource :favorites, only: [:create, :destroy]

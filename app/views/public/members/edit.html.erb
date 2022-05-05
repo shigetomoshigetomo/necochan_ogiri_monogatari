@@ -1,6 +1,6 @@
 <div class="box row">
   <div class="mx-auto">
-    <%= form_with model:@member, url: members_path, method: :patch do |f| %>
+    <%= form_with model:@member, url: member_path, method: :patch do |f| %>
       <div class="form-group row">
         <%= f.label :プロフィール画像, class: "col-4" %>
         <%= f.file_field :profile_image, accept: "image/*", class: "col-8" %>

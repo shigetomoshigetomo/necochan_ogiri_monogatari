@@ -8,7 +8,7 @@ class Public::MembersController < ApplicationController
   end
 
   def edit
-    @member = current_member
+    @member = Member.find(params[:id])
   end
 
   def update

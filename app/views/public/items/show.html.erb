@@ -1,5 +1,5 @@
 <div class="col-4 ml-5 mt-5">
-  <%= image_tag @item.get_image(400,280) %>
+  <%= image_tag @item.image.variant(resize: "400") %>
 <div class="my-4 ml-3">
   <h3><%= @item.name %></h3>
   <%= @item.introduction %>

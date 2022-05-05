@@ -1,7 +1,11 @@
-<%= form_with model:@genre, url: admin_genre_path(@genre), method: :patch do |f| %>
-  <div class="field form-group">
-    <%= f.label :ジャンル名, class:"mr-5" %>
-    <%= f.text_field :name, placeholder: "ジャンル名", class:"genre-form" %>
+<div class="box row">
+  <div class="mx-auto">
+    <%= form_with model:@genre, url: admin_genre_path(@genre), method: :patch do |f| %>
+      <div class="field form-group">
+        <%= f.label :ジャンル名, class:"mr-2" %>
+        <%= f.text_field :name, placeholder: "ジャンル名", class:"genre-form" %>
+        <%= f.submit "更新", class:"btn btn-success ml-3" %>
+      </div>
+    <% end %>
   </div>
-  <%= f.submit "更新", class:"btn btn-success btn-lg px-4 ml-5" %>
-<% end %>
+</div>

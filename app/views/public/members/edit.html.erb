@@ -1,24 +1,22 @@
 <div class="box row">
-  <div class="mx-auto">
-    <%= form_with model:@member, url: member_path, method: :patch do |f| %>
-      <div class="form-group row">
-        <%= f.label :プロフィール画像, class: "col-4" %>
-        <%= f.file_field :profile_image, accept: "image/*", class: "col-8 p-0" %>
-      </div>
+  <%= form_with model:@member, url: member_path, method: :patch do |f| %>
+    <div class="form-group row">
+      <%= f.label :プロフィール画像, class: "col-4" %>
+      <%= f.file_field :profile_image, accept: "image/*", class: "col-8 p-0" %>
+    </div>
 
-      <div class="form-group row">
-        <%= f.label :名前, class: "col-4" %>
-        <%= f.text_field :name, autocomplete: "name", class: "form-control col-8" %>
-      </div>
+    <div class="form-group row">
+      <%= f.label :名前, class: "col-4" %>
+      <%= f.text_field :name, autocomplete: "name", class: "form-control col-8" %>
+    </div>
 
-      <div class="form-group row">
-        <%= f.label :email, 'メールアドレス', class: "col-4" %>
-        <%= f.email_field :email, autocomplete: "email", class: "form-control col-8" %>
-      </div>
+    <div class="form-group row">
+      <%= f.label :email, 'メールアドレス', class: "col-4" %>
+      <%= f.email_field :email, autocomplete: "email", class: "form-control col-8" %>
+    </div>
 
-      <div class="actions mt-5 row">
-        <%= f.submit "変更を保存", class: "btn btn-success mx-auto" %>
-      </div>
-    <% end %>
-  </div>
+    <div class="actions mt-5 row">
+      <%= f.submit "変更を保存", class: "btn btn-success mx-auto" %>
+    </div>
+  <% end %>
 </div>

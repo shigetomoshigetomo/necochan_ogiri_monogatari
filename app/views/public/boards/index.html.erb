@@ -1,10 +1,12 @@
 <%= link_to "お題を投稿", new_board_path, class: "btn btn-info" %>
 
 <% @boards.each do |board| %>
-  <div>
-    <%= link_to board.title, board_path(board) %>
+  <div class="box">
+    <h3><%= link_to board.title, board_path(board) %></h3>
     <% if board.image.attached? %>
-      <%= image_tag board.image.variant(resize: "100").processed %>
+      <%= image_tag board.image.variant(resize: "400").processed %>
     <% end %>
+    <p>お題出題者：<%= board.member.name %></p>
+    <p><%= time_ago_in_words(board.created_at) %> 前に出題</p>
   </div>
 <% end %>

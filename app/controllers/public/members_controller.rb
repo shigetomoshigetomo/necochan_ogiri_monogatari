@@ -23,7 +23,15 @@ class Public::MembersController < ApplicationController
   end
 
   def index
-    @members = Member.where.not(email: 'guest@example.com').order(params[:sort])
+    if params[:sort] == "favorites"
+      @all_members = Member.where.not(email: 'guest@example.com')
+      @members = @all_members.sort { |a,b|
+                                    b.posts.inject(0) { |sum, post| sum + post.favorites.count } <=>
+                                    a.posts.inject(0) { |sum, post| sum + post.favorites.count }
+                                    }
+    else
+      @members = Member.where.not(email: 'guest@example.com').order(params[:sort])
+    end
   end
 
   private

@@ -1,16 +1,18 @@
 <div class="text-center mb-3">
   <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-outline-info btn-lg"><i class="fas fa-paw"></i>数</button>
-    <button type="button" class="btn btn-outline-info btn-lg">レベル</button>
+    <%= link_to(members_path(sort: "favorites"), class: "btn btn-outline-info btn-lg") do %>
+      <i class="fas fa-paw"></i>数
+    <% end %>
+    <%= link_to "レベル", members_path(sort: 'level DESC'), class: "btn btn-outline-info btn-lg" %>
     <%= link_to "お金持ち", members_path(sort: 'money DESC'), class: "btn btn-outline-info btn-lg" %>
   </div>
 </div>
 
 <% @members.each do |member| %>
   <div class="box mb-2">
-    <%= image_tag member.profile_image, size: "35x35", class: "rounded-circle" %>
+    <%= image_tag member.get_profile_image(35), class: "rounded-circle" %>
     <%= link_to member.name, member_path(member), class: "h5" %>（Lv.<%= member.level %>）
     全<i class="fas fa-paw"></i>数：<%= member.posts.inject(0) { |sum, post| sum + post.favorites.count } %>
-    所持マネー：<%= member.money %>
+    所持マネー：<%= member.money.to_i %>
   </div>
 <% end %>

@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
     if remainder >= 0
       @order.save
       member = current_member
-      member.update_attribute(:money, @remainder)
+      member.update_attribute(:money, remainder)
       member.update_attribute(:exp, new_exp)
       #一つ上のレベルを探し、比較していく
       near_level = Level.find_by(level: member.level + 1)

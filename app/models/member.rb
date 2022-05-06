@@ -63,5 +63,4 @@ class Member < ApplicationRecord
     end
     profile_image.variant(resize: [width]).processed
   end
-
 end

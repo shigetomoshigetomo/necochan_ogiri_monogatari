@@ -23,7 +23,7 @@ class Public::MembersController < ApplicationController
   end
 
   def index
-    @members = Member.where.not(email: 'guest@example.com')
+    @members = Member.where.not(email: 'guest@example.com').order(params[:sort])
   end
 
   private

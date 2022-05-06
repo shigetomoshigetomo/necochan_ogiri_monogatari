@@ -2,10 +2,9 @@
   <div class="btn-group" role="group" aria-label="Basic example">
     <button type="button" class="btn btn-outline-info btn-lg"><i class="fas fa-paw"></i>数</button>
     <button type="button" class="btn btn-outline-info btn-lg">レベル</button>
-    <button type="button" class="btn btn-outline-info btn-lg">お金持ち</button>
+    <%= link_to "お金持ち", members_path(sort: 'money DESC'), class: "btn btn-outline-info btn-lg" %>
   </div>
 </div>
-
 
 <% @members.each do |member| %>
   <div class="box mb-2">

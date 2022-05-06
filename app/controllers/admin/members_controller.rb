@@ -2,7 +2,7 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @members = Member.all
+    @members = Member.where.not(email: 'guest@example.com')
   end
 
   def show

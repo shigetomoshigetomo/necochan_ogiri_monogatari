@@ -23,7 +23,7 @@ class Public::MembersController < ApplicationController
   end
 
   def index
-    @members = Member.all
+    @members = Member.where.not(email: 'guest@example.com')
   end
 
   private

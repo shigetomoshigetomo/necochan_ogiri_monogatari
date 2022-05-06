@@ -1,3 +1,16 @@
+<div class="text-center mb-3">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-outline-info btn-lg"><i class="fas fa-paw"></i>数</button>
+    <button type="button" class="btn btn-outline-info btn-lg">レベル</button>
+    <button type="button" class="btn btn-outline-info btn-lg">お金持ち</button>
+  </div>
+</div>
+
+
 <% @members.each do |member| %>
-  <%= link_to member.name, member_path(member) %>
+  <div class="box mb-2">
+    <%= image_tag member.profile_image, size: "30x30", class: "rounded-circle" %>
+    <%= link_to member.name, member_path(member), class: "h5" %>（Lv.<%= member.level %>）
+    全<i class="fas fa-paw"></i>数：<%#= member.posts.favorites.count %>
+  </div>
 <% end %>

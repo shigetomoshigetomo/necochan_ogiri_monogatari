@@ -1,20 +1,22 @@
-<div>
-  <%= @post.content %>
+<div class="box">
+  <h4><%= @post.content %></h4>
   <% if @post.image.attached? %>
-    <%= image_tag @post.image.variant(resize: "100").processed %>
+    <div class="text-center">
+      <%= image_tag @post.image.variant(resize: "300").processed %>
+    </div>
   <% end %>
-  <%= link_to @post.member.name, member_path(@post.member_id) %>
+  <p class="information"><%= link_to @post.member.name, member_path(@post.member_id) %></p>
 
   <% if @post.favorited_by?(current_member) %>
     <p>
       <%= link_to board_post_favorites_path(@board, @post), method: :delete, style:"text-decoration:none;" do %>
-        <i class="fas fa-paw" style="color:red;"></i><span style="color:red;"><%= @post.favorites.count %></span>
+        <i class="fas fa-paw favorite"></i><span class="favorite"><%= @post.favorites.count %></span>
       <% end %>
     </p>
   <% else %>
     <p>
       <%= link_to board_post_favorites_path(@board, @post), method: :post, style:"text-decoration:none;" do %>
-        <i class="fas fa-paw text-primary"></i><%= @post.favorites.count %>
+        <i class="fas fa-paw unfavorite"></i><span class="favorite"><span class="unfavorite"><%= post.favorites.count %></span>
       <% end %>
     </p>
   <% end %>

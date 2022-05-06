@@ -54,6 +54,26 @@ ul {
   padding: 20px;
 }
 
+.infomation {
+  font-size: 12px;
+}
+
+.favorite {
+  color: rgb(254, 170, 234);
+  font-size: 18px;
+}
+
+.unfavorite {
+  color: rgb(219, 242, 255);
+  font-size: 18px;
+}
+
+.attention {
+  background-color: rgb(254, 86, 128);
+  font-size: 13px;
+  padding: 2px 4px;
+}
+
 footer {
   background-color: black;
   border-top: 5px solid #fff;

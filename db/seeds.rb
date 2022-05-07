@@ -18,7 +18,7 @@ level = 1
 for i in 1..299
   new_level = level + i
   before_level = Level.find(new_level - 1)  #一つ前のレベルを探す
-  new_threshold = before_level.threshold * 1.01  #一つ前のレベルの闘値に1.1掛ける
+  new_threshold = before_level.threshold * 1.1  #一つ前のレベルの闘値に1.1掛ける
   Level.create!(level: new_level,
                 threshold: new_threshold
                 )

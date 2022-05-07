@@ -58,10 +58,10 @@
 
   <div class="box col-lg-3 offset-lg-1 mt-5">
     <ul>
-      <li><%= link_to "プロフィール編集", edit_member_path(current_member) %></li>
+      <li><%= link_to "プロフィール編集", edit_member_path(@member) %></li>
       <li><%= link_to "お買い物する", items_path %></li>
       <li><%= link_to "仲間たちをみる", href="#" %></li>
-      <li><%= link_to "お気に入りをみる", href="#" %></li>
+      <li><%= link_to "お気に入りをみる", member_my_favorites_path(@member) %></li>
     </ul>
   </div>
 </div>

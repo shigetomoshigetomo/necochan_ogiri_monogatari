@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
-  before_action :authenticate_member!, except: :index
+  before_action :authenticate_member!, only: [:edit, :update]
 
   def show
     @member = Member.find(params[:id])
@@ -32,6 +32,12 @@ class Public::MembersController < ApplicationController
     else
       @members = Member.where.not(email: 'guest@example.com').order(params[:sort])
     end
+  end
+
+  def my_favorites
+    @member = Member.find(params[:member_id])
+    favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
+    @favorites_post = Post.find(favorites)
   end
 
   private

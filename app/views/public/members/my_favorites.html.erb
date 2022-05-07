@@ -1,0 +1,13 @@
+<% @favorites_post.each do |post| %>
+  <div class="box">
+    <h4>お題：<%= post.board.title %></h4>
+    <% if post.board.image.attached? %>
+      <%= image_tag post.board.image.variant(resize: "300").processed %>
+    <% end %>
+    <h4>答え：<%= post.content %></h4>
+    <% if post.image.attached? %>
+      <%= image_tag post.board.image.variant(resize: "300").processed %>
+    <% end %>
+    <p class="infomation">回答者：<%= post.member.name %></p>
+  </div>
+<% end %>

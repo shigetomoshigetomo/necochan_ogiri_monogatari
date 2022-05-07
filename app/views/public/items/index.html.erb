@@ -4,17 +4,15 @@
 </div>
 
 
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <%= link_to "武器屋", items_path(genre: "武器屋"), class: "nav-link active" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "道具屋", items_path(genre: "道具屋"), class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "食堂", items_path(genre: "食堂"), class: "nav-link" %>
-  </li>
-</ul>
+<div class="text-center mb-3">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to "武器屋", items_path(genre: "武器屋"), class: "btn btn-outline-info btn-lg" %>
+    <%= link_to "道具屋", items_path(genre: "道具屋"), class: "btn btn-outline-info btn-lg" %>
+    <%= link_to "食堂", items_path(genre: "食堂"), class: "btn btn-outline-info btn-lg" %>
+  </div>
+</div>
+
+
 <% @items.each do |item| %>
   <div>
     <%= link_to item.name, item_path(item) %>

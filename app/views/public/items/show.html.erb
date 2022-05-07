@@ -1,19 +1,30 @@
-<div class="col-4 ml-5 mt-5">
-  <%= image_tag @item.image.variant(resize: "400").processed %>
-<div class="my-4 ml-3">
-  <h3><%= @item.name %></h3>
-  <%= @item.introduction %>
+<div class="text-right mb-2">
+  <div class="box d-inline-block"><%= current_member.money.to_i %>　マネー</div>
 </div>
-<div class="ml-3">
-  <p><%= @item.price %>マネー</p>
-  <%= form_with model:[@item, @order], url: item_orders_path(@item), method: :post do |f| %>
-    <div class="d-flex align-items-end mt-3">
-      <div class="form-group">
-        <%= f.hidden_field :item_id, :value => @item.id %>
-      </div>
-      <div class="form-group offset-1">
-        <%= f.submit "購入する", class: 'btn btn-success', data: { confirm: "#{@item.name}を購入しますか？" } %>
-      </div>
-    </div>
-  <% end %>
+<div class="box row">
+  <div class="col-lg-4 text-center">
+    <%= image_tag @item.image.variant(resize: "250").processed %>
+  </div>
+  <table class="table table-borderless col-lg-7 offset-lg-1 text-white">
+    <tbody>
+      <tr>
+        <td>アイテム名</td>
+        <td><%= @item.name %></td>
+      </tr>
+      <tr>
+        <td>アイテム説明</td>
+        <td><%= @item.introduction %></td>
+      </tr>
+      <tr>
+        <td>価格</td>
+        <td><%= @item.price %>マネー</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="mx-auto mt-3">
+    <%= form_with model:[@item, @order], url: item_orders_path(@item), method: :post do |f| %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.submit "購入する", class: 'btn btn-success', data: { confirm: "#{@item.name}を購入しますか？" } %>
+    <% end %>
+  </div>
 </div>

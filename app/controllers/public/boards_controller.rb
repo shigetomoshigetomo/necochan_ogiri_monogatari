@@ -1,13 +1,22 @@
 class Public::BoardsController < ApplicationController
   before_action :authenticate_member!, only: [:new, :create]
 
+  impressionist :actions=> [:show]
+
   def index
-    @boards = Board.all
+    if params[:sort] == "popular"
+      @boards = Board.all.sort { |a,b| b.posts.count <=> a.posts.count }
+    elsif params[:sort] == "browsing"
+      @boards = Board.all.sort { |a,b| b.impressionist_count.to_i.size <=> a.impressionist_count.to_i.size }
+    else
+      @boards = Board.all.order(params[:sort])
+    end
   end
 
   def show
     @board = Board.find(params[:id])
     @post = Post.new
+    impressionist(@board, nil, unique: [:session_hash.to_s])
   end
 
   def new

@@ -7,4 +7,5 @@ class Board < ApplicationRecord
   validates :title, presence: true
   validates :member_id, presence: true
 
+  is_impressionable
 end

@@ -7,6 +7,7 @@
   <% end %>
   <p class="infomation">お題出題者：<%= @board.member.name %></p>
   <p class="infomation"><%= time_ago_in_words(@board.created_at) %> 前に出題</p>
+  <p class="infomation">閲覧数：<%= @board.impressionist_count(:filter=>:session_hash) %></p>
 </div>
 
 <%= form_with model:[@board, @post] do |f| %>

@@ -1,5 +1,13 @@
 <%= link_to "お題を投稿", new_board_path, class: "btn btn-info" %>
 
+<div class="text-center mb-3">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to "人気", boards_path(sort: "popular"), class: "btn btn-outline-info btn-lg" %>
+    <%= link_to "注目", boards_path(sort: 'browsing'), class: "btn btn-outline-info btn-lg" %>
+    <%= link_to "最新", boards_path(sort: 'created_at DESC'), class: "btn btn-outline-info btn-lg" %>
+  </div>
+</div>
+
 <% @boards.each do |board| %>
   <div class="box mb-3">
     <h3><%= link_to board.title, board_path(board) %></h3>
@@ -8,5 +16,6 @@
     <% end %>
     <p class="infomation">お題出題者：<%= board.member.name %></p>
     <p class="infomation"><%= time_ago_in_words(board.created_at) %> 前に出題</p>
+    <p class="infomation">閲覧数：<%= board.impressionist_count(:filter=>:session_hash) %></p>
   </div>
 <% end %>

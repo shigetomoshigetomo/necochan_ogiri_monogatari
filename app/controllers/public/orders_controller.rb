@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_member!
+
   def create
     @item = Item.find(params[:item_id])
     @order = Order.new(order_params)

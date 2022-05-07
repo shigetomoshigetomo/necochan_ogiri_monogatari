@@ -1,4 +1,6 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_member!
+
   def create
     @board = Board.find(params[:board_id])
     @post = Post.find(params[:post_id])

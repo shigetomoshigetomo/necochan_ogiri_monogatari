@@ -3,18 +3,27 @@
   <div class="box my-money"><%= current_member.money.to_i %>　マネー</div>
 </div>
 
-
 <div class="text-center mb-3">
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <%= link_to "武器屋", items_path(genre: "武器屋"), class: "btn btn-outline-info btn-lg" %>
-    <%= link_to "道具屋", items_path(genre: "道具屋"), class: "btn btn-outline-info btn-lg" %>
-    <%= link_to "食堂", items_path(genre: "食堂"), class: "btn btn-outline-info btn-lg" %>
+  <div class="btn-group" role="group">
+    <% @genres.each do |genre| %>
+      <%= link_to genre.name, items_path(shop: genre.id), class: "btn btn-outline-info btn-lg" %>
+    <% end %>
   </div>
 </div>
 
-
-<% @items.each do |item| %>
-  <div>
-    <%= link_to item.name, item_path(item) %>
-  </div>
-<% end %>
+<div class="box px-md-5">
+  <table class="table table-borderless">
+    <% @items.each do |item| %>
+      <tr>
+        <td>
+          <%= link_to(item_path(item), class: "text-white") do %>
+            <i class="fas fa-caret-left"></i>　<%= item.name %>
+          <% end %>
+        </td>
+        <td>
+          <span class="text-white"><%= item.price %>　マネー</span>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

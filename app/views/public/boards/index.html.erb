@@ -9,17 +9,8 @@
         <%= link_to "最新", boards_path(sort: 'created_at DESC'), class: "btn btn-outline-info btn-lg" %>
       </div>
     </div>
-
     <% @boards.each do |board| %>
-      <div class="box mb-3">
-        <h3><%= link_to board.title, board_path(board) %></h3>
-        <% if board.image.attached? %>
-          <%= image_tag board.image.variant(resize: "400").processed %>
-        <% end %>
-        <p class="infomation">お題出題者：<%= board.member.name %></p>
-        <p class="infomation"><%= time_ago_in_words(board.created_at) %> 前に出題</p>
-        <p class="infomation">閲覧数：<%= board.impressionist_count(:filter=>:session_hash) %></p>
-      </div>
+      <%= render "show", board: board %>
     <% end %>
   </div>
   <div class="col-lg-4">

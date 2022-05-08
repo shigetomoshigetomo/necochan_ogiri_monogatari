@@ -1,0 +1,8 @@
+<%= form_with model:[board, post] do |f| %>
+  <div class="form-group">
+    <label>答え</label><span class="attention ml-2">必須!</span>
+    <%= f.text_area :content, rows:'3', class:"form-control" %><br>
+    <%= f.file_field :image, accept: "image/*" %>
+    <%= f.submit "送信", class: "btn btn-info" %>
+  </div>
+<% end %>

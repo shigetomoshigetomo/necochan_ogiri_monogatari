@@ -30,6 +30,7 @@ class Public::BoardsController < ApplicationController
 
   def new
     @board = Board.new
+    @tags = ActsAsTaggableOn::Tag.all
   end
 
   def create

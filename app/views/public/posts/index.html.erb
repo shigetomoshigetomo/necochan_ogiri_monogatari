@@ -16,19 +16,6 @@
       <%= image_tag post.board.image.variant(resize: "300").processed %>
     <% end %>
     <p class="infomation">回答者：<%= link_to post.member.name, member_path(post.member) %></p>
-
-    <% if post.favorited_by?(current_member) %>
-      <p>
-        <%= link_to board_post_favorites_path(post.board, post), method: :delete, style:"text-decoration:none;" do %>
-          <i class="fas fa-paw favorite"></i><span class="favorite"><%= post.favorites.count %></span>
-        <% end %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to board_post_favorites_path(post.board, post), method: :post, style:"text-decoration:none;" do %>
-          <i class="fas fa-paw unfavorite"></i><span class="favorite"><span class="unfavorite"><%= post.favorites.count %></span>
-        <% end %>
-      </p>
-    <% end %>
+    <%= render "public/favorites/favorite", obj: post.board, post: post %>
   </div>
 <% end %>

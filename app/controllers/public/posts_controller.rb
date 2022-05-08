@@ -40,7 +40,8 @@ class Public::PostsController < ApplicationController
       end
       redirect_to request.referer
     else
-      render "board/show"
+      @tags = ActsAsTaggableOn::Tag.all
+      render "public/boards/show"
     end
   end
 

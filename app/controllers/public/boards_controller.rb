@@ -59,6 +59,7 @@ class Public::BoardsController < ApplicationController
       end
       redirect_to board_path(@board)
     else
+      @tags = ActsAsTaggableOn::Tag.all
       render "new"
     end
   end

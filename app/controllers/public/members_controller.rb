@@ -15,10 +15,10 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     if @member.update(member_params)
       flash[:notice] = "会員情報を更新しました"
-      redirect_to action: :show
+      redirect_to "show"
     else
       @member = Member.find(params[:id])
-      render "public/members/edit"
+      render "edit"
     end
   end
 

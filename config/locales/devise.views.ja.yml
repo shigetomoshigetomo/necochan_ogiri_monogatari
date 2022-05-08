@@ -180,3 +180,4 @@ ja:
       x_years:
         one: 1年
         other: "%{count}年"
+  

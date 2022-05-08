@@ -10,6 +10,6 @@ class Item < ApplicationRecord
     validates :price
     validates :having_exp
     validates :introduction
-    validates :genre_id
+    validates :image
   end
 end

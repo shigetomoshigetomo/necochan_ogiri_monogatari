@@ -1,15 +1,16 @@
 <h3>ジャンル</h3>
 
-<div class="box mb-5 row">
-  <div class="mx-auto">
-    <%= form_with model:@genre, url: "/admin/genres", method: :post do |f| %>
-      <div class="field form-group">
+<%= render 'layouts/errors', obj: @genre %>
+<div class="box mb-5">
+  <%= form_with model:@genre, url: "/admin/genres", method: :post do |f| %>
+    <div class="text-center">
+      <div>
         <%= f.label :ジャンル名, class:"mr-2" %>
-        <%= f.text_field :name, placeholder: "ジャンル名", class:"genre-form" %>
-        <%= f.submit "新規登録", class:"btn btn-success ml-3" %>
+        <%= f.text_field :name, placeholder: "ジャンル名" %>
+        <%= f.submit "新規登録", class:"btn btn-success" %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 
 <table class="table table-light">

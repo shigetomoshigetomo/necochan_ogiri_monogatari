@@ -46,3 +46,13 @@ ja:
       post:
         content: "答え"
 
+      genre:
+        name: "ジャンル名"
+
+      item:
+        image: "アイテム画像"
+        name: "アイテム名"
+        having_exp: "経験値"
+        price: "価格"
+        introduction: "説明"
+        genre: "ジャンル"

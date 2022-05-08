@@ -5,7 +5,7 @@
         <%= f.label :is_deleted, '会員ステータス', class: "mr-3" %>
         <%= f.radio_button :is_deleted, false %> <%= f.label :is_active, "有効", class:"mr-3" %>
         <%= f.radio_button :is_deleted, true %> <%= f.label :is_active, "退会" %>
-        <%= f.submit "ステータスを更新", class: "btn btn-success ml-3" %>
+        <%= f.submit "ステータスを更新", class: "btn btn-success ml-3", data: { confirm: "ステータスを更新しますか？" } %>
       </div>
     <% end %>
   </div>

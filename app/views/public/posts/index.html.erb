@@ -1,2 +1,34 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="text-center mb-3">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to "人気", posts_index_path(sort: "popular"), class: "btn btn-outline-info btn-lg" %>
+    <%= link_to "最新", posts_index_path(sort: 'created_at DESC'), class: "btn btn-outline-info btn-lg" %>
+  </div>
+</div>
+
+<% @posts.each do |post| %>
+  <div class="box mb-3">
+    <h4>お題：<%= link_to post.board.title, board_path(post.board) %></h4>
+    <% if post.board.image.attached? %>
+      <%= image_tag post.board.image.variant(resize: "300").processed %>
+    <% end %>
+    <h4>答え：<%= link_to post.content, board_post_path(post.board, post) %></h4>
+    <% if post.image.attached? %>
+      <%= image_tag post.board.image.variant(resize: "300").processed %>
+    <% end %>
+    <p class="infomation">回答者：<%= link_to post.member.name, member_path(post.member) %></p>
+
+    <% if post.favorited_by?(current_member) %>
+      <p>
+        <%= link_to board_post_favorites_path(post.board, post), method: :delete, style:"text-decoration:none;" do %>
+          <i class="fas fa-paw favorite"></i><span class="favorite"><%= post.favorites.count %></span>
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to board_post_favorites_path(post.board, post), method: :post, style:"text-decoration:none;" do %>
+          <i class="fas fa-paw unfavorite"></i><span class="favorite"><span class="unfavorite"><%= post.favorites.count %></span>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+<% end %>

@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :member
   belongs_to :board
   has_many :favorites, dependent: :destroy
+  default_scope -> {order(created_at: :desc)}
 
   has_one_attached :image
 

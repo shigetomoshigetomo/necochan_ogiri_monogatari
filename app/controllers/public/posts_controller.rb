@@ -6,6 +6,11 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    if params[:sort] == "popular"
+      @posts = Post.all.sort { |a,b| b.favorites.count <=> a.favorites.count }
+    else
+      @posts = Post.all.order(params[:sort])
+    end
   end
 
   def create

@@ -4,7 +4,7 @@
 </div>
 
 <div class="text-center mb-3">
-  <div class="btn-group" role="group">
+  <div class="btn-group" role="group" aria-label="Basic example">
     <% @genres.each do |genre| %>
       <%= link_to genre.name, items_path(shop: genre.id), class: "btn btn-outline-info btn-lg" %>
     <% end %>

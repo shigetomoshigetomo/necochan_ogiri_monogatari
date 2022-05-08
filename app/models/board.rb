@@ -1,6 +1,7 @@
 class Board < ApplicationRecord
   belongs_to :member
   has_many :posts, dependent: :destroy
+  default_scope -> {order(created_at: :desc)}
 
   has_one_attached :image
 

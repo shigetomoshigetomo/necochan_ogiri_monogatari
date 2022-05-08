@@ -35,10 +35,11 @@ Rails.application.routes.draw do
   	  get 'my_favorites' => 'members#my_favorites'
     end
     resources :boards, only: [:index, :show, :new, :create] do
-      resources :posts, only: [:show, :index, :create] do
+      resources :posts, only: [:show, :create] do
         resource :favorites, only: [:create, :destroy]
       end
     end
+    get 'posts/index'
     resources :items, only: [:index, :show] do
       resources :orders, only: :create
     end

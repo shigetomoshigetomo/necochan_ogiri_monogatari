@@ -53,11 +53,6 @@
     <% end %>
   </div>
   <div class="col-lg-4">
-    <div class="alert alert-light">
-      <h5>タグ一覧</h5>
-      <% @tags.each do |tag| %>
-        <%= link_to "#{tag.name}(#{tag.taggings_count})", href="#", class: "badge badge-primary p-2" %>
-      <% end %>
-    </div>
+    <%= render "all_tag", tags: @tags %>
   </div>
 </div>

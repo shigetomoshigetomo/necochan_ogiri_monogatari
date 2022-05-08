@@ -14,6 +14,13 @@ class Public::BoardsController < ApplicationController
     end
   end
 
+  def tag_index
+    @tags = ActsAsTaggableOn::Tag.all
+    if params[:tag]
+      @boards = Board.tagged_with(params[:tag])
+    end
+  end
+
   def show
     @board = Board.find(params[:id])
     @post = Post.new

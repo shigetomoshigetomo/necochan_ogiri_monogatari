@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   	  get 'followers' => 'relationships#followers', as: "followers"
   	  get 'my_favorites' => 'members#my_favorites'
     end
+    get 'boards/tag_index'
     resources :boards, only: [:index, :show, :new, :create] do
       resources :posts, only: [:show, :create] do
         resource :favorites, only: [:create, :destroy]

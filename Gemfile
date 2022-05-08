@@ -59,6 +59,7 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'devise-i18n'
 gem 'impressionist'
+gem 'acts-as-taggable-on', '~> 9.0'
 
 group :production do
   gem 'mysql2'

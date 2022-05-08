@@ -1,47 +1,63 @@
-<div class="box mb-3">
-  <h3><%= @board.title %></h3>
-  <% if @board.image.attached? %>
-    <div class="text-center">
-      <%= image_tag @board.image.variant(resize: "300").processed %>
+<div class="row">
+  <div class="col-lg-8">
+    <div class="box mb-3">
+      <h3><%= @board.title %></h3>
+      <% if @board.image.attached? %>
+        <div class="text-center">
+          <%= image_tag @board.image.variant(resize: "300").processed %>
+        </div>
+      <% end %>
+      <p class="infomation">お題出題者：<%= @board.member.name %></p>
+      <p class="infomation"><%= time_ago_in_words(@board.created_at) %> 前に出題</p>
+      <p class="infomation">閲覧数：<%= @board.impressionist_count(:filter=>:session_hash) %></p>
+      <% @board.tag_list.each do |tag| %>
+        <span class="badge badge-primary p-2"><%= tag %></span>
+      <% end %>
+
     </div>
-  <% end %>
-  <p class="infomation">お題出題者：<%= @board.member.name %></p>
-  <p class="infomation"><%= time_ago_in_words(@board.created_at) %> 前に出題</p>
-  <p class="infomation">閲覧数：<%= @board.impressionist_count(:filter=>:session_hash) %></p>
-</div>
 
-<%= form_with model:[@board, @post] do |f| %>
-  <div class="form-group">
-    <label>答え</label><span class="attention ml-2">必須!</span>
-    <%= f.text_area :content, rows:'3', class:"form-control" %><br>
-    <%= f.file_field :image, accept: "image/*" %>
-    <%= f.submit "送信", class: "btn btn-info" %>
-  </div>
-<% end %>
-
-<% @board.posts.each do |post| %>
-  <div class="box mb-3">
-    <h4><%= link_to post.content, board_post_path(@board, post) %></h4>
-    <% if post.image.attached? %>
-      <div class="text-center">
-        <%= image_tag post.image.variant(resize: "300").processed %>
+    <%= form_with model:[@board, @post] do |f| %>
+      <div class="form-group">
+        <label>答え</label><span class="attention ml-2">必須!</span>
+        <%= f.text_area :content, rows:'3', class:"form-control" %><br>
+        <%= f.file_field :image, accept: "image/*" %>
+        <%= f.submit "送信", class: "btn btn-info" %>
       </div>
     <% end %>
-    <span class="infomation">回答者：<%= post.member.name %></span>
 
-    <% if post.favorited_by?(current_member) %>
-      <p>
-        <%= link_to board_post_favorites_path(@board, post), method: :delete, style:"text-decoration:none;" do %>
-          <i class="fas fa-paw favorite"></i><span class="favorite"><%= post.favorites.count %></span>
+    <% @board.posts.each do |post| %>
+      <div class="box mb-3">
+        <h4><%= link_to post.content, board_post_path(@board, post) %></h4>
+        <% if post.image.attached? %>
+          <div class="text-center">
+            <%= image_tag post.image.variant(resize: "300").processed %>
+          </div>
         <% end %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to board_post_favorites_path(@board, post), method: :post, style:"text-decoration:none;" do %>
-          <i class="fas fa-paw unfavorite"></i><span class="favorite"><span class="unfavorite"><%= post.favorites.count %></span>
+        <span class="infomation">回答者：<%= post.member.name %></span>
+
+        <% if post.favorited_by?(current_member) %>
+          <p>
+            <%= link_to board_post_favorites_path(@board, post), method: :delete, style:"text-decoration:none;" do %>
+              <i class="fas fa-paw favorite"></i><span class="favorite"><%= post.favorites.count %></span>
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to board_post_favorites_path(@board, post), method: :post, style:"text-decoration:none;" do %>
+              <i class="fas fa-paw unfavorite"></i><span class="favorite"><span class="unfavorite"><%= post.favorites.count %></span>
+            <% end %>
+          </p>
         <% end %>
-      </p>
+
+      </div>
     <% end %>
-
   </div>
-<% end %>
+  <div class="col-lg-4">
+    <div class="alert alert-light">
+      <h5>タグ一覧</h5>
+      <% @tags.each do |tag| %>
+        <%= link_to "#{tag.name}(#{tag.taggings_count})", href="#", class: "badge badge-primary p-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>

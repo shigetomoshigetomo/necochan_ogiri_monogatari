@@ -4,6 +4,7 @@ class Public::BoardsController < ApplicationController
   impressionist :actions=> [:show]
 
   def index
+    @tags = ActsAsTaggableOn::Tag.all
     if params[:sort] == "popular"
       @boards = Board.all.sort { |a,b| b.posts.count <=> a.posts.count }
     elsif params[:sort] == "browsing"
@@ -17,6 +18,7 @@ class Public::BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @post = Post.new
     impressionist(@board, nil, unique: [:session_hash.to_s])
+    @tags = ActsAsTaggableOn::Tag.all
   end
 
   def new
@@ -56,6 +58,6 @@ class Public::BoardsController < ApplicationController
   private
 
     def board_params
-      params.require(:board).permit(:title, :image)
+      params.require(:board).permit(:title, :image, :tag_list)
     end
 end

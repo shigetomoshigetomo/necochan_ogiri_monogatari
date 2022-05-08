@@ -9,4 +9,6 @@ class Board < ApplicationRecord
   validates :member_id, presence: true
 
   is_impressionable
+
+  acts_as_taggable
 end

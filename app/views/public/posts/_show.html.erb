@@ -1,0 +1,9 @@
+<h4>お題：<%= link_to board.title, board_path(board) %></h4>
+<% if board.image.attached? %>
+  <%= image_tag board.image.variant(resize: "300").processed %>
+<% end %>
+<h4>答え：<%= link_to post.content, board_post_path(board, post) %></h4>
+<% if post.image.attached? %>
+  <%= image_tag post.board.image.variant(resize: "300").processed %>
+<% end %>
+<p class="infomation">回答者：<%= link_to post.member.name, member_path(post.member) %></p>

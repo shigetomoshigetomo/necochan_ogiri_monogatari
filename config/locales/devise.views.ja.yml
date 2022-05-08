@@ -27,6 +27,7 @@ ja:
         updated_at: 更新日
     models:
       user: ユーザー
+      member: 会員情報
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -180,4 +181,3 @@ ja:
       x_years:
         one: 1年
         other: "%{count}年"
-  

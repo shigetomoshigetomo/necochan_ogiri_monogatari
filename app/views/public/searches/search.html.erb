@@ -1,0 +1,58 @@
+<h3><%= @word %>の検索結果</h3>
+<div class="text-center mb-5">
+  <%= render "public/searches/search" %>
+</div>
+
+<div class="row">
+  <div class="mx-auto">
+  <ul class="nav mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active btn btn-outline-info btn-lg" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">仲間</a>
+    </li>
+    <li class="nav-item px-1">
+      <a class="nav-link btn btn-outline-info btn-lg" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">お題</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link btn btn-outline-info btn-lg" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">答え</a>
+    </li>
+  </ul>
+  </div>
+</div>
+
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <% if @members.any? %>
+      <% @members.each do |member| %>
+        <div class="box mb-2">
+          <%= image_tag member.get_profile_image(35), class: "rounded-circle" %>
+          <%= link_to member.name, member_path(member), class: "h5" %>（Lv.<%= member.level %>）
+          全<i class="fas fa-paw"></i>数：<%= member.posts.inject(0) { |sum, post| sum + post.favorites.count } %>
+          所持マネー：<%= member.money.to_i %>
+        </div>
+      <% end %>
+    <% else %>
+      検索結果0件
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <% if @boards.any? %>
+      <% @boards.each do |board| %>
+        <%= render "public/boards/show", board: board %>
+      <% end %>
+    <% else %>
+      検索結果0件
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <div class="box mb-3">
+          <%= render "public/posts/show", board: post.board, post: post %>
+          <%= render "public/favorites/favorite", obj: post.board, post: post %>
+        </div>
+      <% end %>
+    <% else %>
+      検索結果0件
+    <% end %>
+  </div>
+</div>

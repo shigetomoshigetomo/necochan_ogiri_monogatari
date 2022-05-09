@@ -175,7 +175,6 @@ ActiveRecord::Schema.define(version: 2022_05_08_060561) do
     t.string "tenant", limit: 128
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
     t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
     t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
     t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"

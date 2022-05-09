@@ -1,0 +1,16 @@
+<div class="box mb-3">
+  <h3>お題：<%= link_to @board.title, admin_board_path(@board) %></h3>
+  <% if @board.image.attached? %>
+    <div class="text-center">
+      <%= image_tag @board.image.variant(resize: "400").processed %>
+    </div>
+  <% end %>
+  <p class="infomation">お題出題者：<%= link_to @board.member.name, admin_member_path(@board.member) %></p>
+  <p class="infomation"><%= time_ago_in_words(@board.created_at) %> 前に出題</p>
+  <p class="infomation">閲覧数：<%= @board.impressionist_count(:filter=>:session_hash) %></p>
+  <% @board.tag_list.each do |tag| %>
+    <span class="badge badge-primary p-2"><%= tag %></span>
+  <% end %>
+</div>
+
+<%= link_to "削除する", admin_board_path(@board), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>

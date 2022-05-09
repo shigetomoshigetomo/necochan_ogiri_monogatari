@@ -23,12 +23,12 @@ class ActsAsTaggableOnMigration < ActiveRecord::Migration[6.0]
       t.datetime :created_at
     end
 
-    # add_index ActsAsTaggableOn.taggings_table, %i[taggable_id taggable_type context],
-    #           name: 'taggings_taggable_context_idx'
+    add_index ActsAsTaggableOn.taggings_table, %i[taggable_id taggable_type context],
+              name: 'taggings_taggable_context_idx'
   end
 
   def self.down
-    # drop_table ActsAsTaggableOn.taggings_table
-    # drop_table ActsAsTaggableOn.tags_table
+    drop_table ActsAsTaggableOn.taggings_table
+    drop_table ActsAsTaggableOn.tags_table
   end
 end

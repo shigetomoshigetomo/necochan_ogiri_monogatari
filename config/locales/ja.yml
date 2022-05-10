@@ -32,6 +32,13 @@ ja:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
 
+  enums:
+    report:
+      status:
+        waiting: "対応待ち"
+        keep: "保留"
+        finish: "対応済み"
+
   activerecord:
     attributes:
       member:

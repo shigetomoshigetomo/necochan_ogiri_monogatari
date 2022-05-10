@@ -24,16 +24,13 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :public do
-    get 'reports/new'
-  end
-
   scope module: :public do
     root 'homes#top'
     get 'homes/about'
     get 'homes/index'
     get '/search' => "searches#search"
     resources :members, only: [:show, :edit, :update, :index] do
+      resources :reports, only: [:new, :create]
       resource :relationships, only: [:create, :destroy]
   	  get 'followings' => 'relationships#followings', as: "followings"
   	  get 'followers' => 'relationships#followers', as: "followers"

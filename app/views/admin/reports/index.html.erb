@@ -1,2 +1,34 @@
-<h1>Admin::Reports#index</h1>
-<p>Find me in app/views/admin/reports/index.html.erb</p>
+<table class="table table-borderless table-hover table-light">
+  <thead class="thead-light">
+    <tr>
+      <th>通報ID</th>
+      <th>会員名</th>
+      <th>通報者</th>
+      <th>対応ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr onclick='window.location="<%= '/admin/reports/' + report.id.to_s %>"' role="link">
+        <td class="py-4">
+          <%= report.id %>
+        </td>
+        <td class="py-4">
+          <%= link_to report.reported.name, admin_member_path(report.reported), class:"text-dark" %>
+        </td>
+        <td class="py-4">
+          <%= report.reporter.name %>
+        </td>
+        <td class="py-4">
+          <% if report.status_i18n == "対応待ち" %>
+            <b class="text-danger"><%= report.status_i18n %></b>
+          <% elsif report.status_i18n == "保留" %>
+            <b class="text-primary"><%= report.status_i18n %></b>
+          <% else %>
+            <b class="text-success"><%= report.status_i18n %></b>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

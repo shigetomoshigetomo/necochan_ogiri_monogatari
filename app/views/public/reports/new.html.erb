@@ -1,2 +1,10 @@
-<h1>Public::Reports#new</h1>
-<p>Find me in app/views/public/reports/new.html.erb</p>
+<h3>通報</h3>
+
+<%= form_with model:[@member, @report] do |f| %>
+  <div class="form-group">
+    <label>理由</label><span class="attention ml-2">必須!</span>
+    <%= f.text_area :reason, rows:'3', class:"form-control" %><br>
+    <%= f.text_field :url, class:"form-control" %>
+    <%= f.submit "通報する", class: "btn btn-danger" %>
+  </div>
+<% end %>

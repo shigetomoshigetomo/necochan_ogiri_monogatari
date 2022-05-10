@@ -1,0 +1,42 @@
+<div class="box">
+  <table class="table table-borderless text-white">
+    <tbody>
+      <tr>
+        <td>通報ID</td>
+        <td><%= @report.id %></td>
+      </tr>
+      <tr>
+        <td>会員名</td>
+        <td><%= @report.reported.name %></td>
+      </tr>
+      <tr>
+        <td>理由</td>
+        <td><%= @report.reason %></td>
+      </tr>
+      <tr>
+        <td>URL等</td>
+        <td><%= @report.url %></td>
+      </tr>
+      <tr>
+        <td>通報者</td>
+        <td><%= @report.reporter.name %></td>
+      </tr>
+      <tr>
+        <td>対応ステータス</td>
+        <td>
+          <% if @report.status_i18n == "対応待ち" %>
+            <b class="text-danger"><%= @report.status_i18n %></b>
+          <% elsif @report.status_i18n == "保留" %>
+            <b class="text-primary"><%= @report.status_i18n %></b>
+          <% else %>
+            <b class="text-success"><%= @report.status_i18n %></b>
+          <% end %>
+          <%= form_with model:@report, url:admin_report_path(@report), method: :patch do |f| %>
+            <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
+            <%= f.submit '更新', class: "btn btn-success btn-sm ml-3" %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

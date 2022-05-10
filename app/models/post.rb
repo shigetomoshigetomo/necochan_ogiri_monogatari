@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :member
   belongs_to :board
   has_many :favorites, dependent: :destroy
+  has_many :unlikes, dependent: :destroy
   default_scope -> {order(created_at: :desc)}
 
   has_one_attached :image
@@ -14,5 +15,9 @@ class Post < ApplicationRecord
 
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
+  end
+
+  def unliked_by?(member)
+    unlikes.exists?(member_id: member.id)
   end
 end

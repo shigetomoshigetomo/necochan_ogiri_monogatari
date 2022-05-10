@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :boards, only: [:index, :show, :new, :create] do
       resources :posts, only: [:show, :create] do
         resource :favorites, only: [:create, :destroy]
+        resource :unlikes, only: [:create, :destroy]
       end
     end
     get 'posts/index'

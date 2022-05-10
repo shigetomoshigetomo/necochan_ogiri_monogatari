@@ -9,6 +9,7 @@ class Member < ApplicationRecord
   has_many :boards, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :unlikes, dependent: :destroy
   has_many :items, through: :orders
   has_many :orders, dependent: :destroy
 

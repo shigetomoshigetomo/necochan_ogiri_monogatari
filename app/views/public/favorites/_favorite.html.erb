@@ -7,7 +7,7 @@
 <% else %>
   <p>
     <%= link_to board_post_favorites_path(obj, post), method: :post, style:"text-decoration:none;" do %>
-      <i class="fas fa-paw unfavorite"></i><span class="favorite"><span class="unfavorite"><%= post.favorites.count %></span>
+      <i class="fas fa-paw unfavorite"></i><span class="unfavorite"><%= post.favorites.count %></span>
     <% end %>
   </p>
 <% end %>

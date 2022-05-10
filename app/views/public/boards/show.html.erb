@@ -13,6 +13,7 @@
         <% end %>
         <span class="infomation">回答者：<%= post.member.name %></span>
         <%= render "public/favorites/favorite", obj: @board, post: post %>
+        <%= render "public/unlikes/unlike", obj: @board, post: post %>
       </div>
     <% end %>
   </div>

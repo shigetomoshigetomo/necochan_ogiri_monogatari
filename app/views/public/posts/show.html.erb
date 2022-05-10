@@ -7,4 +7,5 @@
   <% end %>
   <p class="information"><%= link_to @post.member.name, member_path(@post.member_id) %></p>
   <%= render "public/favorites/favorite", obj: @board, post: @post %>
+  <%= render "public/unlikes/unlike", obj: @board, post: @post %>
 </div>

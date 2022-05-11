@@ -65,7 +65,7 @@ ja:
         genre: "ジャンル"
 
       report:
-        report: "理由"
+        reason: "理由"
 
       report_comment:
         comment: "コメント"

@@ -1,5 +1,5 @@
 <h3>通報</h3>
-
+<%= render 'layouts/errors', obj: @report %>
 <%= form_with model:[@member, @report] do |f| %>
   <div class="form-group">
     <label>理由</label><span class="attention ml-2">必須!</span>

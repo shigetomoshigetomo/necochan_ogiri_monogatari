@@ -25,6 +25,7 @@
               <li><%= link_to "マイページ", member_path(current_member), class: "dropdown-item" %></li>
               <li><%= link_to "お気に入り", member_my_favorites_path(current_member), class: "dropdown-item" %></li>
               <li><%= link_to "お買い物", items_path, class: "dropdown-item" %></li>
+              <li><%= link_to "遊び方", homes_about_path, class: "dropdown-item" %></li>
               <li><%= link_to "ログアウト", destroy_member_session_path, class: "dropdown-item", method: :delete %></li>
             </ul>
           </li>

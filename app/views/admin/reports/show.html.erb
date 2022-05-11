@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box mb-5">
   <table class="table table-borderless text-white">
     <tbody>
       <tr>
@@ -40,3 +40,27 @@
     </tbody>
   </table>
 </div>
+
+<%= form_with model:[@report, @report_comment], url: admin_report_report_comments_path(@report), method: :post do |f| %>
+  <div class="form-group">
+    <label>対応コメント</label>
+    <%= f.text_area :comment, rows:'3', class:"form-control" %><br>
+  </div>
+  <div class="form-group row">
+    <div class="mx-auto">
+      <%= f.submit "コメントを保存", class:"btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+
+<% @report_comments.each do |report_comment| %>
+  <div class="box mb-2">
+    <p class="information">
+      <%= report_comment.created_at.strftime('%Y/%m/%d　%H:%M:%S') %>
+    </p>
+    <%= report_comment.comment %>
+    <div class="text-right">
+      <%= link_to "削除", admin_report_report_comment_path(report_comment.report, report_comment), data: { confirm: "コメントを削除しますか？" }, method: :delete, class: "btn btn-danger btn-sm" %>
+    </div>
+  </div>
+<% end %>

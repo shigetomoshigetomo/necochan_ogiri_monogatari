@@ -1,6 +1,9 @@
 class Report < ApplicationRecord
   belongs_to :reporter, class_name: "Member"
   belongs_to :reported, class_name: "Member"
+  has_many :report_comments, dependent: :destroy
+
+  default_scope -> {order(created_at: :desc)}
 
   with_options presence: true do
     validates :reporter_id

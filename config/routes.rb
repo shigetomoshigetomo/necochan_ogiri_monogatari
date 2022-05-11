@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/search' => "searches#search"
-    resources :reports, only: [:index, :show, :update]
+    resources :reports, only: [:index, :show, :update] do
+      resources :report_comments, only: [:create, :destroy]
+    end
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items
     resources :members, only: [:index, :show, :update, :edit]

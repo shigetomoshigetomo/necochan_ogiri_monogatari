@@ -1,11 +1,15 @@
-<div>
-  <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, class: "btn btn-secondary sign_in", method: :post %>
-</div>
+<div class="top-logo"></div>
 
-<div>
-  <%= link_to 'ログイン', new_member_session_path, class: "btn btn-info sign_in" %>
-</div>
+<div class="text-center">
+  <div class="button05 mb-2">
+    <%= link_to 'ログイン', new_member_session_path %>
+  </div>
 
-<div>
-  <%= link_to '新規登録（無料）', new_member_registration_path, class: "btn btn-info sign_in" %>
+  <div class="button05 mb-2">
+    <%= link_to '新規登録（無料）', new_member_registration_path %>
+  </div>
+
+  <div class="button05 mb-2">
+    <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post %>
+  </div>
 </div>

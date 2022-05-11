@@ -47,6 +47,15 @@ ul {
   list-style-type: none;
 }
 
+.top-logo {
+  width: 600px;
+  height: 500px;
+  background-image: image-url("logo.png");
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
+
 .box {
   background-color: hsla(0, 0%, 24%, 0.588);
   border: 3px solid #fff;
@@ -99,4 +108,39 @@ footer {
   border-top: 5px solid #fff;
   color: #fff;
   padding: 15px 0;
+}
+
+
+
+
+// ボタン
+
+.button05 a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1em 2em;
+  width: 300px;
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #cccccc;
+  box-shadow: 0 5px 0 #aaaaaa;
+  transition: 0.3s;
+}
+
+.button05 a::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+  transform: rotate(45deg);
+}
+
+.button05 a:hover {
+  transform: translateY(3px);
+  text-decoration: none;
+  box-shadow: 0 2px 0 #aaaaaa;
 }

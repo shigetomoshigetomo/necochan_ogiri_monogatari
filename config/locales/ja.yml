@@ -63,3 +63,9 @@ ja:
         price: "価格"
         introduction: "説明"
         genre: "ジャンル"
+
+      report:
+        report: "理由"
+
+      report_comment:
+        comment: "コメント"

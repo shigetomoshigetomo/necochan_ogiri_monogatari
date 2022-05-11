@@ -8,7 +8,7 @@ class Admin::ReportsController < ApplicationController
   def show
     @report = Report.find(params[:id])
     @report_comment = ReportComment.new
-    @report_comments = ReportComment.where(report_id: @report.id)
+    @report_comments = @report.report_comments
   end
 
   def update

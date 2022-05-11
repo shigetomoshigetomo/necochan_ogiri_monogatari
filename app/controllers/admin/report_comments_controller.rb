@@ -7,10 +7,10 @@ class Admin::ReportCommentsController < ApplicationController
     @report_comment.report_id = @report.id
     if @report_comment.save
       flash[:notice] = "コメントを保存しました。"
-      redirect_to request.referer
+      redirect_to admin_report_path(@report)
     else
       @report = Report.find(params[:report_id])
-      @report_comments = ReportComment.where(report_id: @report.id)
+      @report_comments = @report.report_comments
       render "admin/reports/show"
     end
   end

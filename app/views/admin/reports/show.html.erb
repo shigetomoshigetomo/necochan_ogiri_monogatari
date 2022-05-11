@@ -41,6 +41,7 @@
   </table>
 </div>
 
+<%= render 'layouts/errors', obj: @report_comment %>
 <%= form_with model:[@report, @report_comment], url: admin_report_report_comments_path(@report), method: :post do |f| %>
   <div class="form-group">
     <label>対応コメント</label>

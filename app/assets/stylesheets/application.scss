@@ -19,6 +19,7 @@
 body {
   font-family: sans-serif;
   color: #fff;
+  overflow-x: hidden;
 }
 
 .min-vh-100 {
@@ -54,6 +55,19 @@ ul {
   background-size: cover;
   background-position: center;
   margin: 0 auto;
+}
+
+.slide {
+  border: 3px solid #fff;
+}
+
+.carousel-item {
+  position: relative;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 40%;
 }
 
 .box {

@@ -70,6 +70,11 @@ ul {
   top: 40%;
 }
 
+.slide2 {
+  position: absolute;
+  top: 20%;
+}
+
 .box {
   background-color: hsla(0, 0%, 24%, 0.588);
   border: 3px solid #fff;
@@ -168,4 +173,31 @@ footer {
 
 .button-guest a:hover {
   border-bottom: solid 2px rgb(208, 165, 73);
+}
+
+// アバウト見出し
+
+.about-title {
+  position: relative;
+  padding-left: 25px;
+}
+
+.about-title:before {
+  position: absolute;
+  content: '';
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  border-left: solid 15px transparent;
+  border-bottom: solid 15px #fff;
+}
+.about-title:after {
+  position: absolute;
+  content: '';
+  bottom: -5px;
+  left: 10px;
+  width: 100%;
+  border-bottom: solid 3px #fff;
 }

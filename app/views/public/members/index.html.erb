@@ -4,19 +4,28 @@
 
 <div class="text-center mb-3">
   <div class="btn-group" role="group" aria-label="Basic example">
-    <%= link_to(members_path(sort: "favorites"), class: "btn btn-outline-info btn-lg") do %>
+    <%= link_to(members_path(sort: "favorites"), class: "btn btn-outline-light btn-lg") do %>
       <i class="fas fa-paw"></i>数
     <% end %>
-    <%= link_to "レベル", members_path(sort: 'level DESC'), class: "btn btn-outline-info btn-lg" %>
-    <%= link_to "お金持ち", members_path(sort: 'money DESC'), class: "btn btn-outline-info btn-lg" %>
+    <%= link_to "レベル", members_path(sort: 'level DESC'), class: "btn btn-outline-light btn-lg" %>
+    <%= link_to "お金持ち", members_path(sort: 'money DESC'), class: "btn btn-outline-light btn-lg" %>
+    <%= link_to "フォロワー数", members_path(sort: 'followers'), class: "btn btn-outline-light btn-lg" %>
   </div>
 </div>
 
 <% @members.each do |member| %>
   <div class="box mb-2">
-    <%= image_tag member.get_profile_image(35), class: "rounded-circle" %>
-    <%= link_to member.name, member_path(member), class: "h5" %>（Lv.<%= member.level %>）
-    全<i class="fas fa-paw"></i>数：<%= member.posts.inject(0) { |sum, post| sum + post.favorites.count } %>
-    所持マネー：<%= member.money.to_i %>
+    <div class="row justify-content-between">
+      <div>
+        <%= image_tag member.get_profile_image(35), class: "rounded-circle" %>
+        <%= link_to member.name, member_path(member), class: "h4 link" %>（Lv.<%= member.level %>）
+      </div>
+      <%= render "public/relationships/relationship", member: member %>
+    </div>
+    <div>
+      <span class="badge badge-success p-2 m-1">全<i class="fas fa-paw"></i>数：<%= member.posts.inject(0) { |sum, post| sum + post.favorites.count } %></span>
+      <span class="badge badge-success p-2 m-1">所持マネー：<%= member.money.to_i %></span>
+      <span class="badge badge-success p-2 m-1">フォロワー数：<%= member.followers.count %></span>
+    </div>
   </div>
 <% end %>

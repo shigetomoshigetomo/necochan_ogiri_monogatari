@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get 'homes/about'
-    get 'homes/index'
     get '/search' => "searches#search"
     resources :members, only: [:show, :edit, :update, :index] do
       resources :reports, only: [:new, :create]

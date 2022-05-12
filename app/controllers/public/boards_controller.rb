@@ -1,5 +1,6 @@
 class Public::BoardsController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:new, :create]
 
   impressionist :actions=> [:show]
 
@@ -69,4 +70,5 @@ class Public::BoardsController < ApplicationController
     def board_params
       params.require(:board).permit(:title, :image, :tag_list)
     end
+
 end

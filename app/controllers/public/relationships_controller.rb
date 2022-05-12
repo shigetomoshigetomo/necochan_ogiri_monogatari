@@ -1,5 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:create, :destroy]
 
   def create
     current_member.follow(params[:member_id])

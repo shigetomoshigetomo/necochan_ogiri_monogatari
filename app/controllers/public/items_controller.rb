@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
-  
-  
+  before_action :authenticate_member!
+
   def index
     @genres = Genre.all
     if params[:shop]

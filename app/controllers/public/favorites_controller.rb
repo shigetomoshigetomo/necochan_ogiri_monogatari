@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:destroy, :create]
 
   def create
     @board = Board.find(params[:board_id])

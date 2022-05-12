@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:create]
 
   def show
     @tags = ActsAsTaggableOn::Tag.all

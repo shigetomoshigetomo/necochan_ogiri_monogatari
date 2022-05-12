@@ -1,5 +1,6 @@
 class Public::ReportsController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:new, :create]
 
   def new
     @report = Report.new

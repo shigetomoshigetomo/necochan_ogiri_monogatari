@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:create]
 
   def create
     @item = Item.find(params[:item_id])

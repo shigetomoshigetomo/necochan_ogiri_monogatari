@@ -1,0 +1,16 @@
+<% members.each do |member| %>
+  <div class="box mb-2">
+    <div class="row justify-content-between">
+      <div>
+        <%= image_tag member.get_profile_image(35), class: "rounded-circle" %>
+        <%= link_to member.name, member_path(member), class: "h4 link" %>（Lv.<%= member.level %>）
+      </div>
+      <%= render "public/relationships/relationship", member: member %>
+    </div>
+    <div>
+      <span class="badge badge-success p-2 m-1">全<i class="fas fa-paw"></i>数：<%= member.posts.inject(0) { |sum, post| sum + post.favorites.count } %></span>
+      <span class="badge badge-success p-2 m-1">所持マネー：<%= member.money.to_i %></span>
+      <span class="badge badge-success p-2 m-1">フォロワー数：<%= member.followers.count %></span>
+    </div>
+  </div>
+<% end %>

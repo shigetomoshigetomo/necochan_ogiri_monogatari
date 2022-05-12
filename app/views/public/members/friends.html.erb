@@ -1,0 +1,10 @@
+<div class="text-center mb-3">
+  <div class="btn-group" role="group">
+    <%= link_to "フォロワー", members_path(sort: 'follower'), class: "btn btn-outline-light btn-lg" %>
+    <%= link_to "フォロー中", members_path(sort: 'following'), class: "btn btn-outline-light btn-lg" %>
+  </div>
+</div>
+
+<% if @members.any? %>
+  <%= render "public/members/index", members: @members %>
+<% end %>

@@ -65,7 +65,7 @@
         <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member), class: "link" %></p>
       <% end %>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "お買い物する", items_path, class: "link" %></p>
-      <p><i class="fas fa-caret-right"></i>　<%= link_to "仲間たちをみる", href="#", class: "link" %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "仲間たちをみる", member_friends_path(@member), class: "link" %></p>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "お気に入りをみる", member_my_favorites_path(@member), class: "link" %></p>
     </div>
   </div>

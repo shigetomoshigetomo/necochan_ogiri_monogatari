@@ -39,6 +39,15 @@ class Public::MembersController < ApplicationController
     @favorites_post = Post.find(favorites)
   end
 
+  def friends
+    @member = Member.find(params[:member_id])
+    if params[:sort] == "follower"
+      @members = @member.followers
+    elsif params[:sort] == "following"
+      @members = @member.followings
+    end
+  end
+
   private
 
     def member_params

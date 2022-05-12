@@ -1,4 +1,6 @@
 class Public::ItemsController < ApplicationController
+  
+  
   def index
     @genres = Genre.all
     if params[:shop]

@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_member!
 
   def show
     @tags = ActsAsTaggableOn::Tag.all

@@ -1,5 +1,5 @@
 class Public::BoardsController < ApplicationController
-  before_action :authenticate_member!, only: [:new, :create]
+  before_action :authenticate_member!
 
   impressionist :actions=> [:show]
 

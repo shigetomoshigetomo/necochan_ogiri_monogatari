@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
-  before_action :authenticate_member!, only: [:edit, :update]
+  before_action :authenticate_member!
 
   def show
     @member = Member.find(params[:id])

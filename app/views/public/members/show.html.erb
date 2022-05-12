@@ -49,25 +49,22 @@
 
       <% if @member != current_member %>
         <div class="mx-auto">
-          <% if current_member.following?(@member) %>
-            <%= link_to "フォロー外す", member_relationships_path(@member), method: :delete, class:"btn btn-info" %>
-          <% else %>
-            <%= link_to "フォローする", member_relationships_path(@member), method: :post, class:"btn btn-success" %>
-          <% end %>
+          <%= render "public/relationships/relationship", member: @member %>
+        </div>
+        <div class="text-right">
+          <%= link_to "ユーザーを通報", new_member_report_path(@member), class: "btn btn-danger btn-sm" %>
         </div>
       <% end %>
-
-      <%= link_to "ユーザーを通報する", new_member_report_path(@member), class: "btn btn-danger btn-sm" %>
 
     </div>
   </div>
 
   <div class="box col-lg-3 offset-lg-1 mt-5">
-    <ul>
-      <li><%= link_to "プロフィール編集", edit_member_path(@member) %></li>
-      <li><%= link_to "お買い物する", items_path %></li>
-      <li><%= link_to "仲間たちをみる", href="#" %></li>
-      <li><%= link_to "お気に入りをみる", member_my_favorites_path(@member) %></li>
-    </ul>
+    <div>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member) %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "お買い物する", items_path %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "仲間たちをみる", href="#" %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "お気に入りをみる", member_my_favorites_path(@member) %></p>
+    </div>
   </div>
 </div>

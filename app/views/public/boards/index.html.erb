@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-lg-8">
     <div class="text-center mb-3">
-      <div class="btn-group" role="group" aria-label="Basic example">
+      <div class="btn-group" role="group">
         <%= link_to "人気", boards_path(sort: "popular"), class: "btn btn-outline-info btn-lg" %>
         <%= link_to "注目", boards_path(sort: 'browsing'), class: "btn btn-outline-info btn-lg" %>
         <%= link_to "最新", boards_path(sort: 'created_at DESC'), class: "btn btn-outline-info btn-lg" %>

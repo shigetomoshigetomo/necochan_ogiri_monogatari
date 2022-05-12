@@ -1,13 +1,9 @@
 <% if post.favorited_by?(current_member) %>
-  <p>
-    <%= link_to board_post_favorites_path(obj, post), method: :delete, style:"text-decoration:none;" do %>
-      <i class="fas fa-paw favorite"></i><span class="favorite"><%= post.favorites.count %></span>
-    <% end %>
-  </p>
+  <%= link_to board_post_favorites_path(obj, post), method: :delete, style:"text-decoration:none;" do %>
+    <i class="fas fa-paw favorite"></i><span class="favorite mr-3"><%= post.favorites.count %></span>
+  <% end %>
 <% else %>
-  <p>
-    <%= link_to board_post_favorites_path(obj, post), method: :post, style:"text-decoration:none;" do %>
-      <i class="fas fa-paw unfavorite"></i><span class="unfavorite"><%= post.favorites.count %></span>
-    <% end %>
-  </p>
+  <%= link_to board_post_favorites_path(obj, post), method: :post, style:"text-decoration:none;" do %>
+    <i class="fas fa-paw unfavorite"></i><span class="unfavorite mr-3"><%= post.favorites.count %></span>
+  <% end %>
 <% end %>

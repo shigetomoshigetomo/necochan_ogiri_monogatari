@@ -1,13 +1,18 @@
-<div class="box mb-3">
-  <h3>お題：<%= link_to board.title, board_path(board) %></h3>
+<div class="mb-2">
+  <h3 class="heading">お題：<%= link_to board.title, board_path(board), class: "link" %></h3>
   <% if board.image.attached? %>
-    <div class="text-center">
-      <%= image_tag board.image.variant(resize: "400").processed %>
+    <div class="text-center my-3">
+      <%= link_to board_path(board) do %>
+        <%= image_tag board.image.variant(resize: "300").processed %>
+      <% end %>
     </div>
   <% end %>
-  <p class="infomation">お題出題者：<%= board.member.name %></p>
-  <p class="infomation"><%= time_ago_in_words(board.created_at) %> 前に出題</p>
-  <p class="infomation">閲覧数：<%= board.impressionist_count(:filter=>:session_hash) %></p>
+
+  <div class="mb-3">
+    <span class="badge badge-pill badge-light">お題出題者：<%= link_to board.member.name, member_path(board.member) %></span>
+    <span class="badge badge-pill badge-light"><%= time_ago_in_words(board.created_at) %>前に出題</span>
+    <span class="badge badge-pill badge-light">閲覧数：<%= board.impressionist_count(:filter=>:session_hash) %></span>
+  </div>
   <% board.tag_list.each do |tag| %>
     <span class="badge badge-primary p-2"><%= tag %></span>
   <% end %>

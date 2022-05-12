@@ -1,11 +1,13 @@
 class Public::PostsController < ApplicationController
 
   def show
+    @tags = ActsAsTaggableOn::Tag.all
     @board = Board.find(params[:board_id])
     @post = Post.find(params[:id])
   end
 
   def index
+    @tags = ActsAsTaggableOn::Tag.all
     if params[:sort] == "popular"
       @posts = Post.all.sort { |a,b| b.favorites.count <=> a.favorites.count }
     else

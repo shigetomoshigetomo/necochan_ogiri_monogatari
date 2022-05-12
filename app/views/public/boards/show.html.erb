@@ -1,23 +1,21 @@
 <div class="row">
-  <div class="col-lg-8">
-    <%= render "public/boards/show", board: @board %>
+  <div class="col-lg-7">
+    <div class="box mb-3">
+      <%= render "public/boards/show", board: @board %>
+    </div>
     <%= render 'layouts/errors', obj: @post %>
     <%= render "public/posts/form", board: @board, post: @post %>
     <% @board.posts.each do |post| %>
       <div class="box mb-3">
-        <h4><%= link_to post.content, board_post_path(@board, post) %></h4>
-        <% if post.image.attached? %>
-          <div class="text-center">
-            <%= image_tag post.image.variant(resize: "300").processed %>
-          </div>
-        <% end %>
-        <span class="infomation">回答者：<%= post.member.name %></span>
-        <%= render "public/favorites/favorite", obj: @board, post: post %>
-        <%= render "public/unlikes/unlike", obj: @board, post: post %>
+        <%= render "public/posts/show", post: post, board: @board %>
+        <div class="d-flex mt-2">
+          <%= render "public/favorites/favorite", obj: @board, post: post %>
+          <%= render "public/unlikes/unlike", obj: @board, post: post %>
+        </div>
       </div>
     <% end %>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-4 offset-lg-1">
     <%= render "public/boards/all_tag", tags: @tags %>
   </div>
 </div>

@@ -22,6 +22,15 @@ body {
   overflow-x: hidden;
 }
 
+.link {
+  color: white ;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: rgb(204, 254, 96);
+}
+
 .min-vh-100 {
   background-color: black;
   color: #fff;
@@ -174,12 +183,12 @@ footer {
 
 // アバウト見出し
 
-.about-title {
+.heading {
   position: relative;
   padding-left: 25px;
 }
 
-.about-title:before {
+.heading:before {
   position: absolute;
   content: '';
   bottom: -5px;
@@ -190,7 +199,7 @@ footer {
   border-left: solid 15px transparent;
   border-bottom: solid 15px #fff;
 }
-.about-title:after {
+.heading:after {
   position: absolute;
   content: '';
   bottom: -5px;

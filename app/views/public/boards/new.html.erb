@@ -1,11 +1,11 @@
 <%= render 'layouts/errors', obj: @board %>
 <div class="row">
-  <div class="col-lg-8 mb-5">
+  <div class="col-lg-7 mb-5">
     <div class="box px-lg-5">
       <%= render "form", obj: @board %>
     </div>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-4 offset-lg-1">
     <%= render "all_tag", tags: @tags %>
   </div>
 </div>

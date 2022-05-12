@@ -7,9 +7,9 @@ class Public::BoardsController < ApplicationController
   def index
     @tags = ActsAsTaggableOn::Tag.all
     if params[:sort] == "popular"
-      @boards = Board.all.sort { |a,b| b.posts.count <=> a.posts.count }
+      @boards = Board.posts_rank
     elsif params[:sort] == "browsing"
-      @boards = Board.all.sort { |a,b| b.impressionist_count.to_i.size <=> a.impressionist_count.to_i.size }
+      @boards = Board.views_rank
     else
       @boards = Board.all.order(params[:sort])
     end

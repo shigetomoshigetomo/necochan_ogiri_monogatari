@@ -12,5 +12,8 @@ class Report < ApplicationRecord
     validates :status
   end
 
+  validates :reason, length: { maximum: 200 }
+  validates :url, length: { maximum: 100 }
+
   enum status: { waiting: 0, keep: 1, finish: 2 } #対応ステータス
 end

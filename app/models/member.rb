@@ -21,6 +21,13 @@ class Member < ApplicationRecord
   has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
 
+  scope :not_guest, -> { where.not(name: "ゲスト") } #ゲスト以外の会員
+  scope :all_favorites, -> { sort { |a,b|
+                                    b.posts.inject(0) { |sum, post| sum + post.favorites.count } <=>
+                                    a.posts.inject(0) { |sum, post| sum + post.favorites.count }
+                                    } } #全いいね多い順
+  scope :follower_rank, -> { sort { |a,b| b.followers.count <=> a.followers.count } } #フォロワー多い順
+
    with_options presence: true do
     validates :name
     validates :email

@@ -231,6 +231,15 @@ footer {
     text-decoration: none;
 }
 
+.blink {
+	animation: blinking 1s ease-in-out infinite alternate;
+	color: rgb(240, 115, 199);
+}
+
+@keyframes blinking {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
 
 @media screen and (max-width:425px) {
   .top-logo {

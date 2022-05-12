@@ -62,7 +62,7 @@
   <div class="col-lg-3 offset-lg-1 mt-5">
     <div class="box">
       <% if @member == current_member %>
-        <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member) %></p>
+        <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member), class: "link" %></p>
       <% end %>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "お買い物する", items_path, class: "link" %></p>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "仲間たちをみる", href="#", class: "link" %></p>

@@ -1,3 +1,7 @@
+<% if current_member.name == "ゲスト" %>
+  <h5 class="blink text-center"><i class="fa fa-exclamation-circle"></i>ゲストの方はお買い物できません</h5>
+<% end %>
+
 <div class="box text-center shop mb-3">
   <%= image_tag "shop.png", size: "400x300" %>
   <div class="box my-money"><%= current_member.money.to_i %>　マネー</div>
@@ -6,7 +10,7 @@
 <div class="text-center mb-3">
   <div class="btn-group" role="group" aria-label="Basic example">
     <% @genres.each do |genre| %>
-      <%= link_to genre.name, items_path(shop: genre.id), class: "btn btn-outline-info btn-lg" %>
+      <%= link_to genre.name, items_path(shop: genre.id), class: "btn btn-outline-light btn-lg" %>
     <% end %>
   </div>
 </div>

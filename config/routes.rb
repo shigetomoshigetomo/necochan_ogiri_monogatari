@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
   	  get 'friends' => 'members#friends'
   	  get 'my_favorites' => 'members#my_favorites'
+  	  get 'member_boards' => 'members#member_boards'
+  	  get 'member_posts' => 'members#member_posts'
     end
     get 'boards/tag_index'
     resources :boards, only: [:index, :show, :new, :create] do

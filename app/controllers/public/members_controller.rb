@@ -45,6 +45,24 @@ class Public::MembersController < ApplicationController
     @following_members = @member.followings
   end
 
+  def member_boards
+    @member = Member.find(params[:member_id])
+    if params[:sort] == "popular"
+      @boards = @member.boards.posts_rank
+    else
+      @boards = @member.boards.all.order(params[:sort])
+    end
+  end
+
+  def member_posts
+    @member = Member.find(params[:member_id])
+    if params[:sort] == "popular"
+      @posts = @member.posts.favorites_rank
+    else
+      @posts = @member.posts.all.order(params[:sort])
+    end
+  end
+
   private
 
     def member_params

@@ -8,7 +8,7 @@
       <%= render "public/members/show", member: @member, gap_exp: @gap_exp %>
 
       <% if (@member != current_member) && (current_member.name != "ゲスト") %>
-        <div class="mx-auto">
+        <div id="follow_<%= @member.id %>" class="mx-auto">
           <%= render "public/relationships/relationship", member: @member %>
         </div>
         <div class="text-right">

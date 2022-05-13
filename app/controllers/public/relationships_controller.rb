@@ -3,13 +3,13 @@ class Public::RelationshipsController < ApplicationController
   before_action :ensure_guest_member, only: [:create, :destroy]
 
   def create
-    current_member.follow(params[:member_id])
-    redirect_to request.referer
+    @member = Member.find(params[:member_id])
+    current_member.follow(@member.id)
   end
 
   def destroy
-    current_member.unfollow(params[:member_id])
-    redirect_to request.referer
+    @member = Member.find(params[:member_id])
+    current_member.unfollow(@member.id)
   end
 
   def followings

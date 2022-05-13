@@ -13,7 +13,9 @@
       <div id="favorite_buttons_<%= post.board.id %>_<%= post.id %>">
         <%= render "public/favorites/favorite", board: post.board, post: post %>
       </div>
-      <%= render "public/unlikes/unlike", obj: post.board, post: post %>
+      <div id="unlike_buttons_<%= post.board.id %>_<%= post.id %>">
+        <%= render "public/unlikes/unlike", board: post.board, post: post %>
+      </div>
     </div>
   </div>
 <% end %>

@@ -1,12 +1,12 @@
 <% if post.unliked_by?(current_member) %>
   <p>
-    <%= link_to board_post_unlikes_path(obj, post), method: :delete, style:"text-decoration:none;" do %>
+    <%= link_to board_post_unlikes_path(post.board, post), method: :delete, remote: true, style:"text-decoration:none;" do %>
       <i class="fas fa-poo unlike"></i><span class="unlike"><%= post.unlikes.count %></span>
     <% end %>
   </p>
 <% else %>
   <p>
-    <%= link_to board_post_unlikes_path(obj, post), method: :post, style:"text-decoration:none;" do %>
+    <%= link_to board_post_unlikes_path(post.board, post), method: :post, remote: true, style:"text-decoration:none;" do %>
       <i class="fas fa-poo reverse_unlike"></i><span class="reverse_unlike"><%= post.unlikes.count %></span>
     <% end %>
   </p>

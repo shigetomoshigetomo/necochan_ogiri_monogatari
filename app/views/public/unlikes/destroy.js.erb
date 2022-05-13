@@ -1,0 +1,1 @@
+$('#unlike_buttons_<%= @post.board.id %>_<%= @post.id %>').html("<%= j(render "public/unlikes/unlike", post: @post) %>");

@@ -41,11 +41,8 @@ class Public::MembersController < ApplicationController
 
   def friends
     @member = Member.find(params[:member_id])
-    if params[:sort] == "follower"
-      @members = @member.followers
-    elsif params[:sort] == "following"
-      @members = @member.followings
-    end
+    @follower_members = @member.followers
+    @following_members = @member.followings
   end
 
   private

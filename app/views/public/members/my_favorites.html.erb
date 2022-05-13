@@ -7,7 +7,9 @@
     <%= render "public/boards/show", board: post.board %>
     <%= render "public/posts/show", board: post.board, post: post %>
     <div class="d-flex mt-2">
-      <%= render "public/favorites/favorite", obj: post.board, post: post %>
+      <div id="favorite_buttons_<%= post.board.id %>_<%= post.id %>">
+        <%= render "public/favorites/favorite", board: post.board, post: post %>
+      </div>
       <%= render "public/unlikes/unlike", obj: post.board, post: post %>
     </div>
   </div>

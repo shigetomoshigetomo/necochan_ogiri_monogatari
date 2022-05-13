@@ -33,7 +33,7 @@
           <% end %>
           <%= form_with model:@report, url:admin_report_path(@report), method: :patch do |f| %>
             <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
-            <%= f.submit '更新', class: "btn btn-success btn-sm ml-3" %>
+            <%= f.submit '更新', class: "btn btn-outline-light btn-sm ml-3" %>
           <% end %>
         </td>
       </tr>
@@ -49,7 +49,7 @@
   </div>
   <div class="form-group row">
     <div class="mx-auto">
-      <%= f.submit "コメントを保存", class:"btn btn-success" %>
+      <%= f.submit "コメントを保存", class:"btn btn-outline-light btn-lg" %>
     </div>
   </div>
 <% end %>

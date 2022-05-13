@@ -9,7 +9,7 @@
       <div>
         <%= f.label :ジャンル名, class:"mr-2" %>
         <%= f.text_field :name, placeholder: "ジャンル名" %>
-        <%= f.submit "新規登録", class:"btn btn-success" %>
+        <%= f.submit "新規登録", class:"btn btn-outline-light btn-lg" %>
       </div>
     </div>
   <% end %>
@@ -26,7 +26,7 @@
       <tr>
         <td><%= genre.name %></td>
         <td><%= genre.items.count %></td>
-        <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+        <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-secondary btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>

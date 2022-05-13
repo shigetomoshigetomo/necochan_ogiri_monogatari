@@ -1,13 +1,6 @@
 <div class="box mb-3">
-  <h4>お題：<%= link_to @board.title, admin_board_path(@board) %></h4>
-  <% if @board.image.attached? %>
-    <%= image_tag @board.image.variant(resize: "300").processed %>
-  <% end %>
-  <h4>答え：<%= link_to @post.content, admin_board_post_path(@board, @post) %></h4>
-  <% if @post.image.attached? %>
-    <%= image_tag @post.image.variant(resize: "300").processed %>
-  <% end %>
-  <p class="infomation">回答者：<%= link_to @post.member.name, admin_member_path(@post.member) %></p>
+  <%= render "admin/boards/show", board: @board %>
+  <%= render "admin/posts/show", board: @board, post: @post %>
 </div>
 
 <%= link_to "削除する", admin_board_post_path(@board, @post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>

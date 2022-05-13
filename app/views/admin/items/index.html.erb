@@ -2,7 +2,11 @@
   <%= image_tag "item.png" %>
 </div>
 
-<%= link_to "アイテム追加", new_admin_item_path, class: "btn btn-info" %>
+<div class="button004 my-5">
+  <%= link_to new_admin_item_path do %>
+    <h5>アイテム追加　<i class="fas fa-plus"></i></h5>
+  <% end %>
+</div>
 
 <table class="table table-borderless table-hover table-light">
   <thead class="thead-light">

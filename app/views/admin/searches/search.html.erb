@@ -11,13 +11,13 @@
   <div class="mx-auto">
   <ul class="nav mb-3" id="pills-tab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active btn btn-outline-info btn-lg" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">仲間</a>
+      <a class="nav-link active btn btn-outline-light btn-lg" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">仲間</a>
     </li>
     <li class="nav-item px-1">
-      <a class="nav-link btn btn-outline-info btn-lg" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">お題</a>
+      <a class="nav-link btn btn-outline-light btn-lg" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">お題</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link btn btn-outline-info btn-lg" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">答え</a>
+      <a class="nav-link btn btn-outline-light btn-lg" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">答え</a>
     </li>
   </ul>
   </div>
@@ -26,14 +26,7 @@
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <% if @members.any? %>
-      <% @members.each do |member| %>
-        <div class="box mb-2">
-          <%= image_tag member.get_profile_image(35), class: "rounded-circle" %>
-          <%= link_to member.name, admin_member_path(member), class: "h5" %>（Lv.<%= member.level %>）
-          全<i class="fas fa-paw"></i>数：<%= member.posts.inject(0) { |sum, post| sum + post.favorites.count } %>
-          所持マネー：<%= member.money.to_i %>
-        </div>
-      <% end %>
+      <%= render "admin/searches/member_index", members: @members %>
     <% else %>
       検索結果0件
     <% end %>
@@ -42,18 +35,7 @@
     <% if @boards.any? %>
       <% @boards.each do |board| %>
         <div class="box mb-3">
-          <h3>お題：<%= link_to board.title, admin_board_path(board) %></h3>
-          <% if board.image.attached? %>
-            <div class="text-center">
-              <%= image_tag board.image.variant(resize: "400").processed %>
-            </div>
-          <% end %>
-          <p class="infomation">お題出題者：<%= link_to board.member.name, admin_member_path(board.member) %></p>
-          <p class="infomation"><%= time_ago_in_words(board.created_at) %> 前に出題</p>
-          <p class="infomation">閲覧数：<%= board.impressionist_count(:filter=>:session_hash) %></p>
-          <% board.tag_list.each do |tag| %>
-            <span class="badge badge-primary p-2"><%= tag %></span>
-          <% end %>
+          <%= render "admin/boards/show", board: board %>
         </div>
       <% end %>
     <% else %>
@@ -64,15 +46,8 @@
     <% if @posts.any? %>
       <% @posts.each do |post| %>
         <div class="box mb-3">
-          <h4>お題：<%= link_to post.board.title, admin_board_path(post.board) %></h4>
-          <% if post.board.image.attached? %>
-            <%= image_tag post.board.image.variant(resize: "300").processed %>
-          <% end %>
-          <h4>答え：<%= link_to post.content, admin_board_post_path(post.board, post) %></h4>
-          <% if post.image.attached? %>
-            <%= image_tag post.image.variant(resize: "300").processed %>
-          <% end %>
-          <p class="infomation">回答者：<%= link_to post.member.name, admin_member_path(post.member) %></p>
+          <%= render "admin/boards/show", board: post.board %>
+          <%= render "admin/posts/show", board: post.board, post: post %>
         </div>
       <% end %>
     <% else %>

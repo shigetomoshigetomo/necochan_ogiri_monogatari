@@ -26,8 +26,8 @@
     </div>
     <div class="form-group row mt-5">
       <div class="mx-auto">
-        <%= f.submit "更新", class:"btn btn-success" %>
-        <%= link_to "削除する", admin_item_path(@item), method: :delete, data: { confirm: "#{@item.name}を削除しますか？" }, class: "btn btn-danger ml-3" %>
+        <%= f.submit "更新", class:"btn btn-outline-light btn-lg mr-3" %>
+        <%= link_to "削除する", admin_item_path(@item), method: :delete, data: { confirm: "#{@item.name}を削除しますか？" }, class: "btn btn-outline-danger btn-sm ml-3" %>
       </div>
     </div>
   <% end %>

@@ -1,0 +1,10 @@
+<h3 class="heading">答え：<%= link_to post.content, admin_board_post_path(board, post), class: "link" %></h3>
+<% if post.image.attached? %>
+  <div class="text-center my-3">
+    <%= link_to admin_board_post_path(board, post) do %>
+      <%= image_tag post.image.variant(resize: "300").processed %>
+    <% end %>
+  </div>
+<% end %>
+<span class="badge badge-pill badge-light">回答者：<%= link_to post.member.name, admin_member_path(post.member) %></span>
+<span class="badge badge-pill badge-light"><%= time_ago_in_words(post.created_at) %>前に回答</span>

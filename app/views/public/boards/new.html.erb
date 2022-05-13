@@ -1,3 +1,7 @@
+<div class="text-center mb-3">
+  <%= image_tag "board_form.png" %>
+</div>
+
 <%= render 'layouts/errors', obj: @board %>
 <div class="row">
   <div class="col-lg-7 mb-5">
@@ -6,6 +10,7 @@
     </div>
   </div>
   <div class="col-lg-4 offset-lg-1">
+    <%= render "public/members/info" %>
     <%= render "all_tag", tags: @tags %>
   </div>
 </div>

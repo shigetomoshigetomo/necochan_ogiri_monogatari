@@ -1,0 +1,4 @@
+$('#comment-index').html("<%= j(render "admin/report_comments/comment_index", report_comments: @report_comments)%>");
+$('.comment-new').val('');
+$('#flash-success').html("<%= j(render "layouts/notice")%>");
+$('#error').html("<%= j(render 'layouts/errors', obj: @report_comment) %>");

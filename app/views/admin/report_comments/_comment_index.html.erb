@@ -1,0 +1,11 @@
+<% report_comments.each do |report_comment| %>
+  <div class="box mb-2">
+    <p class="information">
+      <%= report_comment.created_at.strftime('%Y/%m/%d　%H:%M:%S') %>
+    </p>
+    <%= report_comment.comment %>
+    <div class="text-right">
+      <%= link_to "削除", admin_report_report_comment_path(report_comment.report, report_comment), data: { confirm: "コメントを削除しますか？" }, method: :delete, class: "btn btn-danger btn-sm" %>
+    </div>
+  </div>
+<% end %>

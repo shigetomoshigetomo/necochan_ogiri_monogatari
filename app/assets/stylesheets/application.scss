@@ -241,6 +241,14 @@ footer {
 	100% {opacity: 1;}
 }
 
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+
+
 @media screen and (max-width:425px) {
   .top-logo {
     width: 300px;

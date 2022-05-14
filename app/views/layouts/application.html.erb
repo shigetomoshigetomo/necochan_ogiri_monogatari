@@ -24,7 +24,12 @@
         <div id="flash-success">
           <%=render "layouts/notice" %>
         </div>
-      <%= yield %>
+        <%= yield %>
+        <span id="back">
+          <%= link_to href="#" do %>
+            <%= image_tag "scroll.png" %>
+          <% end %>
+        </span>
       </main>
     </div>
     <%= render 'layouts/footer' %>

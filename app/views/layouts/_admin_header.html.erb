@@ -8,23 +8,23 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gnavi">
           <li class="nav-item">
             <%= render "admin/searches/search" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item gnavi-li">
             <%= link_to "会員一覧", admin_members_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item gnavi-li">
             <%= link_to "通報一覧", admin_reports_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item gnavi-li">
             <%= link_to "アイテム一覧", admin_items_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item gnavi-li">
             <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item gnavi-li">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
           </li>
         </ul>

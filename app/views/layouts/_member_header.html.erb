@@ -8,17 +8,17 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gnavi">
+          <li class="nav-item gnavi-li">
             <%= render "public/searches/search" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item gnavi-li">
             <%= link_to "お題", boards_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item gnavi-li">
             <%= link_to "答え", posts_index_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item gnavi-li">
             <%= link_to "仲間", members_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">

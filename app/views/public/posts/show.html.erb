@@ -4,7 +4,7 @@
       <%= render "public/boards/show", board: @post.board %>
       <%= render "public/posts/show", post: @post, board: @board %>
       <div class="d-flex mt-2">
-        <div id="favorite_buttons_<%= @post.board.id %>_<%= @post.id %>">
+        <div id="favorite_buttons_<%= @post.board.id %>_<%= @post.id %>" class="neko">
           <%= render "public/favorites/favorite", board: @board, post: @post %>
         </div>
         <div id="unlike_buttons_<%= @post.board.id %>_<%= @post.id %>">
@@ -18,3 +18,5 @@
     <%= render "public/boards/all_tag", tags: @tags %>
   </div>
 </div>
+
+<%= render "public/favorites/party_btn" %>

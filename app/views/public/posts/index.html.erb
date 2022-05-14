@@ -32,12 +32,4 @@
   </div>
 </div>
 
-<script>
-$(function(){
-  $(".neko").click(function(e){
-      party.sparkles(this, {
-      count: party.variation.range(20, 40)
-    });
-  });
-});
-</script>
+<%= render "public/favorites/party_btn" %>

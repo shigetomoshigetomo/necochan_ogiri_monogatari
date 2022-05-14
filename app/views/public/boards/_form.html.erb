@@ -12,6 +12,6 @@
     <%= f.file_field :image, accept: "image/*" %>
   </div>
   <div class="form-group text-center">
-    <%= f.submit "送信", class: 'btn btn-outline-light' %>
+    <%= f.submit "送信", class: 'btn btn-outline-light', onmousedown: "party.confetti(this)" %>
   </div>
 <% end %>

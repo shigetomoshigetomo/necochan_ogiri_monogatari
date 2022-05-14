@@ -16,7 +16,7 @@
         <%= render "public/boards/show", board: post.board %>
         <%= render "show", board: post.board, post: post %>
         <div class="d-flex mt-2">
-          <div id="favorite_buttons_<%= post.board.id %>_<%= post.id %>">
+          <div id="favorite_buttons_<%= post.board.id %>_<%= post.id %>" class="neko">
             <%= render "public/favorites/favorite", board: post.board, post: post %>
           </div>
           <div id="unlike_buttons_<%= post.board.id %>_<%= post.id %>">
@@ -31,3 +31,13 @@
     <%= render "public/boards/all_tag", tags: @tags %>
   </div>
 </div>
+
+<script>
+$(function(){
+  $(".neko").click(function(e){
+      party.sparkles(this, {
+      count: party.variation.range(20, 40)
+    });
+  });
+});
+</script>

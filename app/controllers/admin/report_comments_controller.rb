@@ -6,11 +6,9 @@ class Admin::ReportCommentsController < ApplicationController
     @report_comment = ReportComment.new(report_comment_params)
     @report_comment.report_id = @report.id
     if @report_comment.save
-      @report = Report.find(params[:report_id])
       @report_comments = @report.report_comments
       flash.now[:notice] = "コメントを保存しました。"
     else
-      @report = Report.find(params[:report_id])
       @report_comments = @report.report_comments
     end
   end
@@ -19,8 +17,8 @@ class Admin::ReportCommentsController < ApplicationController
     @report = Report.find(params[:report_id])
     @report_comment = ReportComment.find(params[:id])
     if @report_comment.destroy
-      flash[:notice] = "コメントを削除しました。"
-      redirect_to request.referer
+      @report_comments = @report.report_comments
+      flash.now[:notice] = "コメントを削除しました。"
     end
   end
 

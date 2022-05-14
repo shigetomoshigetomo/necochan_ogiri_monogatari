@@ -256,6 +256,11 @@ footer {
 	color:#fff;
 }
 
+.nav-link {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
 .gnavi .gnavi-li a::after {
   content: '';
   /*絶対配置で線の位置を決める*/
@@ -277,12 +282,15 @@ footer {
     transform: scale(1, 1);/*X方向にスケール拡大*/
 }
 
-@media screen and (max-width:425px) {
+
+
+@media screen and (max-width:576px) {
   .top-logo {
-    width: 300px;
+    width: 310px;
     height: 250px;
     background-image: image-url("logo.png");
     background-position: center;
+    background-size: cover;
     margin: 0 auto;
   }
 }

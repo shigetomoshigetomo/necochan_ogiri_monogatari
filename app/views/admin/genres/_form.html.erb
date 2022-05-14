@@ -1,0 +1,9 @@
+<%= form_with model:genre, url: "/admin/genres", method: :post, local: false do |f| %>
+  <div class="text-center">
+    <div>
+      <%= f.label :ジャンル名, class:"mr-2" %>
+      <%= f.text_field :name, placeholder: "ジャンル名", class: "genre-field" %>
+      <%= f.submit "新規登録", class:"btn btn-outline-light btn-lg" %>
+    </div>
+  </div>
+<% end %>

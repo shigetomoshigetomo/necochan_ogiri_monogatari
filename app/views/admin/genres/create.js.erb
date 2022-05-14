@@ -1,0 +1,4 @@
+$('#genre-index').html("<%= j(render "index", genres: @genres)%>");
+$('.genre-field').val('');
+$('#flash-success').html("<%= j(render "layouts/notice")%>");
+$('#error').html("<%= j(render 'layouts/errors', obj: @genre) %>");

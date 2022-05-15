@@ -1,15 +1,23 @@
 <div class="top-logo"></div>
 
-<div class="text-center">
-  <div class="button05 button-login mb-2">
-    <%= link_to 'ログイン', new_member_session_path %>
-  </div>
-
-  <div class="button05 mb-2">
-    <%= link_to '新規登録（無料）', new_member_registration_path %>
-  </div>
-
-  <div class="button05 button-guest mb-2">
-    <%= link_to 'ゲスト（閲覧のみ）', public_guest_sign_in_path, method: :post %>
+<div class="row">
+  <p class="mx-auto click-message">＼クリックしてね／</p>
+</div>
+<div class="row">
+  <div class="accordion1 mx-auto">
+    <p class="ac1 m-0">さっそくはじめる　<i class="fas fa-caret-left"></i></p>
+    <div class="inner text-center mt-3">
+      <div class="top-btn"><%= link_to 'ログイン', new_member_session_path %></div>
+      <div class="top-btn"><%= link_to '新規登録（無料）', new_member_registration_path %></div>
+      <div class="top-btn"><%= link_to 'ゲスト（閲覧のみ）', public_guest_sign_in_path, method: :post %></div>
+    </div>
   </div>
 </div>
+
+<script>
+  $(function(){
+    $('.accordion1 p').click(function(){
+      $(this).next('div').slideToggle();
+    });
+  });
+</script>

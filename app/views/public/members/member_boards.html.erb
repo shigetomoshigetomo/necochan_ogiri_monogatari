@@ -9,3 +9,9 @@
     <%= render "public/boards/show", board: board %>
   </div>
 <% end %>
+
+<div class="row">
+  <div class="mx-auto">
+    <%= paginate @boards, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>

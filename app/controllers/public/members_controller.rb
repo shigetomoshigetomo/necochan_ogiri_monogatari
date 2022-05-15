@@ -26,13 +26,13 @@ class Public::MembersController < ApplicationController
   def index
     if params[:sort] == "favorites"
       members = Member.not_guest.all_favorites
-      @members = Kaminari.paginate_array(members).page(params[:page]).per(6)
+      @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
     elsif params[:sort] == "followers"
       members = Member.not_guest.follower_rank
-      @members = Kaminari.paginate_array(members).page(params[:page]).per(6)
+      @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
     else
       members = Member.not_guest.order(params[:sort])
-      @members = Kaminari.paginate_array(members).page(params[:page]).per(6)
+      @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
     end
   end
 
@@ -52,18 +52,22 @@ class Public::MembersController < ApplicationController
   def member_boards
     @member = Member.find(params[:member_id])
     if params[:sort] == "popular"
-      @boards = @member.boards.posts_rank
+      boards = @member.boards.posts_rank
+      @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
     else
-      @boards = @member.boards.all.order(params[:sort])
+      boards = @member.boards.all.order(params[:sort])
+      @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
     end
   end
 
   def member_posts
     @member = Member.find(params[:member_id])
     if params[:sort] == "popular"
-      @posts = @member.posts.favorites_rank
+      posts = @member.posts.favorites_rank
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
     else
-      @posts = @member.posts.all.order(params[:sort])
+      posts = @member.posts.all.order(params[:sort])
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
     end
   end
 

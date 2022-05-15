@@ -20,4 +20,10 @@
   </div>
 <% end %>
 
+<div class="row">
+  <div class="mx-auto">
+    <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>
+
 <%= render "public/favorites/party_btn" %>

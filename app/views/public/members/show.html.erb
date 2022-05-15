@@ -21,7 +21,7 @@
 
   <div class="col-lg-3 offset-lg-1 mt-5">
     <div class="box">
-      <% if @member == current_member %>
+      <% if (@member == current_member) && (current_member.name != "ゲスト") %>
         <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member), class: "link" %></p>
       <% end %>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "お買い物する", items_path, class: "link" %></p>
@@ -29,7 +29,11 @@
       <p><i class="fas fa-caret-right"></i>　<%= link_to "お気に入りをみる", member_my_favorites_path(@member), class: "link" %></p>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんのお題", member_member_boards_path(@member), class: "link" %></p>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんの答え", member_member_posts_path(@member), class: "link" %></p>
+      <% if current_member.name == "ゲスト" %>
+        <div class="text-center">
+          <p class="blink small">会員登録をして頂くと、投稿・買い物等ができるようになります</p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
-

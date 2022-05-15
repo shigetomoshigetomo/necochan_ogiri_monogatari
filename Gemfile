@@ -61,6 +61,7 @@ gem 'devise-i18n'
 gem 'impressionist'
 gem 'acts-as-taggable-on', '~> 9.0'
 gem "enum_help"
+gem 'kaminari','~> 1.2.1'
 
 group :production do
   gem 'mysql2'

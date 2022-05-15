@@ -7,11 +7,14 @@ class Public::BoardsController < ApplicationController
   def index
     @tags = ActsAsTaggableOn::Tag.all
     if params[:sort] == "popular"
-      @boards = Board.posts_rank
+      boards = Board.posts_rank
+      @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
     elsif params[:sort] == "browsing"
-      @boards = Board.views_rank
+      boards = Board.views_rank
+      @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
     else
-      @boards = Board.all.order(params[:sort])
+      boards = Board.all.order(params[:sort])
+      @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
     end
   end
 

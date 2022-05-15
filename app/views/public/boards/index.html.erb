@@ -17,11 +17,12 @@
         <%= link_to "最新", boards_path(sort: 'created_at DESC'), class: "btn btn-outline-light btn-lg" %>
       </div>
     </div>
-    <% @boards.each do |board| %>
-      <div class="box mb-3">
-        <%= render "show", board: board %>
-      </div>
-    <% end %>
+    <div id="boards_index">
+      <%= render "public/boards/index", boards: @boards %>
+    </div>
+    <div class="more text-center mb-2">
+      <%= link_to_next_page @boards, 'もっと見る', remote: true, id: 'view_more', class: "btn btn-outline-light" %>
+    </div>
   </div>
   <div class="col-lg-4 offset-lg-1">
     <%= render "public/members/info" %>

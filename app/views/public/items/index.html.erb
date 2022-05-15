@@ -2,9 +2,11 @@
   <h5 class="blink text-center"><i class="fa fa-exclamation-circle"></i>ゲストの方はお買い物できません</h5>
 <% end %>
 
-<div class="box text-center shop mb-3">
-  <%= image_tag "shop.png", size: "400x300" %>
-  <div class="box my-money"><%= current_member.money.to_i %>　マネー</div>
+<div class="text-center">
+  <div class="box shop mb-3 d-inline-block pt-5">
+    <%= image_tag "shop.png", size: "300x250" %>
+    <div class="my-money text-center"><%= current_member.name %>さん<br><%= current_member.money.to_i %>　マネー</div>
+  </div>
 </div>
 
 <div class="text-center mb-3">

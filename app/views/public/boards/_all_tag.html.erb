@@ -1,6 +1,6 @@
-<div class="alert alert-light">
+<div class="box">
   <h5>お題タグ一覧</h5>
   <% tags.each do |tag| %>
-    <%= link_to "#{tag.name}(#{tag.taggings_count})", boards_tag_index_path(tag: tag.name), class: "badge badge-primary p-2 my-1" %>
+    <%= link_to "#{tag.name}(#{tag.taggings_count})", boards_tag_index_path(tag: tag.name), class: "tag" %>
   <% end %>
 </div>

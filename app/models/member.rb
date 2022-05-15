@@ -41,6 +41,10 @@ class Member < ApplicationRecord
     validates :email
   end
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :name, length: { maximum: 8 }
+  validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
+
   #ゲストユーザー作成
   def self.guest
     find_or_create_by!(name: 'ゲスト' ,email: 'guest@example.com') do |member|

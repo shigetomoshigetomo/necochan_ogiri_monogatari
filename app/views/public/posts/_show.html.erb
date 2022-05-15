@@ -6,5 +6,5 @@
     <% end %>
   </div>
 <% end %>
-<span class="badge badge-pill badge-light">回答者：<%= link_to post.member.name, member_path(post.member) %></span>
-<span class="badge badge-pill badge-light"><%= time_ago_in_words(post.created_at) %>前に回答</span>
+<span class="detail_tag">回答者：<%= link_to post.member.name, member_path(post.member) %></span>
+<span class="detail_tag"><%= time_ago_in_words(post.created_at) %>前に回答</span>

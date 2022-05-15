@@ -63,7 +63,6 @@ body {
     }
   }
   .box {
-    background-color: hsla(0, 0%, 24%, 0.588);
     border: 3px solid #fff;
     border-radius: 20px;
     padding: 20px;
@@ -216,6 +215,9 @@ header {
     position: absolute;
     top: 10px;
     right: 10px;
+    border: 1px solid #fff;
+    border-radius: 18px;
+    padding: 10px;
   }
 }
 
@@ -243,6 +245,42 @@ header {
     color: #FFF;
     text-decoration: none;
   }
+}
+
+.tag {
+	display: inline-block;
+	margin: 0 .1em .6em 0;
+	padding: .6em;
+	line-height: 1;
+	text-decoration: none;
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 2em;
+	font-size: 11px;
+	&:hover {
+	  background-color: #fff;
+	  color: #000;
+	  text-decoration: none;
+	}
+}
+
+.detail_tag {
+	display: inline-block;
+	margin: 0 .2em .6em 0;
+	padding: .6em;
+	line-height: 1;
+	text-decoration: none;
+	color: #fff;
+	background-color: #000;
+	border: 1px solid #fff;
+	font-size: 12px;
+}
+
+// form 必須
+.attention {
+  background-color: rgb(254, 86, 128);
+  font-size: 13px;
+  padding: 2px 4px;
 }
 
 .pagination {

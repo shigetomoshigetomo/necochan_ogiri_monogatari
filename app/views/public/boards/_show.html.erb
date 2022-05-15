@@ -15,6 +15,6 @@
     <span class="detail_tag">閲覧数：<%= board.impressionist_count(:filter=>:session_hash) %></span>
   </div>
   <% board.tag_list.each do |tag| %>
-    <span class="tag"><%= tag %></span>
+    <span class="no_link_tag"><%= tag %></span>
   <% end %>
 </div>

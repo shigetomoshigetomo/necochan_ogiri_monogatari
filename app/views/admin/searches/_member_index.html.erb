@@ -7,9 +7,9 @@
       </div>
     </div>
     <div>
-      <span class="badge badge-success p-2 m-1">全<i class="fas fa-paw"></i>数：<%= member.posts.inject(0) { |sum, post| sum + post.favorites.count } %></span>
-      <span class="badge badge-success p-2 m-1">所持マネー：<%= member.money.to_i %></span>
-      <span class="badge badge-success p-2 m-1">フォロワー数：<%= member.followers.count %></span>
+      <span class="detail_tag">全<i class="fas fa-paw"></i>数：<%= member.posts.inject(0) { |sum, post| sum + post.favorites.count } %></span>
+      <span class="detail_tag">所持マネー：<%= member.money.to_i %></span>
+      <span class="detail_tag">フォロワー数：<%= member.followers.count %></span>
     </div>
   </div>
 <% end %>

@@ -11,25 +11,21 @@
       </div>
     </div>
 
-    <% @posts.each do |post| %>
-      <div class="box mb-3">
-        <%= render "public/boards/show", board: post.board %>
-        <%= render "show", board: post.board, post: post %>
-        <div class="d-flex mt-2">
-          <div id="favorite_buttons_<%= post.board.id %>_<%= post.id %>" class="neko">
-            <%= render "public/favorites/favorite", board: post.board, post: post %>
-          </div>
-          <div id="unlike_buttons_<%= post.board.id %>_<%= post.id %>">
-            <%= render "public/unlikes/unlike", board: post.board, post: post %>
-          </div>
-        </div>
+    <div id="posts_index">
+      <%= render "public/posts/index", posts: @posts %>
+    </div>
+    <div class="more text-center mb-3">
+      <%= link_to_next_page @posts, 'もっと見る', remote: true, id: 'view_more', class: "btn btn-outline-light" %>
+    </div>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
       </div>
-    <% end %>
+    </div>
+
   </div>
   <div class="col-lg-4 offset-lg-1">
     <%= render "public/members/info" %>
     <%= render "public/boards/all_tag", tags: @tags %>
   </div>
 </div>
-
-<%= render "public/favorites/party_btn" %>

@@ -5,7 +5,7 @@
     </div>
     <%= render 'layouts/errors', obj: @post %>
     <%= render "public/posts/form", board: @board, post: @post %>
-    <% @board.posts.each do |post| %>
+    <% @board_posts.each do |post| %>
       <div class="box mb-3">
         <%= render "public/posts/show", post: post, board: @board %>
         <div class="d-flex mt-2">
@@ -18,6 +18,11 @@
         </div>
       </div>
     <% end %>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @board_posts, theme: 'twitter-bootstrap-4' %>
+      </div>
+    </div>
   </div>
   <div class="col-lg-4 offset-lg-1">
     <%= render "public/members/info" %>

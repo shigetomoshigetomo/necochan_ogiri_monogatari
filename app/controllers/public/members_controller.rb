@@ -25,18 +25,22 @@ class Public::MembersController < ApplicationController
 
   def index
     if params[:sort] == "favorites"
-      @members = Member.not_guest.all_favorites
+      members = Member.not_guest.all_favorites
+      @members = Kaminari.paginate_array(members).page(params[:page]).per(6)
     elsif params[:sort] == "followers"
-      @members = Member.not_guest.follower_rank
+      members = Member.not_guest.follower_rank
+      @members = Kaminari.paginate_array(members).page(params[:page]).per(6)
     else
-      @members = Member.not_guest.order(params[:sort])
+      members = Member.not_guest.order(params[:sort])
+      @members = Kaminari.paginate_array(members).page(params[:page]).per(6)
     end
   end
 
   def my_favorites
     @member = Member.find(params[:member_id])
     favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
-    @favorites_post = Post.find(favorites)
+    favorites_post = Post.find(favorites)
+    @favorites_post = Kaminari.paginate_array(favorites_post).page(params[:page]).per(6)
   end
 
   def friends

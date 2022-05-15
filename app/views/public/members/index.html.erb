@@ -13,4 +13,14 @@
   </div>
 </div>
 
-<%= render "public/members/index", members: @members %>
+<div id="members_index">
+  <%= render "public/members/index", members: @members %>
+</div>
+<div class="more text-center mb-3">
+  <%= link_to_next_page @members, 'もっと見る', remote: true, id: 'view_more', class: "btn btn-outline-light" %>
+</div>
+<div class="row">
+  <div class="mx-auto">
+    <%= paginate @members, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>

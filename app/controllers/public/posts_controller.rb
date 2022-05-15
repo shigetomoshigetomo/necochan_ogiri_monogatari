@@ -11,9 +11,11 @@ class Public::PostsController < ApplicationController
   def index
     @tags = ActsAsTaggableOn::Tag.all
     if params[:sort] == "popular"
-      @posts = Post.favorites_rank
+      posts = Post.favorites_rank
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
     else
-      @posts = Post.all.order(params[:sort])
+      posts = Post.all.order(params[:sort])
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
     end
   end
 

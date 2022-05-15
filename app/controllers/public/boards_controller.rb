@@ -27,6 +27,8 @@ class Public::BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    board_posts = @board.posts
+    @board_posts = Kaminari.paginate_array(board_posts).page(params[:page]).per(6)
     @post = Post.new
     impressionist(@board, nil, unique: [:session_hash.to_s])
     @tags = ActsAsTaggableOn::Tag.all

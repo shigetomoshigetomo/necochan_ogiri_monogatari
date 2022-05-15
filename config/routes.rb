@@ -28,7 +28,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root 'homes#top'
-    get 'homes/about'
+    get '/about_before' => "homes#about_before"
+    get '/about' => "homes#about"
     get '/search' => "searches#search"
     resources :members, only: [:show, :edit, :update, :index] do
       resources :reports, only: [:new, :create]

@@ -1,0 +1,22 @@
+<div class="type-display">
+  <div class="text-content">
+  　<h4 class="type-text" id="ityped"></h4>
+  </div>
+</div>
+
+<div class="text-center">
+  <%= link_to "すすむ", about_path, class: "go-about" %>
+</div>
+
+<script>
+ ityped.init(document.querySelector("#ityped"), {
+   strings: ['あなたはニャンコ村のねこちゃんです。', '最近、この村には全く笑いが起こりません。', 'そこで、あなたはニャンコ村へ笑いを取り戻すため大喜利修行の旅に出ます....。'],
+   startDelay: 400,                                                  //アニメーション開始までの遅延、大きいほど遅れる
+   typeSpeed: 150,                                                   //表示させるスピード、大きいほどゆっくり
+   loop: false,                                                      //ループ
+   backSpeed:  90,                                                   //戻るスピード
+   backDelay:  1000,                                                  //戻る時間指定
+   showCursor: true,                                                 //カーソル表示
+   cursorChar: "",                                                  //カーソルとして表示するテキスト
+ })
+</script>

@@ -62,6 +62,7 @@ gem 'impressionist'
 gem 'acts-as-taggable-on', '~> 9.0'
 gem "enum_help"
 gem 'kaminari','~> 1.2.1'
+gem 'bootstrap4-kaminari-views'
 
 group :production do
   gem 'mysql2'

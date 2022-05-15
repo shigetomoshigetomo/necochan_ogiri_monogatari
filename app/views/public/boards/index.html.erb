@@ -20,8 +20,13 @@
     <div id="boards_index">
       <%= render "public/boards/index", boards: @boards %>
     </div>
-    <div class="more text-center mb-2">
+    <div class="more text-center mb-3">
       <%= link_to_next_page @boards, 'もっと見る', remote: true, id: 'view_more', class: "btn btn-outline-light" %>
+    </div>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @boards, theme: 'twitter-bootstrap-4' %>
+      </div>
     </div>
   </div>
   <div class="col-lg-4 offset-lg-1">

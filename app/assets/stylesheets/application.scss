@@ -43,7 +43,7 @@ header {
 }
 
 .navbar-toggler{
-  border-color: #ffffff;
+  border-color: #fff;
 }
 
 .navbar-toggler .navbar-toggler-icon {
@@ -280,6 +280,25 @@ footer {
 /*現在地とhoverの設定*/
 .gnavi .gnavi-li a:hover::after {
     transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+.pagination {
+  border: 1px solid #fff;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #000 !important;
+}
+
+.pagination>.active>a {
+  background: #000 !important;
+  color: #fff !important
+}
+
+.pagination>li>a:hover {
+  background-color: #000 !important;
+  color: #fff !important;
 }
 
 

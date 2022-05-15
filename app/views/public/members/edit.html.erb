@@ -2,24 +2,24 @@
   <%= image_tag "profile_edit.png" %>
 </div>
 
-<div class="box row">
+<div class="box px-5">
   <%= form_with model:@member, url: member_path, method: :patch do |f| %>
     <div class="form-group row">
-      <%= f.label :プロフィール画像, class: "col-4" %>
-      <%= f.file_field :profile_image, accept: "image/*", class: "col-8 p-0" %>
+      <%= f.label :プロフィール画像, class: "col-3" %>
+      <%= f.file_field :profile_image, accept: "image/*", class: "col-9 p-0" %>
     </div>
 
     <div class="form-group row">
-      <%= f.label :名前, class: "col-4" %>
-      <%= f.text_field :name, autocomplete: "name", class: "form-control col-8" %>
+      <%= f.label :名前, class: "col-3" %>
+      <%= f.text_field :name, autocomplete: "name", class: "form-control col-9" %>
     </div>
 
     <div class="form-group row">
-      <%= f.label :email, 'メールアドレス', class: "col-4" %>
-      <%= f.email_field :email, autocomplete: "email", class: "form-control col-8" %>
+      <%= f.label :email, 'メールアドレス', class: "col-3" %>
+      <%= f.email_field :email, autocomplete: "email", class: "form-control col-9" %>
     </div>
 
-    <div class="actions mt-5 row">
+    <div class="actions mt-5 text-center row">
       <%= f.submit "変更を保存", class: "btn btn-outline-light mx-auto" %>
     </div>
   <% end %>

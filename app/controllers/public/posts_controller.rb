@@ -47,6 +47,8 @@ class Public::PostsController < ApplicationController
       redirect_to request.referer
     else
       @tags = ActsAsTaggableOn::Tag.all
+      board_posts = @board.posts
+      @board_posts = Kaminari.paginate_array(board_posts).page(params[:page]).per(6)
       render "public/boards/show"
     end
   end

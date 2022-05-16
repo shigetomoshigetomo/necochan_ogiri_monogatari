@@ -8,8 +8,8 @@
 
     <div class="text-center mb-3">
       <div class="btn-group" role="group">
-        <%= link_to "人気", board_path(sort: "popular"), class: "btn btn-outline-light btn-lg" %>
-        <%= link_to "最新", board_path(sort: 'created_at DESC'), class: "btn btn-outline-light btn-lg" %>
+        <%= link_to "人気", board_path(@board, sort: "popular"), class: "btn btn-outline-light btn-lg" %>
+        <%= link_to "最新", board_path(@board, sort: 'created_at DESC'), class: "btn btn-outline-light btn-lg" %>
       </div>
     </div>
 

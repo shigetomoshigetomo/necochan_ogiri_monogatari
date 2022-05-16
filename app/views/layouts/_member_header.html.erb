@@ -22,9 +22,19 @@
             <%= link_to "仲間", members_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag current_member.get_profile_image(32), class: "rounded-circle" %><%= current_member.name %></a>
+            <a class="nav-link dropdown-toggle my-image" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if unchecked_notifications.any? %>
+                <i class="fas fa-star star"></i>
+              <% end %>
+              <%= image_tag current_member.get_profile_image(32), class: "rounded-circle" %><%= current_member.name %>
+            </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><%= link_to "マイページ", member_path(current_member), class: "dropdown-item" %></li>
+              <li>
+                <%= link_to member_notifications_path(current_member), class: "dropdown-item" do %>
+                  お知らせ　<% if unchecked_notifications.any? %><i class="fas fa-star" style="color: gold;"></i><% end %>
+                <% end %>
+              </li>
               <li><%= link_to "お気に入り", member_my_favorites_path(current_member), class: "dropdown-item" %></li>
               <li><%= link_to "お買い物", items_path, class: "dropdown-item" %></li>
               <li><%= link_to "遊び方", about_path, class: "dropdown-item" %></li>

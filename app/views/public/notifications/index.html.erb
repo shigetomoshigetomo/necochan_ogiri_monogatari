@@ -1,0 +1,20 @@
+<div class="text-center mb-3">
+  <%= image_tag "notification.png" %>
+</div>
+
+<% if @notifications.exists? %>
+  <% @notifications.each do |notification| %>
+    <% visitor = notification.visitor %>
+    <div class="box mb-2">
+      <%= image_tag notification.visitor.get_profile_image(35), class: "rounded-circle" %>
+      <%= notification_form(notification) %>
+      <div class="text-right">
+        <span class="detail_tag"><%= time_ago_in_words(notification.created_at) %>前</span>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="text-center">
+    <p>お知らせはありません　<i class="fas fa-cat"></i></p>
+  </div>
+<% end %>

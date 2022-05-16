@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     get '/search' => "searches#search"
     resources :members, only: [:show, :edit, :update, :index] do
       resources :reports, only: [:new, :create]
+      resources :notifications, only: [:index]
       resource :relationships, only: [:create, :destroy]
   	  get 'friends' => 'members#friends'
   	  get 'my_favorites' => 'members#my_favorites'

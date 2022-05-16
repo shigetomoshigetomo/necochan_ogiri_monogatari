@@ -6,5 +6,5 @@
     <% end %>
   </div>
 <% end %>
-<span class="detail_tag">回答者：<%= link_to post.member.name, member_path(post.member) %></span>
+<%= link_to "回答者：#{post.member.name}", member_path(post.member), class: "tag" %>
 <span class="detail_tag"><%= time_ago_in_words(post.created_at) %>前に回答</span>

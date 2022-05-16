@@ -6,11 +6,6 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     near_level = Level.find_by(level: @member.level + 1)
     @gap_exp = near_level.threshold - @member.exp
-
-    @notifications = @member.passive_notifications.page(params[:page]).per(20)
-    @notifications.where(checked: false).each do |notification|
-      notification.update_attribute(:checked, true)
-    end
   end
 
   def edit

@@ -9,7 +9,7 @@
   <% end %>
 
   <div class="mb-3">
-    <span class="detail_tag">お題出題者：<%= link_to board.member.name, member_path(board.member) %></span>
+    <%= link_to "お題出題者：#{board.member.name}", member_path(board.member), class: "tag" %>
     <span class="detail_tag"><%= time_ago_in_words(board.created_at) %>前に出題</span>
     <span class="detail_tag">投稿数：<%= board.posts.count %></span>
     <span class="detail_tag">閲覧数：<%= board.impressionist_count(:filter=>:session_hash) %></span>

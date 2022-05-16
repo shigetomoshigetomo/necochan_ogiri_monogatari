@@ -23,6 +23,12 @@
     <div class="box">
       <% if (@member == current_member) && (current_member.name != "ゲスト") %>
         <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member), class: "link" %></p>
+        <p>
+          <i class="fas fa-caret-right"></i><%= "　" %>
+          <%= link_to member_notifications_path(@member), class: "link" do %>
+            お知らせ　<% if unchecked_notifications.any? %><i class="fas fa-star" style="color: gold;"></i><% end %>
+          <% end %>
+        </p>
       <% end %>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "お買い物する", items_path, class: "link" %></p>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "仲間たちをみる", member_friends_path(@member), class: "link" %></p>
@@ -37,23 +43,3 @@
     </div>
   </div>
 </div>
-
-<% if @member == current_member %>
-
-  <% if @notifications.exists? %>
-    <div>
-      <% @notifications.each do |notification| %>
-        <% visitor = notification.visitor %>
-        <% post = notification.post %>
-
-        <div class="user-view clearfix ">
-          <%= link_to visitor.name, member_path(notification.visitor) %>
-          <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} ago.)" %></span>
-        </div>
-      <% end %>
-    </div>
-  <% else %>
-    <p>通知はありません</p>
-  <% end %>
-
-<% end %>

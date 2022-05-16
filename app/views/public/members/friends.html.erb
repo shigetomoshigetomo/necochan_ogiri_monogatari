@@ -15,6 +15,11 @@
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <% if @follower_members.any? %>
       <%= render "public/members/index", members: @follower_members %>
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @follower_members, theme: 'twitter-bootstrap-4' %>
+        </div>
+      </div>
     <% else %>
       フォロワーはいません
     <% end %>
@@ -22,6 +27,11 @@
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
     <% if @following_members.any? %>
       <%= render "public/members/index", members: @following_members %>
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @following_members, theme: 'twitter-bootstrap-4' %>
+        </div>
+      </div>
     <% else %>
       フォロー中のねこちゃんはいません
     <% end %>

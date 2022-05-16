@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-lg-8">
     <% @boards.each do |board| %>
-      <%= render "show", board: board %>
+      <div class="box mb-3">
+        <%= render "show", board: board %>
+      </div>
     <% end %>
   </div>
   <div class="col-lg-4">

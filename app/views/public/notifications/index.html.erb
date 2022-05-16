@@ -13,6 +13,11 @@
       </div>
     </div>
   <% end %>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @notifications, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
 <% else %>
   <div class="text-center">
     <p>お知らせはありません　<i class="fas fa-cat"></i></p>

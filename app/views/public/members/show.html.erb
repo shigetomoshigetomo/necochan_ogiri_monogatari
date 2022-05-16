@@ -11,9 +11,6 @@
         <div id="follow_<%= @member.id %>" class="mx-auto">
           <%= render "public/relationships/relationship", member: @member %>
         </div>
-        <div class="text-right">
-          <%= link_to "ユーザーを通報", new_member_report_path(@member), class: "btn btn-danger btn-sm" %>
-        </div>
       <% end %>
 
     </div>
@@ -22,24 +19,26 @@
   <div class="col-lg-3 offset-lg-1 mt-5">
     <div class="box">
       <% if (@member == current_member) && (current_member.name != "ゲスト") %>
-        <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member), class: "link" %></p>
+        <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member), class: "shrink" %></p>
         <p>
-          <i class="fas fa-caret-right"></i><%= "　" %>
-          <%= link_to member_notifications_path(@member), class: "link" do %>
-            お知らせ　<% if unchecked_notifications.any? %><i class="fas fa-star" style="color: gold;"></i><% end %>
+          <%= link_to member_notifications_path(@member), class: "shrink" do %>
+            <i class="fas fa-caret-right"></i>　お知らせ　<% if unchecked_notifications.any? %><i class="fas fa-star" style="color: gold;"></i><% end %>
           <% end %>
         </p>
       <% end %>
-      <p><i class="fas fa-caret-right"></i>　<%= link_to "お買い物する", items_path, class: "link" %></p>
-      <p><i class="fas fa-caret-right"></i>　<%= link_to "仲間たちをみる", member_friends_path(@member), class: "link" %></p>
-      <p><i class="fas fa-caret-right"></i>　<%= link_to "お気に入りをみる", member_my_favorites_path(@member), class: "link" %></p>
-      <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんのお題", member_member_boards_path(@member), class: "link" %></p>
-      <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんの答え", member_member_posts_path(@member), class: "link" %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "お買い物", items_path, class: "shrink" %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "仲間たち", member_friends_path(@member), class: "shrink" %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "お気に入り", member_my_favorites_path(@member), class: "shrink" %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんのお題", member_member_boards_path(@member), class: "shrink" %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんの答え", member_member_posts_path(@member), class: "shrink" %></p>
       <% if current_member.name == "ゲスト" %>
         <div class="text-center">
           <p class="blink small">会員登録をして頂くと、投稿・買い物等ができるようになります</p>
         </div>
       <% end %>
+    </div>
+    <div class="row mt-5">
+      <%= link_to "ユーザーを通報", new_member_report_path(@member), class: "btn btn-danger btn-sm mx-auto" %>
     </div>
   </div>
 </div>

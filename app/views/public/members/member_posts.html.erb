@@ -1,3 +1,8 @@
+<div class="text-center mb-2">
+  <span class="mr-3 h5">全<i class="fas fa-paw favorite"></i>数：<%= @member.posts.inject(0) { |sum, post| sum + post.favorites.count } %></span>
+  <span class="ml-3 h5">全<i class="fas fa-poo unlike"></i>数：<%= @member.posts.inject(0) { |sum, post| sum + post.unlikes.count } %></span>
+</div>
+
 <div class="text-center mb-3">
   <div class="btn-group" role="group">
     <%= link_to "人気", member_member_posts_path(sort: "popular"), class: "btn btn-outline-light btn-lg" %>

@@ -67,6 +67,14 @@ body {
     border-radius: 20px;
     padding: 20px;
   }
+  .shrink {
+    color: #fff;
+    &:hover {
+      text-decoration: none;
+      color: #fff;
+      font-size: 15px;
+    }
+  }
 }
 
 header {
@@ -189,17 +197,17 @@ header {
 
 // Favorite & Unlike button
 .favorite {
-  color: rgb(254, 170, 234);
+  color: #FF69A3;
   font-size: 18px;
 }
 
 .unfavorite {
-  color: rgb(219, 242, 255);
+  color: #fff;
   font-size: 18px;
 }
 
 .unlike {
-  color: rgb(255, 208, 165);
+  color: #FF8856;
   font-size: 18px;
 }
 

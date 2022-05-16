@@ -37,3 +37,23 @@
     </div>
   </div>
 </div>
+
+<% if @member == current_member %>
+
+  <% if @notifications.exists? %>
+    <div>
+      <% @notifications.each do |notification| %>
+        <% visitor = notification.visitor %>
+        <% post = notification.post %>
+
+        <div class="user-view clearfix ">
+          <%= link_to visitor.name, member_path(notification.visitor) %>
+          <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} ago.)" %></span>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>通知はありません</p>
+  <% end %>
+
+<% end %>

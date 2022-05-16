@@ -21,6 +21,9 @@ class Member < ApplicationRecord
   has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
 
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
   scope :not_guest, -> { where.not(name: "ゲスト") } #ゲスト以外の会員
   scope :all_favorites, -> { sort { |a,b|
                                     b.posts.inject(0) { |sum, post| sum + post.favorites.count } <=>
@@ -77,5 +80,16 @@ class Member < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'nyan.png', content_type: 'image/png')
     end
     profile_image.variant(resize: [width]).processed
+  end
+
+  def create_notification_follow!(current_member)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_member.id, id, 'follow'])
+    if temp.blank?
+      notification = current_member.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 end

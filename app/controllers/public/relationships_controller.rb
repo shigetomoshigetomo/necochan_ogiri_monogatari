@@ -5,6 +5,7 @@ class Public::RelationshipsController < ApplicationController
   def create
     @member = Member.find(params[:member_id])
     current_member.follow(@member.id)
+    @member.create_notification_follow!(current_member)
   end
 
   def destroy

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_11_030620) do
+ActiveRecord::Schema.define(version: 2022_05_16_023042) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -51,15 +51,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_030620) do
     t.string "name"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
-  create_table "board_reports", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "board_id", null: false
-    t.text "reason", null: false
-    t.integer "report_status", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "boards", force: :cascade do |t|
@@ -147,6 +138,19 @@ ActiveRecord::Schema.define(version: 2022_05_11_030620) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "member_id", null: false
     t.integer "item_id", null: false
@@ -154,15 +158,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_030620) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["member_id"], name: "index_orders_on_member_id"
-  end
-
-  create_table "post_reports", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "post_id", null: false
-    t.text "reason", null: false
-    t.integer "status", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|

@@ -2,6 +2,14 @@
   <%= image_tag "report.png" %>
 </div>
 
+<div class="text-right mb-2">
+  <%= form_tag(admin_reports_path, method: :get) do %>
+    <%= select_tag :status, options_for_select({ "全て" => "all", "対応待ち" => "waiting", "保留" => "keep", "対応済み" => "finish" }) %>
+    <%= submit_tag '検索', class: "btn btn-outline-light btn-sm" %>
+  <% end %>
+</div>
+
+
 <table class="table table-borderless table-hover table-light">
   <thead class="thead-light">
     <tr>

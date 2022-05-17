@@ -10,7 +10,7 @@
     <label>該当するお題や答えのURLや、補足情報をこちらにお願いします。</label>
     <%= f.text_field :url, class:"form-control" %>
     <div class="text-center mt-4">
-      <%= f.submit "通報する", class: "btn btn-danger" %>
+      <%= f.submit "通報する", class: "btn btn-danger", data: { confirm: "#{@member.name}さんを通報しますか？" } %>
     </div>
   </div>
 <% end %>

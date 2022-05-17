@@ -1,6 +1,5 @@
 class Public::NotificationsController < ApplicationController
   before_action :authenticate_member!
-  before_action :ensure_current_member!
 
   def index
     @member = Member.find(params[:member_id])

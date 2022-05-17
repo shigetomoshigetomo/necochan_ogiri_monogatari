@@ -1,3 +1,4 @@
+<div class="text-center my-2"><%= link_to "プロフィールへ", member_path(@member), class: "btn btn-info btn-sm" %></div>
 <div class="row">
   <div class="mx-auto">
     <ul class="nav mb-3" id="pills-tab" role="tablist">
@@ -21,7 +22,9 @@
         </div>
       </div>
     <% else %>
-      フォロワーはいません
+      <div class="text-center">
+        <p>まだフォロワーはいません　<i class="fas fa-cat"></i></p>
+      </div>
     <% end %>
   </div>
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -33,7 +36,9 @@
         </div>
       </div>
     <% else %>
-      フォロー中のねこちゃんはいません
+      <div class="text-center">
+        <p>フォロー中のねこちゃんはいません　<i class="fas fa-cat"></i></p>
+      </div>
     <% end %>
   </div>
 </div>

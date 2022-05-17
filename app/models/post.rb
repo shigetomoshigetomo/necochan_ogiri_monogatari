@@ -44,19 +44,12 @@ class Post < ApplicationRecord
     end
   end
 
-  # def post_create_level_up!(member)
-  #   #ランダムに経験値とマネーが加算される
-  #     get_exp = rand(1..5)
-  #     get_money = rand(3..6)
-  #     total_exp = get_exp + member.exp
-  #     total_money = get_money.to_i + member.money.to_i
-  #     member.update_attribute(:exp, total_exp)
-  #     member.update_attribute(:money, total_money)
-  #     #一つ上のレベルを探し、比較していく
-  #     near_level = Level.find_by(level: member.level + 1)
-  #     while near_level.threshold <= member.exp
-  #       member.update_attribute(:level, member.level + 1)
-  #       near_level = Level.find_by(level: member.level + 1)
-  #     end
-  # end
+  def get_exp()
+    return rand(1..5)
+  end
+
+  def get_money()
+    return rand(3..6)
+  end
+
 end

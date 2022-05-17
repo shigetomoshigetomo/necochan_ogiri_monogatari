@@ -27,8 +27,7 @@ class Public::OrdersController < ApplicationController
       end
       redirect_to items_path
     else
-      flash[:notice] = "マネーが足りません。"
-      redirect_to request.referer
+      redirect_to request.referer, notice: "マネーが足りません。"
     end
   end
 

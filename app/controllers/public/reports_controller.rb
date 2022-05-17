@@ -13,8 +13,7 @@ class Public::ReportsController < ApplicationController
     @report.reporter_id = current_member.id
     @report.reported_id = @member.id
     if @report.save
-      flash[:notice] = "#{@member.name}さんを通報しました。"
-      redirect_to member_path(@member)
+      redirect_to member_path(@member), notice: "#{@member.name}さんを通報しました。"
     else
       render "new"
     end

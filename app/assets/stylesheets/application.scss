@@ -75,6 +75,13 @@ body {
       font-size: 15px;
     }
   }
+  select {
+    border-radius: 30px;
+    border: 1px solid #fff;
+    padding: 3px 5px;
+    background-color: #000;
+    color: #fff;
+  }
 }
 
 header {

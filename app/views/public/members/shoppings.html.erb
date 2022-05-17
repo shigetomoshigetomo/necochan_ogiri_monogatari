@@ -1,11 +1,21 @@
-
-
-<% @orders.each do |order| %>
-  <div class="box">
-    <%= order.created_at.strftime('%Y/%m/%d') %>
-    <%= image_tag order.item.image, size: "40x35" %>
-    <%= order.item.name %>
-    <%= order.item.price %>
-    <%= order.item.having_exp %>
+<div class="px-lg-5">
+  <div class="text-center mb-3">
+    <%= image_tag "shopping.png" %>
   </div>
-<% end %>
+
+  <div class="text-center mb-2"><%= link_to "お店にもどる", items_path, class: "btn btn-info btn-sm" %></div>
+  <% @orders.each do |order| %>
+    <div class="box row mb-2">
+      <span class="col-2 small"><%= order.created_at.strftime('%Y/%m/%d') %></span>
+      <span class="col-1"><%= image_tag order.item.image, size: "40x35" %></span>
+      <span class="col-3 small"><%= order.item.name %></span>
+      <span class="col-3 small"><%= order.item.price %>マネー</span>
+      <span class="col-3 small"><%= order.item.having_exp %>EXP獲得</span>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @orders, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>

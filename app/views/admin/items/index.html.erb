@@ -8,6 +8,12 @@
   <% end %>
 </div>
 
+<div class="text-right mb-2">
+  <%= form_tag(admin_items_path, method: :get) do %>
+    <%= select_tag :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
+    <%= submit_tag '検索', class: "btn btn-outline-light btn-sm" %>
+  <% end %>
+</div>
 <table class="table table-borderless table-hover table-light">
   <thead class="thead-light">
     <tr>

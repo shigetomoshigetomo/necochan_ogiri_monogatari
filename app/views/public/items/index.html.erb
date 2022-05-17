@@ -10,7 +10,7 @@
 </div>
 
 <div class="text-center">
-  <div class="btn-group" role="group" aria-label="Basic example">
+  <div class="btn-group" role="group">
     <% @genres.each do |genre| %>
       <%= link_to genre.name, items_path(shop: genre.id), class: "btn btn-outline-light" %>
     <% end %>
@@ -21,15 +21,13 @@
   <%= link_to "あなたのお買い物履歴", member_shoppings_path(current_member), class: "btn btn-outline-light btn-sm" %>
 </div>
 
-<!--<div class="d-inline-block">-->
-  <div class="box">
-    <% @items.each do |item| %>
-      <%= link_to(item_path(item), class: "link") do %>
-        <div class="row">
-          <span class="col-md-3 offset-md-4 h5"><i class="fas fa-caret-left"></i>　<%= item.name %></span>
-          <span class="col-md-3 h5"><%= "（#{item.price}　マネー）" %></span>
-        </div>
-      <% end %>
+<div class="box">
+  <% @items.each do |item| %>
+    <%= link_to(item_path(item), class: "link") do %>
+      <div class="row">
+        <span class="col-md-3 offset-md-4 h5"><i class="fas fa-caret-left"></i>　<%= item.name %></span>
+        <span class="col-md-3 h5"><%= "（#{item.price}　マネー）" %></span>
+      </div>
     <% end %>
-  </div>
-<!--</div>-->
+  <% end %>
+</div>

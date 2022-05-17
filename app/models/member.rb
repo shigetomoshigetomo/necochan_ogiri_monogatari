@@ -94,18 +94,6 @@ class Member < ApplicationRecord
     end
   end
 
-  def add_exp(exp)
-    ret = false
-    self.update(:exp => self.exp + exp)
-    #自分の経験値以下のレベルの中で一番近いレベル
-    level = Level.where("threshold <= #{self.exp}").order(level: :desc).first
-    if level != self.level
-      self.update(:level => level.level)
-      ret = true
-    end
-    return ret
-  end
-
   def add_money(money)
     self.update(:money => self.money + money)
   end

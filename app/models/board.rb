@@ -15,4 +15,12 @@ class Board < ApplicationRecord
   is_impressionable
 
   acts_as_taggable
+
+  def board_get_exp()
+    return rand(1..2)
+  end
+
+  def board_get_money()
+    return rand(1..3)
+  end
 end

@@ -6,7 +6,9 @@
         <%= link_to member.name, member_path(member), class: "h4 link" %>（Lv.<%= member.level %>）
       </div>
       <div id="follow_<%= member.id %>" class="mr-2">
-        <%= render "public/relationships/relationship", member: member %>
+        <% if current_member.id != member.id %>
+          <%= render "public/relationships/relationship", member: member %>
+        <% end %>
       </div>
     </div>
     <div>

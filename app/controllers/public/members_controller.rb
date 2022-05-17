@@ -1,6 +1,7 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
   before_action :ensure_guest_member, only: [:edit, :update]
+  before_action :ensure_current_member, only: [:edit, :update]
 
   def show
     @member = Member.find(params[:id])
@@ -69,6 +70,10 @@ class Public::MembersController < ApplicationController
       posts = @member.posts.all.order(params[:sort])
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
     end
+  end
+
+  def shoppings
+    @orders = current_member.orders
   end
 
   private

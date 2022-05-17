@@ -9,12 +9,16 @@
   </div>
 </div>
 
-<div class="text-center mb-3">
+<div class="text-center">
   <div class="btn-group" role="group" aria-label="Basic example">
     <% @genres.each do |genre| %>
       <%= link_to genre.name, items_path(shop: genre.id), class: "btn btn-outline-light btn-lg" %>
     <% end %>
   </div>
+</div>
+
+<div class="text-center my-2">
+  <%= link_to "あなたのお買い物履歴", member_shoppings_path(current_member), class: "btn btn-outline-light btn-sm" %>
 </div>
 
 <div class="box px-md-5">

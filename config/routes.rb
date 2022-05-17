@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   	  get 'my_favorites' => 'members#my_favorites'
   	  get 'member_boards' => 'members#member_boards'
   	  get 'member_posts' => 'members#member_posts'
+  	  get 'shoppings' => 'members#shoppings'
     end
     get 'boards/tag_index'
     resources :boards, only: [:index, :show, :new, :create] do

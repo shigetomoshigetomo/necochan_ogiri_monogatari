@@ -1,0 +1,11 @@
+
+
+<% @orders.each do |order| %>
+  <div class="box">
+    <%= order.created_at.strftime('%Y/%m/%d') %>
+    <%= image_tag order.item.image, size: "40x35" %>
+    <%= order.item.name %>
+    <%= order.item.price %>
+    <%= order.item.having_exp %>
+  </div>
+<% end %>

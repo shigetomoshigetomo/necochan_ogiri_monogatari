@@ -7,7 +7,7 @@ class Public::ItemsController < ApplicationController
       @genre = Genre.find(params[:shop])
       @items = @genre.items
     else
-      @items = Item.all
+      @items = Item.where(genre_id: 1)
     end
   end
 

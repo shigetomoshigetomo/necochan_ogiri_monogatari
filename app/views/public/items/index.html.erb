@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="text-center">
-  <div class="box shop mb-3 d-inline-block pt-5">
+  <div class="box shop my-3 d-inline-block pt-5 px-0">
     <%= image_tag "shop.png", size: "300x250" %>
     <div class="my-money text-center"><%= current_member.name %>さん<br><%= current_member.money.to_i %>　マネー</div>
   </div>
@@ -12,7 +12,7 @@
 <div class="text-center">
   <div class="btn-group" role="group" aria-label="Basic example">
     <% @genres.each do |genre| %>
-      <%= link_to genre.name, items_path(shop: genre.id), class: "btn btn-outline-light btn-lg" %>
+      <%= link_to genre.name, items_path(shop: genre.id), class: "btn btn-outline-light" %>
     <% end %>
   </div>
 </div>
@@ -21,19 +21,15 @@
   <%= link_to "あなたのお買い物履歴", member_shoppings_path(current_member), class: "btn btn-outline-light btn-sm" %>
 </div>
 
-<div class="box px-md-5">
-  <table class="table table-borderless">
+<!--<div class="d-inline-block">-->
+  <div class="box">
     <% @items.each do |item| %>
-      <tr>
-        <td>
-          <%= link_to(item_path(item), class: "text-white") do %>
-            <i class="fas fa-caret-left"></i>　<%= item.name %>
-          <% end %>
-        </td>
-        <td>
-          <span class="text-white"><%= item.price %>　マネー</span>
-        </td>
-      </tr>
+      <%= link_to(item_path(item), class: "link") do %>
+        <div class="row">
+          <span class="col-md-3 offset-md-4 h5"><i class="fas fa-caret-left"></i>　<%= item.name %></span>
+          <span class="col-md-3 h5"><%= "（#{item.price}　マネー）" %></span>
+        </div>
+      <% end %>
     <% end %>
-  </table>
-</div>
+  </div>
+<!--</div>-->

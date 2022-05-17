@@ -1,6 +1,6 @@
 <%= render 'layouts/errors', obj: @item %>
 <div class="box">
-  <p class="text-danger text-center"><i class="fa fa-exclamation-circle"></i>登録後は、説明とジャンルしか編集できません</p>
+  <p class="text-danger text-center"><i class="fa fa-exclamation-circle"></i>登録後は、画像・説明・ジャンルしか編集できません</p>
   <%= form_with model:@item, url: admin_items_path, method: :post do |f| %>
     <div class="form-group row">
       <%= f.label :アイテム画像, class: "col-3" %>

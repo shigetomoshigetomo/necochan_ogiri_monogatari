@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :report_comments, only: [:create, :destroy]
     end
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :items
+    resources :items, except: :destroy
     resources :members, only: [:index, :show, :update, :edit]
     resources :boards, only: [:show, :destroy] do
       resources :posts, only: [:show, :destroy]

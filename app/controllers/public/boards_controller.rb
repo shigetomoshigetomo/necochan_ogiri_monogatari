@@ -13,8 +13,7 @@ class Public::BoardsController < ApplicationController
       boards = Board.views_rank
       @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
     else
-      boards = Board.all.order(params[:sort])
-      @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
+      @boards = Board.all.page(params[:page]).per(6)
     end
   end
 
@@ -31,8 +30,7 @@ class Public::BoardsController < ApplicationController
       board_posts = @board.posts.favorites_rank
       @board_posts = Kaminari.paginate_array(board_posts).page(params[:page]).per(6)
     else
-      board_posts = @board.posts
-      @board_posts = Kaminari.paginate_array(board_posts).page(params[:page]).per(6)
+      @board_posts = @board.posts.page(params[:page]).per(6)
     end
     @post = Post.new
     impressionist(@board, nil, unique: [:session_hash.to_s])

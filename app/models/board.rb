@@ -15,5 +15,4 @@ class Board < ApplicationRecord
   is_impressionable
 
   acts_as_taggable
-
 end

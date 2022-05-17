@@ -31,8 +31,7 @@ class Public::MembersController < ApplicationController
       members = Member.not_guest.follower_rank
       @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
     else
-      members = Member.not_guest.order(params[:sort])
-      @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
+      @members = Member.not_guest.order(params[:sort]).page(params[:page]).per(10)
     end
   end
 
@@ -55,8 +54,7 @@ class Public::MembersController < ApplicationController
       boards = @member.boards.posts_rank
       @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
     else
-      boards = @member.boards.all.order(params[:sort])
-      @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
+      @boards = @member.boards.all.order(params[:sort]).page(params[:page]).per(6)
     end
   end
 
@@ -66,8 +64,7 @@ class Public::MembersController < ApplicationController
       posts = @member.posts.favorites_rank
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
     else
-      posts = @member.posts.all.order(params[:sort])
-      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
+      @posts = @member.posts.all.order(params[:sort]).page(params[:page]).per(6)
     end
   end
 

@@ -14,8 +14,7 @@ class Public::PostsController < ApplicationController
       posts = Post.favorites_rank
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
     else
-      posts = Post.all.order(params[:sort])
-      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
+      @posts = Post.all.page(params[:page]).per(6)
     end
   end
 
@@ -25,7 +24,10 @@ class Public::PostsController < ApplicationController
     @post.board_id = @board.id
     if @post.save
       member = current_member
-      #ランダムに経験値とマネーが加算される
+
+      # post_create_level_up!(current_member)
+
+      ランダムに経験値とマネーが加算される
       get_exp = rand(1..5)
       get_money = rand(3..6)
       total_exp = get_exp + member.exp
@@ -47,8 +49,7 @@ class Public::PostsController < ApplicationController
       redirect_to request.referer
     else
       @tags = ActsAsTaggableOn::Tag.all
-      board_posts = @board.posts
-      @board_posts = Kaminari.paginate_array(board_posts).page(params[:page]).per(6)
+      @board_posts = @board.posts.page(params[:page]).per(6)
       render "public/boards/show"
     end
   end

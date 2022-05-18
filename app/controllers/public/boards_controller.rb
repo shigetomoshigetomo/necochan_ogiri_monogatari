@@ -20,7 +20,8 @@ class Public::BoardsController < ApplicationController
   def tag_index
     @tags = ActsAsTaggableOn::Tag.all
     if params[:tag]
-      @boards = Board.tagged_with(params[:tag])
+      @tag = params[:tag]
+      @boards = Board.tagged_with(@tag).page(params[:page]).per(6)
     end
   end
 

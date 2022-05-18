@@ -1,10 +1,18 @@
 <div class="row">
   <div class="col-lg-8">
+    <div class="text-center my-2">
+      <h3 class="heading d-inline-block">検索タグ「<%= @tag %>」</h3>
+    </div>
     <% @boards.each do |board| %>
       <div class="box mb-3">
         <%= render "show", board: board %>
       </div>
     <% end %>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @boards, theme: 'twitter-bootstrap-4' %>
+      </div>
+    </div>
   </div>
   <div class="col-lg-4">
     <%= render "public/members/info" %>

@@ -6,7 +6,7 @@
 <%= form_with model:[@member, @report] do |f| %>
   <div class="form-group">
     <label>理由</label><span class="attention ml-2">必須!</span>
-    <%= f.text_area :reason, rows:'3', class:"form-control" %><br>
+    <%= f.text_area :reason, rows:'3', class:"form-control", placeholder: "200文字以内でお願いします。" %><br>
     <label>該当するお題や答えのURLや、補足情報をこちらにお願いします。</label>
     <%= f.text_field :url, class:"form-control" %>
     <div class="text-center mt-4">
@@ -14,3 +14,8 @@
     </div>
   </div>
 <% end %>
+
+<div class="text-left small">
+  <p>※報告情報は管理者しか閲覧しません。</p>
+  <p>※頂いた情報をもとに、管理者で対応を判断させて頂きます。対応報告等はございません。</p>
+</div>

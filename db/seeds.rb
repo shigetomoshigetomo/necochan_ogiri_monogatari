@@ -25,3 +25,22 @@ for i in 1..199
 end
 
 Genre.create!([{name: "武器屋"}, {name: "道具屋"}, {name: "食堂"}])
+
+# Item.create!(
+#   [
+#     {name: 'Cavello', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg"), caption: '大人気のカフェです。', user_id: users[0].id },
+#     {shop_name: '和食屋せん', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename:"sample-post2.jpg"), caption: '日本料理は美しい！', user_id: users[1].id },
+#     {shop_name: 'ShoreditchBar', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename:"sample-post3.jpg"), caption: 'メキシコ料理好きな方にオススメ！', user_id: users[2].id }
+#   ]
+# )
+
+
+
+
+# t.string "name", null: false
+#     t.integer "having_exp", null: false
+#     t.integer "price", null: false
+#     t.integer "genre_id", null: false
+#     t.datetime "created_at", precision: 6, null: false
+#     t.datetime "updated_at", precision: 6, null: false
+#     t.text "introduction"

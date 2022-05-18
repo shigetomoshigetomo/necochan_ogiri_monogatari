@@ -1,3 +1,4 @@
+<div class="text-center my-2"><%= link_to "会員詳細へ", admin_member_path(@member), class: "btn btn-info btn-sm" %></div>
 <div class="box row">
   <div class="mx-auto">
     <%= form_with model:@member, url: admin_member_path(@member), method: :patch do |f| %>

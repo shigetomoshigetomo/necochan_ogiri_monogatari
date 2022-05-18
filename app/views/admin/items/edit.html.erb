@@ -1,3 +1,4 @@
+<div class="text-center my-2"><%= link_to "アイテム詳細へ", admin_item_path(@item), class: "btn btn-info btn-sm" %></div>
 <div class="box">
   <%= form_with model:@item, url: admin_item_path(@item), method: :patch do |f| %>
     <div class="form-group row">
@@ -10,7 +11,7 @@
     </div>
     <div class="form-group row">
       <%= f.label :商品説明, class: "col-3" %>
-      <%= f.text_area :introduction, rows:"6", class:"col-8" %>
+      <%= f.text_area :introduction, rows:"4", class:"col-8" %>
     </div>
     <div class="form-group row">
       <%= f.label :ジャンル, class: "col-3" %>
@@ -24,7 +25,7 @@
       <label class="col-3">経験値</label>
       <label class="col-8"><%= @item.having_exp %></label>
     </div>
-    <div class="form-group row mt-5">
+    <div class="form-group row mt-3">
       <div class="mx-auto">
         <%= f.submit "更新", class:"btn btn-outline-light btn-lg" %>
       </div>

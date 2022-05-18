@@ -1,4 +1,5 @@
 <%= render 'layouts/errors', obj: @item %>
+<div class="text-center my-2"><%= link_to "アイテム一覧へ", admin_items_path, class: "btn btn-info btn-sm" %></div>
 <div class="box">
   <p class="text-danger text-center"><i class="fa fa-exclamation-circle"></i>登録後は、画像・説明・ジャンルしか編集できません</p>
   <%= form_with model:@item, url: admin_items_path, method: :post do |f| %>
@@ -12,7 +13,7 @@
     </div>
     <div class="form-group row">
       <%= f.label :説明, class: "col-3" %>
-      <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", rows:"6", class:"col-8" %>
+      <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", rows:"4", class:"col-8" %>
     </div>
     <div class="form-group row">
       <%= f.label :ジャンル, class: "col-3" %>
@@ -26,7 +27,7 @@
       <%= f.label :経験値, class: "col-3" %>
       <%= f.text_field :having_exp, placeholder: "10", class:"col-4" %>
     </div>
-    <div class="form-group row mt-5">
+    <div class="form-group row mt-3">
       <div class="mx-auto">
         <%= f.submit "新規登録", class:"btn btn-outline-light btn-lg" %>
       </div>

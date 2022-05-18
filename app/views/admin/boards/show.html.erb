@@ -2,4 +2,6 @@
  <%= render "admin/boards/show", board: @board %>
 </div>
 
-<%= link_to "削除する", admin_board_path(@board), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+<div class="text-center">
+  <%= link_to "削除する", admin_board_path(@board), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+</div>

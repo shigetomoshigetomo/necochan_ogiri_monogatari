@@ -6,4 +6,10 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def destroy
+    @board = Board.find(params[:board_id])
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to admin_search_path, notice: "答えを削除しました。"
+  end
 end

@@ -1,6 +1,8 @@
 <%= form_with url: admin_search_path, method: :get do |f| %>
-  <%= f.text_field:word %>
-  <%= f.button :type => "submit", class: "btn btn-outline-light" do %>
-    <i class="fas fa-search"></i>
-  <% end %>
+  <div class="search">
+    <%= f.text_field:word, class: "searchTerm", type: "text", placeholder: "キーワードを入力" %>
+    <%= f.button :type => "submit", class: "searchButton" do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+  </div>
 <% end %>

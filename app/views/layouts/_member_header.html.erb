@@ -9,20 +9,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center ">
-          <li class="nav-item gnavi-li">
+          <li class="nav-item gnavi-li mr-2">
             <%= render "public/searches/search" %>
           </li>
           <li class="nav-item gnavi-li">
-            <%= link_to "お題", boards_path, class: "nav-link" %>
+            <%= link_to "お題", boards_path, class: "nav-link text-white" %>
           </li>
           <li class="nav-item gnavi-li">
-            <%= link_to "答え", posts_index_path, class: "nav-link" %>
+            <%= link_to "答え", posts_index_path, class: "nav-link text-white" %>
           </li>
           <li class="nav-item gnavi-li">
-            <%= link_to "仲間", members_path, class: "nav-link" %>
+            <%= link_to "仲間", members_path, class: "nav-link text-white" %>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle my-image" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle my-image text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if unchecked_notifications.any? %>
                 <i class="fas fa-star star"></i>
               <% end %>

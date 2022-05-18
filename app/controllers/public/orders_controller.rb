@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
         member.update(:level => level.level)
       end
       if member.saved_change_to_level?
-        flash[:notice] = "#{@item.name}を手に入れ、経験値#{@item.having_exp}を獲得！レベルが#{member.level}になった！"
+        flash[:alert] = "#{@item.name}を手に入れ、経験値#{@item.having_exp}を獲得！レベルが#{member.level}になった！"
       else
         flash[:notice] = "#{@item.name}を手に入れ、経験値#{@item.having_exp}を獲得！"
       end

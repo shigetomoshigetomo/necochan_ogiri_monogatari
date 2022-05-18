@@ -56,7 +56,7 @@ class Public::BoardsController < ApplicationController
         member.update(:level => level.level)
       end
       if member.saved_change_to_level?
-        flash[:notice] = "お題を投稿し、経験値#{exp}と#{money}マネーを獲得！レベルが#{member.level}になった！"
+        flash[:alert] = "お題を投稿し、経験値#{exp}と#{money}マネーを獲得！レベルが#{member.level}になった！"
       else
         flash[:notice] = "お題を投稿し、経験値#{exp}と#{money}マネーを獲得！"
       end

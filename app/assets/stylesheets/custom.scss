@@ -68,6 +68,10 @@ body {
     padding: 3px 5px;
     background-color: #000;
     color: #fff;
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
   }
 }
 
@@ -189,6 +193,28 @@ body {
   background-color: rgb(254, 86, 128);
   font-size: 13px;
   padding: 2px 4px;
+}
+
+// file_field form
+.image_input_btn{
+  display: block;
+  background-color: #000;
+  border: 1px solid #fff;
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+  padding-top: 2px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    color: #000;
+    background-color: #fff;
+  }
+  .image-form {
+    display: none;
+  }
 }
 
 .pagination {

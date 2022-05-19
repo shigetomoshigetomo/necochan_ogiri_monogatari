@@ -2,11 +2,11 @@
   <div class="box d-inline-block text-center">所持金<br><%= current_member.money.to_i %>　マネー</div>
 </div>
 <div class="text-center mb-2"><%= link_to "お店にもどる", items_path, class: "btn btn-info btn-sm" %></div>
-<div class="box row">
-  <div class="col-lg-4 text-center">
-    <%= image_tag @item.image.variant(resize: "250").processed %>
+<div class="box-item-show row p-lg-5">
+  <div class="col-md-4 text-center">
+    <%= image_tag @item.image, class: "not-link-image" %>
   </div>
-  <table class="table table-borderless col-lg-7 offset-lg-1 text-white">
+  <table class="table table-borderless col-md-7 offset-md-1 text-white">
     <tbody>
       <tr>
         <td>アイテム名</td>

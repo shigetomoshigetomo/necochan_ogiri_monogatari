@@ -59,6 +59,12 @@ body {
     border-radius: 20px;
     padding: 20px;
   }
+  .box-item-show {
+    border: 2px solid #fff;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgb(50,50,50);
+  }
   .shrink {
     color: #fff;
     &:hover {

@@ -7,7 +7,7 @@
     <%= render "public/shared/error_messages", resource: resource %>
 
     <div class="field p-1">
-      <%= f.label :name %>
+      <%= f.label :name %><em>(8文字以内)</em>
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
     </div>
 

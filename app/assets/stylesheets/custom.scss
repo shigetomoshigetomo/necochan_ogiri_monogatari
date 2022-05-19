@@ -54,6 +54,11 @@ body {
     border-radius: 20px;
     padding: 20px;
   }
+  .box-error {
+    border: 2px solid red;
+    border-radius: 20px;
+    padding: 20px;
+  }
   .shrink {
     color: #fff;
     &:hover {

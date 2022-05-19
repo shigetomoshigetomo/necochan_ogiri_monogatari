@@ -78,6 +78,16 @@ body {
       color: #000;
     }
   }
+  .image-link {
+    display: inline-block;
+    .picture-image {
+      width: 100%;
+    }
+  }
+  .not-link-image {
+    display: inline-block;
+    width: 100%;
+  }
 }
 
 // Favorite & Unlike button

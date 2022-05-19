@@ -1,8 +1,8 @@
 <h3 class="heading">答え：<%= link_to post.content, board_post_path(board, post), class: "link" %></h3>
 <% if post.image.attached? %>
   <div class="text-center my-3">
-    <%= link_to board_post_path(board, post) do %>
-      <%= image_tag post.image.variant(resize: "300").processed %>
+    <%= link_to board_post_path(board, post), class: "image-link" do %>
+      <%= image_tag post.image, class: "picture-image" %>
     <% end %>
   </div>
 <% end %>

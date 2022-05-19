@@ -74,12 +74,12 @@ class Member < ApplicationRecord
     super && (is_deleted == false)
   end
 
-  def get_profile_image(width)
+  def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/nyan.png')
       profile_image.attach(io: File.open(file_path), filename: 'nyan.png', content_type: 'image/png')
     end
-    profile_image.variant(resize: [width]).processed
+    profile_image
   end
 
   #フォロー通知作成

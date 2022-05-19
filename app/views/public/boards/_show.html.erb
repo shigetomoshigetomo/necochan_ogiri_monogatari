@@ -2,8 +2,8 @@
   <h3 class="heading">お題：<%= link_to board.title, board_path(board), class: "link" %></h3>
   <% if board.image.attached? %>
     <div class="text-center my-3">
-      <%= link_to board_path(board) do %>
-        <%= image_tag board.image.variant(resize: "300").processed %>
+      <%= link_to board_path(board), class: "image-link" do %>
+        <%= image_tag board.image, class: "picture-image" %>
       <% end %>
     </div>
   <% end %>

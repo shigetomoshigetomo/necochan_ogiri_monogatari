@@ -3,9 +3,10 @@
 <% end %>
 
 <div class="text-center">
-  <div class="box shop my-3 d-inline-block pt-5 px-0">
-    <%= image_tag "shop.png", size: "300x250" %>
-    <div class="my-money text-center"><%= current_member.name %>さん<br><%= current_member.money.to_i %>　マネー</div>
+  <div class="box shop my-3 d-inline-block pt-3">
+    <%= image_tag "shop.png", class: "not-link-image" %>
+    <div class="welcome-message box p-4">いらっしゃいませ、<%= current_member.name %>さん！なんでもありますよ！</div>
+    <div class="my-money"><%= current_member.money.to_i %>　マネー</div>
   </div>
 </div>
 
@@ -21,13 +22,15 @@
   <%= link_to "あなたのお買い物履歴", member_shoppings_path(current_member), class: "btn btn-outline-light btn-sm" %>
 </div>
 
-<div class="box">
-  <% @items.each do |item| %>
-    <%= link_to(item_path(item), class: "link") do %>
-      <div class="row">
-        <span class="col-md-3 offset-md-4 h5"><i class="fas fa-caret-left"></i>　<%= item.name %></span>
-        <span class="col-md-3 h5"><%= "（#{item.price}　マネー）" %></span>
-      </div>
+<div class="text-center">
+  <div class="box">
+    <% @items.each do |item| %>
+      <%= link_to(item_path(item), class: "link") do %>
+        <div class="row px-lg-5">
+          <h5 class="col-md-8 text-left py-1">　<i class="fas fa-caret-left"></i>　<%= item.name %></h5>
+          <h5 class="col-md-4 text-left py-1">　<%= item.price %><span class="small">マネー</span></h5>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

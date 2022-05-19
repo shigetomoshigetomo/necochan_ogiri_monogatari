@@ -1,13 +1,3 @@
-// Homes#top
-.top-logo {
-  width: 600px;
-  height: 500px;
-  background-image: image-url("logo.png");
-  background-size: cover;
-  background-position: center;
-  margin: 0 auto;
-}
-
 .click-message {
   animation: blinking 1s ease-in-out infinite alternate;
 }
@@ -80,16 +70,5 @@
       position: absolute;
       top: 10%;
     }
-  }
-}
-
-@media screen and (max-width:576px) {
-  .top-logo {
-    width: 310px;
-    height: 250px;
-    background-image: image-url("logo.png");
-    background-position: center;
-    background-size: cover;
-    margin: 0 auto;
   }
 }

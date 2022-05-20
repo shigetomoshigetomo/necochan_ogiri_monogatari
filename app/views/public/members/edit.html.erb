@@ -2,6 +2,7 @@
   <h3 class="page-title">プロフィール編集</h3>
 </div>
 
+<%= render 'layouts/errors', obj: @member %>
 <div class="box px-5">
   <%= form_with model:@member, url: member_path, method: :patch do |f| %>
     <div class="form-group row">

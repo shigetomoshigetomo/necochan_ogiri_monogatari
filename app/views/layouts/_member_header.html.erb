@@ -26,7 +26,7 @@
               <% if unchecked_notifications.any? %>
                 <i class="fas fa-star star"></i>
               <% end %>
-              <%= image_tag current_member.get_profile_image.variant(resize: "35").processed, class: "rounded-circle" %><%= current_member.name %>
+              <%= image_tag current_member.get_profile_image, class: "rounded-circle member-mini-image mr-1" %><%= current_member.name %>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><%= link_to "マイページ", member_path(current_member), class: "dropdown-item" %></li>

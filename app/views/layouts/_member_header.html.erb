@@ -13,16 +13,16 @@
             <span class="mx-auto"><%= render "public/searches/search" %></span>
           </li>
           <li class="nav-item gnavi-li">
-            <%= link_to "お題", boards_path, class: "nav-link text-white" %>
+            <%= link_to "お題", boards_path, class: "nav-link text-white d-inline-block" %>
           </li>
           <li class="nav-item gnavi-li">
-            <%= link_to "答え", posts_index_path, class: "nav-link text-white" %>
+            <%= link_to "答え", posts_index_path, class: "nav-link text-white d-inline-block" %>
           </li>
           <li class="nav-item gnavi-li">
-            <%= link_to "仲間", members_path, class: "nav-link text-white" %>
+            <%= link_to "仲間", members_path, class: "nav-link text-white d-inline-block" %>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle my-image text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle my-image text-white d-inline-block" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if unchecked_notifications.any? %>
                 <i class="fas fa-star star"></i>
               <% end %>

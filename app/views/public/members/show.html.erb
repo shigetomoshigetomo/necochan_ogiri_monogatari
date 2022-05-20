@@ -1,4 +1,4 @@
-<div class="text-center mb-3">
+<div class="text-center mb-4">
   <%= image_tag "profile.png" %>
 </div>
 
@@ -17,7 +17,7 @@
   </div>
 
   <div class="col-lg-3 offset-lg-1 mt-5">
-    <div class="box">
+    <div class="box px-md-5">
       <% if (@member == current_member) && (current_member.name != "ゲスト") %>
         <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member), class: "shrink" %></p>
         <p>

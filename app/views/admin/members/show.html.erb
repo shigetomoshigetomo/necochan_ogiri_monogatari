@@ -1,9 +1,9 @@
 <div class="text-center my-2"><%= link_to "会員一覧へ", admin_members_path, class: "btn btn-info btn-sm" %></div>
 <div class="box row">
-  <div class="col-lg-4 text-center">
-    <%= image_tag @member.get_profile_image(300) %>
+  <div class="col-md-4 text-center d-flex align-items-center">
+    <%= image_tag @member.get_profile_image, class: "not-link-image" %>
   </div>
-  <table class="table table-borderless text-white col-lg-7 offset-lg-1">
+  <table class="table table-borderless text-white col-md-7 offset-md-1">
     <tbody>
       <tr>
         <td>会員ID</td>

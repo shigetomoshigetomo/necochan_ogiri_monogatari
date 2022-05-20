@@ -1,6 +1,6 @@
 <div class="text-center mb-2">
-  <span class="mr-3 h5">全投稿数：<%= @member.boards.count %></span>
-  <span class="ml-3 h5">全お題の答えられた数：<%= @member.boards.inject(0) { |sum, board| sum + board.posts.count } %></span>
+  <p class="h5">全お題投稿数：<%= @member.boards.count %></p>
+  <p class="h5">全お題の答えられた数：<%= @member.boards.inject(0) { |sum, board| sum + board.posts.count } %></p>
 </div>
 
 <div class="text-center mb-3">

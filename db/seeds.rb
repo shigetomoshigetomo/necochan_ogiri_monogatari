@@ -24,21 +24,6 @@ for i in 1..199
                 )
 end
 
-User.create!(
-  [
-    {email: ENV['USER1_EMAIL'], name: 'ももこ', password: ENV['USER1_PASSWORD'],
-    {email: ENV['USER2_EMAIL'], name: 'りんご', password: ENV['USER2_PASSWORD'],
-    {email: ENV['USER3_EMAIL'], name: 'にゃんこ', password: ENV['USER3_PASSWORD'],
-    {email: ENV['USER4_EMAIL'], name: '金魚', password: ENV['USER4_PASSWORD'],
-    {email: ENV['USER5_EMAIL'], name: 'のりお', password: ENV['USER5_PASSWORD'],
-    {email: ENV['USER6_EMAIL'], name: 'よしお', password: ENV['USER6_PASSWORD'],
-    {email: ENV['USER7_EMAIL'], name: 'ゆめじ', password: ENV['USER7_PASSWORD'],
-    {email: ENV['USER8_EMAIL'], name: 'うたじ', password: ENV['USER8_PASSWORD'],
-    {email: ENV['USER9_EMAIL'], name: 'はるかぜピーすけ', password: ENV['USER9_PASSWORD'],
-    {email: ENV['USER10_EMAIL'], name: 'チャイム', password: ENV['USER10_PASSWORD'],
-    {email: ENV['USER11_EMAIL'], name: 'kiyoshi', password: ENV['USER11_PASSWORD']
-  ]
-)
 
 Genre.create!([{name: "武器屋"}, {name: "道具屋"}, {name: "食堂"}, {name: "カフェ"}, {name: "旅のお供"}])
 
@@ -99,5 +84,21 @@ Item.create!(
     {name: 'ライオン', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/lion_male.png"), filename:"lion_male.png"), introduction: 'お肉を食べます。ガオ〜と鳴きます。', genre_id: 5, price: 700, having_exp: 420 },
     {name: 'トイプードル', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/dog_toypoodle_brown.png"), filename:"dog_toypoodle_brown.png"), introduction: 'ドッグフードを食べます。ワンと鳴きます。', genre_id: 5, price: 700, having_exp: 500 },
     {name: 'カンガルー', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kangaroo.png"), filename:"kangaroo.png"), introduction: '草を食べます。グオーと鳴きます。', genre_id: 5, price: 700, having_exp: 390 }
+  ]
+)
+
+Member.create!(
+  [
+    {email: ENV['USER1_EMAIL'], name: 'ももこ', password: ENV['USER1_PASSWORD']},
+    {email: ENV['USER2_EMAIL'], name: 'りんご', password: ENV['USER2_PASSWORD']},
+    {email: ENV['USER3_EMAIL'], name: 'にゃんこ', password: ENV['USER3_PASSWORD']},
+    {email: ENV['USER4_EMAIL'], name: '金魚', password: ENV['USER4_PASSWORD']},
+    {email: ENV['USER5_EMAIL'], name: 'のりお', password: ENV['USER5_PASSWORD']},
+    {email: ENV['USER6_EMAIL'], name: 'よしお', password: ENV['USER6_PASSWORD']},
+    {email: ENV['USER7_EMAIL'], name: 'ゆめじ', password: ENV['USER7_PASSWORD']},
+    {email: ENV['USER8_EMAIL'], name: 'うたじ', password: ENV['USER8_PASSWORD']},
+    {email: ENV['USER9_EMAIL'], name: 'はるかぜピーすけ', password: ENV['USER9_PASSWORD']},
+    {email: ENV['USER10_EMAIL'], name: 'チャイム', password: ENV['USER10_PASSWORD']},
+    {email: ENV['USER11_EMAIL'], name: 'kiyoshi', password: ENV['USER11_PASSWORD']}
   ]
 )

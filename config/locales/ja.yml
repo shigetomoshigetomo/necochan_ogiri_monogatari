@@ -74,6 +74,7 @@ ja:
 
       report:
         reason: "理由"
+        url: "補足情報"
 
       report_comment:
         comment: "コメント"

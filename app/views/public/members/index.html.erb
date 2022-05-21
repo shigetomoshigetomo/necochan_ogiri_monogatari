@@ -4,12 +4,12 @@
 
 <div class="text-center mb-3">
   <div class="btn-group" role="group">
-    <%= link_to(members_path(sort: "favorites"), class: "btn btn-outline-light btn-lg") do %>
+    <%= link_to(members_path(sort: "favorites"), class: "btn btn-outline-light") do %>
       <i class="fas fa-paw"></i>数
     <% end %>
-    <%= link_to "レベル", members_path(sort: 'level DESC'), class: "btn btn-outline-light btn-lg" %>
-    <%= link_to "お金持ち", members_path(sort: 'money DESC'), class: "btn btn-outline-light btn-lg" %>
-    <%= link_to "フォロワー数", members_path(sort: 'followers'), class: "btn btn-outline-light btn-lg" %>
+    <%= link_to "レベル", members_path(sort: 'level DESC'), class: "btn btn-outline-light" %>
+    <%= link_to "お金持ち", members_path(sort: 'money DESC'), class: "btn btn-outline-light" %>
+    <%= link_to "フォロワー数", members_path(sort: 'followers'), class: "btn btn-outline-light" %>
   </div>
 </div>
 

@@ -1,5 +1,5 @@
 <div class="alert alert-light text-center">
-  <h5><%= image_tag current_member.get_profile_image.variant(resize: "100").processed %>　　<%= link_to current_member.name, member_path(current_member) %>さん</h5>
+  <h5><%= image_tag current_member.get_profile_image, class: "member-info-image rounded-circle" %>　　<%= link_to current_member.name, member_path(current_member) %>さん</h5>
   <p>レベル：　<%= current_member.level %></p>
   <p>経験値：　<%= current_member.exp %></p>
   <p>マネー：　<%= current_member.money.to_i %></p>

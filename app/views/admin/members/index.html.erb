@@ -2,34 +2,36 @@
   <h3 class="page-title">会員一覧</h3>
 </div>
 
-<table class="table table-hover table-light">
-  <thead class="thead-light">
-    <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @members.each do |member| %>
-      <tr onclick='window.location="<%= '/admin/members/' + member.id.to_s %>"' role="link">
-        <td class="py-4">
-          <%= member.id %>
-        </td>
-        <td class="py-4">
-          <%= link_to member.name, admin_member_path(member), class:"text-dark" %>
-        </td>
-        <td class="py-4">
-          <% if member.active_for_authentication? %>
-            <b class="text-success">有効</b>
-          <% else %>
-            <b class="text-muted">退会</b>
-          <% end %>
-        </td>
+<div class="row">
+  <table class="table table-hover table-light w-75 mx-auto">
+    <thead class="thead-light">
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>ステータス</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @members.each do |member| %>
+        <tr onclick='window.location="<%= '/admin/members/' + member.id.to_s %>"' role="link">
+          <td class="py-4">
+            <%= member.id %>
+          </td>
+          <td class="py-4">
+            <%= link_to member.name, admin_member_path(member), class:"text-dark" %>
+          </td>
+          <td class="py-4">
+            <% if member.active_for_authentication? %>
+              <b class="text-success">有効</b>
+            <% else %>
+              <b class="text-muted">退会</b>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <div class="row">
   <div class="mx-auto">

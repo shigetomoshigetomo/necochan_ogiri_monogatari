@@ -1,15 +1,17 @@
 <div class="text-center mb-3">
-  <h3 class="page-title">会員情報編集</h3>
+  <h3 class="page-title text-center"><%= @member.name %>さんの<br>会員情報編集</h3>
 </div>
 <div class="text-center my-2"><%= link_to "会員詳細へ", admin_member_path(@member), class: "btn btn-info btn-sm" %></div>
 <div class="box row">
   <div class="mx-auto">
     <%= form_with model:@member, url: admin_member_path(@member), method: :patch do |f| %>
       <div class="custom-control custom-radio">
-        <%= f.label :is_deleted, '会員ステータス', class: "mr-3" %>
-        <%= f.radio_button :is_deleted, false %> <%= f.label :is_active, "有効", class:"mr-3" %>
+        <%= f.label :is_deleted, '会員ステータス', class: "mr-2" %>
+        <%= f.radio_button :is_deleted, false %> <%= f.label :is_active, "有効", class:"mr-2" %>
         <%= f.radio_button :is_deleted, true %> <%= f.label :is_active, "退会" %>
-        <%= f.submit "ステータスを更新", class: "btn btn-outline-light btn-lg ml-3", data: { confirm: "ステータスを更新しますか？" } %>
+      </div>
+      <div class="text-center mt-2">
+        <%= f.submit "ステータスを更新", class: "btn btn-outline-light", data: { confirm: "ステータスを更新しますか？" } %>
       </div>
     <% end %>
   </div>

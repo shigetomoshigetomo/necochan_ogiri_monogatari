@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <td>会員名</td>
-        <td><%= @report.reported.name %></td>
+        <td><%= link_to @report.reported.name, admin_member_path(@report.reported), class: "link" %></td>
       </tr>
       <tr>
         <td>理由</td>
@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td>通報者</td>
-        <td><%= @report.reporter.name %></td>
+        <td><%= link_to @report.reporter.name, admin_member_path(@report.reporter), class: "link" %></td>
       </tr>
       <tr>
         <td>対応ステータス</td>

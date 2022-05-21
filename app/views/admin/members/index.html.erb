@@ -5,25 +5,21 @@
 <table class="table table-hover table-light">
   <thead class="thead-light">
     <tr>
-      <th style="width: 10%">会員ID</th>
-      <th style="width: 30%">氏名</th>
-      <th style="width: 30%">メールアドレス</th>
-      <th style="width: 30%">ステータス</th>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>ステータス</th>
     </tr>
   </thead>
   <tbody>
     <% @members.each do |member| %>
       <tr onclick='window.location="<%= '/admin/members/' + member.id.to_s %>"' role="link">
-        <td class="py-4" style="width: 10%">
+        <td class="py-4">
           <%= member.id %>
         </td>
-        <td class="py-4" style="width: 30%">
+        <td class="py-4">
           <%= link_to member.name, admin_member_path(member), class:"text-dark" %>
         </td>
-        <td class="py-4" style="width: 30%">
-          <%= member.email %>
-        </td>
-        <td class="py-4" style="width: 30%">
+        <td class="py-4">
           <% if member.active_for_authentication? %>
             <b class="text-success">有効</b>
           <% else %>

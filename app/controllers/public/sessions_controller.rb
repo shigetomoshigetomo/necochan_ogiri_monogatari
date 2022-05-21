@@ -37,7 +37,7 @@ class Public::SessionsController < Devise::SessionsController
       @member = Member.find_by(email: params[:member][:email])
       if @member
         if @member.valid_password?(params[:member][:password]) && @member.is_deleted
-          flash[:danger] = 'お客様のアカウントは現在ご使用できません。'
+          flash[:alert] = 'お客様のアカウントは現在ご使用できません。'
           redirect_to new_member_registration_path
         end
       end

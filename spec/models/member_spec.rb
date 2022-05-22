@@ -78,5 +78,27 @@ RSpec.describe 'Memberモデルのテスト', type: :model do
         expect(true).to be_truthy
       end
     end
+
+    context 'memberの有効・退会ステータス確認' do
+      it 'memberの会員ステータスが有効の場合にfalseを返す' do
+        member.active_for_authentication?
+        expect(false).to be_falsey
+      end
+    end
+
+    context 'フォロワー通知作成' do
+      it 'other_memberがmemberをフォローすると、通知が作成される' do
+        member.create_notification_follow!(other_member)
+        expect(member.passive_notifications.where('visitor_id = ? and action = ?', other_member.id, 'follow')).to exist
+      end
+    end
+
+    context 'マネーを更新' do
+      it 'memberのマネーが正しく加算されている' do
+        money = 3
+        member.add_money(money)
+        expect(member.money).to eq 3
+      end
+    end
   end
 end

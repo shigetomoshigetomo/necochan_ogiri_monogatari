@@ -10,7 +10,6 @@ class Board < ApplicationRecord
   has_one_attached :image
 
   validates :title, presence: true, length: { maximum: 50 }
-  validates :member_id, presence: true
 
   is_impressionable
 

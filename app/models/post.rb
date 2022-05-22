@@ -10,11 +10,7 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
-  with_options presence: true do
-    validates :content
-  end
-
-  validates :content, length: { maximum: 100 }
+  validates :content, length: { maximum: 100 }, presence: true
 
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)

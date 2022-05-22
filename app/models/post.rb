@@ -12,8 +12,6 @@ class Post < ApplicationRecord
 
   with_options presence: true do
     validates :content
-    validates :member_id
-    validates :board_id
   end
 
   validates :content, length: { maximum: 100 }

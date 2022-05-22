@@ -6,7 +6,7 @@ RSpec.describe 'Postモデルのテスト', type: :model do
 
     let(:member) { create(:member) }
     let!(:board) { build(:board, member_id: member.id) }
-    let!(:post) { build(:post, board_id: board.id) }
+    let!(:post) { build(:post, board: board) }
 
     context 'contentカラム' do
       it '空欄でないこと' do

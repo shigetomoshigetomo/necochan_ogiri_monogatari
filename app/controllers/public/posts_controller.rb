@@ -24,8 +24,8 @@ class Public::PostsController < ApplicationController
     @post.board_id = @board.id
     member = current_member
     if @post.save
-      exp = @post.get_exp()
-      money = @post.get_money()
+      exp = @post.get_exp
+      money = @post.get_money
       member.add_money(money)
       member.update(:exp => member.exp + exp)
       level = Level.where("threshold <= #{member.exp}").order(level: :desc).first
@@ -37,7 +37,7 @@ class Public::PostsController < ApplicationController
       else
         flash[:notice] = "答えを投稿し、経験値#{exp}と#{money}マネーを獲得！"
       end
-      redirect_to request.referer
+      redirect_to board_path(@board)
     else
       @tags = ActsAsTaggableOn::Tag.all
       @board_posts = @board.posts.page(params[:page]).per(6)
@@ -47,7 +47,7 @@ class Public::PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:content, :image)
-    end
+  def post_params
+    params.require(:post).permit(:content, :image)
+  end
 end

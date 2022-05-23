@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-
   devise_for :members, controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: 'public/sessions',
   }
 
   devise_scope :member do
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
+    sessions: "admin/sessions",
   }
 
   namespace :admin do
@@ -35,11 +34,11 @@ Rails.application.routes.draw do
       resources :reports, only: [:new, :create]
       resources :notifications, only: [:index]
       resource :relationships, only: [:create, :destroy]
-  	  get 'friends' => 'members#friends'
-  	  get 'my_favorites' => 'members#my_favorites'
-  	  get 'member_boards' => 'members#member_boards'
-  	  get 'member_posts' => 'members#member_posts'
-  	  get 'shoppings' => 'members#shoppings'
+      get 'friends' => 'members#friends'
+      get 'my_favorites' => 'members#my_favorites'
+      get 'member_boards' => 'members#member_boards'
+      get 'member_posts' => 'members#member_posts'
+      get 'shoppings' => 'members#shoppings'
     end
     get 'boards/tag_index'
     resources :boards, only: [:index, :show, :new, :create] do

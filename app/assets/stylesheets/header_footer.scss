@@ -29,6 +29,17 @@ header {
   	  transform: scale(1, 1);
   	}
   }
+  // notification-mark
+  .my-image {
+    position: relative;
+    .star {
+      position: absolute;
+      color: gold;
+      font-size: 10px;
+      top: 4px;
+      right: 15px;
+    }
+  }
 }
 
 footer {

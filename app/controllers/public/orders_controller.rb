@@ -29,7 +29,7 @@ class Public::OrdersController < ApplicationController
 
   private
 
-    def order_params
-      params.require(:order).permit(:item_id, :member_id)
-    end
+  def order_params
+    params.require(:order).permit(:item_id, :member_id)
+  end
 end

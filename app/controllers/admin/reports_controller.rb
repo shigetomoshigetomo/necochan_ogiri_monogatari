@@ -27,7 +27,7 @@ class Admin::ReportsController < ApplicationController
 
   private
 
-    def report_params
-      params.require(:report).permit(:status)
-    end
+  def report_params
+    params.require(:report).permit(:status)
+  end
 end

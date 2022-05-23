@@ -24,7 +24,7 @@ class Admin::ReportCommentsController < ApplicationController
 
   private
 
-    def report_comment_params
-      params.require(:report_comment).permit(:comment)
-    end
+  def report_comment_params
+    params.require(:report_comment).permit(:comment)
+  end
 end

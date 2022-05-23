@@ -24,14 +24,16 @@ class Member < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-  scope :not_guest, -> { where.not(name: "ゲスト") } #ゲスト以外の会員
-  scope :all_favorites, -> { sort { |a,b|
-                                    b.posts.inject(0) { |sum, post| sum + post.favorites.count } <=>
-                                    a.posts.inject(0) { |sum, post| sum + post.favorites.count }
-                                    } } #全いいね多い順
-  scope :follower_rank, -> { sort { |a,b| b.followers.count <=> a.followers.count } } #フォロワー多い順
+  scope :not_guest, -> { where.not(name: "ゲスト") } # ゲスト以外の会員
+  scope :all_favorites, -> {
+                          sort do |a, b|
+                            b.posts.inject(0) { |sum, post| sum + post.favorites.count } <=>
+                            a.posts.inject(0) { |sum, post| sum + post.favorites.count }
+                          end
+                        } # 全いいね多い順
+  scope :follower_rank, -> { sort { |a, b| b.followers.count <=> a.followers.count } } # フォロワー多い順
 
-   with_options presence: true do
+  with_options presence: true do
     validates :name
     validates :email
     validates :exp
@@ -44,25 +46,25 @@ class Member < ApplicationRecord
     validates :email
   end
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   validates :name, length: { maximum: 8 }
   validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
 
-  #ゲストユーザー作成
+  # ゲストユーザー作成
   def self.guest
-    find_or_create_by!(name: 'ゲスト' ,email: 'guest@example.com') do |member|
+    find_or_create_by!(name: 'ゲスト', email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64
       member.name = "ゲスト"
     end
   end
 
-  #フォロー・フォロワー機能
+  # フォロー・フォロワー機能
   def follow(member_id)
-    relationships.create(followed_id:member_id)
+    relationships.create(followed_id: member_id)
   end
 
   def unfollow(member_id)
-    relationships.find_by(followed_id:member_id).destroy
+    relationships.find_by(followed_id: member_id).destroy
   end
 
   def following?(member)
@@ -82,9 +84,9 @@ class Member < ApplicationRecord
     profile_image
   end
 
-  #フォロー通知作成
+  # フォロー通知作成
   def create_notification_follow!(current_member)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_member.id, id, 'follow'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_member.id, id, 'follow'])
     if temp.blank?
       notification = current_member.active_notifications.new(
         visited_id: id,
@@ -95,7 +97,6 @@ class Member < ApplicationRecord
   end
 
   def add_money(money)
-    self.update(:money => self.money + money)
+    update(:money => self.money + money)
   end
-
 end

@@ -17,12 +17,11 @@ class Public::ReportsController < ApplicationController
     else
       render "new"
     end
-
   end
 
   private
 
-    def report_params
-      params.require(:report).permit(:reason, :url)
-    end
+  def report_params
+    params.require(:report).permit(:reason, :url)
+  end
 end

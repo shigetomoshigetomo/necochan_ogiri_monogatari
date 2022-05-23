@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    content { Faker::Lorem.characters(number:30) }
+    content { Faker::Lorem.characters(number: 30) }
     member
     board
   end

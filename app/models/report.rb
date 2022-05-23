@@ -3,7 +3,7 @@ class Report < ApplicationRecord
   belongs_to :reported, class_name: "Member"
   has_many :report_comments, dependent: :destroy
 
-  default_scope -> {order(created_at: :desc)}
+  default_scope -> { order(created_at: :desc) }
 
   with_options presence: true do
     validates :reporter_id
@@ -15,5 +15,5 @@ class Report < ApplicationRecord
   validates :reason, length: { maximum: 200 }
   validates :url, length: { maximum: 100 }
 
-  enum status: { waiting: 0, keep: 1, finish: 2 } #対応ステータス
+  enum status: { waiting: 0, keep: 1, finish: 2 } # 対応ステータス
 end

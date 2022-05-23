@@ -2,7 +2,7 @@ class Public::BoardsController < ApplicationController
   before_action :authenticate_member!
   before_action :ensure_guest_member, only: [:new, :create]
 
-  impressionist :actions=> [:show]
+  impressionist :actions => [:show]
 
   def index
     @tags = ActsAsTaggableOn::Tag.all
@@ -48,8 +48,8 @@ class Public::BoardsController < ApplicationController
     @board.member_id = current_member.id
     member = current_member
     if @board.save
-      exp = @board.board_get_exp()
-      money = @board.board_get_money()
+      exp = @board.board_get_exp
+      money = @board.board_get_money
       member.add_money(money)
       member.update(:exp => member.exp + exp)
       level = Level.where("threshold <= #{member.exp}").order(level: :desc).first
@@ -70,8 +70,7 @@ class Public::BoardsController < ApplicationController
 
   private
 
-    def board_params
-      params.require(:board).permit(:title, :image, :tag_list)
-    end
-
+  def board_params
+    params.require(:board).permit(:title, :image, :tag_list)
+  end
 end

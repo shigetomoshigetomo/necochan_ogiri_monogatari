@@ -5,8 +5,8 @@ class Post < ApplicationRecord
   has_many :unlikes, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  default_scope -> {order(created_at: :desc)}
-  scope :favorites_rank, -> { all.sort { |a,b| b.favorites.count <=> a.favorites.count } } #いいね多い順
+  default_scope -> { order(created_at: :desc) }
+  scope :favorites_rank, -> { all.sort { |a, b| b.favorites.count <=> a.favorites.count } } # いいね多い順
 
   has_one_attached :image
 
@@ -39,11 +39,10 @@ class Post < ApplicationRecord
   end
 
   def get_exp()
-    return rand(1..5)
+    rand(1..5)
   end
 
   def get_money()
-    return rand(3..6)
+    rand(3..6)
   end
-
 end

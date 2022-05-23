@@ -55,20 +55,19 @@ end
   end
 
   describe 'ユーザログアウトのテスト' do
-    let(:member) { create(:member) }
+    let!(:member) { create(:member) }
 
     before do
       visit new_member_session_path
-      fill_in 'member[email]', with: member.name
+      fill_in 'member[email]', with: member.email
       fill_in 'member[password]', with: member.password
       click_button 'ログイン'
-      find(".dropdown-toggle").click
-      logout_link = have_link 'ログアウト', href: destroy_member_session_path
-      click_link logout_link
     end
 
     context 'ログアウト機能のテスト' do
       it 'ログアウト後のリダイレクト先が、トップになっている' do
+        find(".dropdown-toggle").click
+        click_on "ログアウト"
         expect(current_path).to eq '/'
       end
     end

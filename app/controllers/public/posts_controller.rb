@@ -28,7 +28,7 @@ class Public::PostsController < ApplicationController
       money = @post.get_money
       member.add_money(money)
       member.update(:exp => member.exp + exp)
-      level = Level.where("threshold <= #{member.exp}").order(level: :desc).first
+      level = Level.where("threshold <= ?", member.exp).order(level: :desc).first
       if level != member.level
         member.update(:level => level.level)
       end

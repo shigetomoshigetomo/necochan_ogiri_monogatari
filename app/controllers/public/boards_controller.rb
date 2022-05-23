@@ -52,7 +52,7 @@ class Public::BoardsController < ApplicationController
       money = @board.board_get_money
       member.add_money(money)
       member.update(:exp => member.exp + exp)
-      level = Level.where("threshold <= #{member.exp}").order(level: :desc).first
+      level = Level.where("threshold <= ?", member.exp).order(level: :desc).first
       if level != member.level
         member.update(:level => level.level)
       end
@@ -64,7 +64,7 @@ class Public::BoardsController < ApplicationController
       redirect_to board_path(@board)
     else
       @tags = ActsAsTaggableOn::Tag.all
-      render "new"
+      render "public/boards/new"
     end
   end
 

@@ -9,7 +9,7 @@ class Board < ApplicationRecord
                          b.impressionist_count(:filter => :session_hash) <=>
                                         a.impressionist_count(:filter => :session_hash)
                        end
-                     }                      # 閲覧多い順
+                     }   # 閲覧多い順
 
   has_one_attached :image
 

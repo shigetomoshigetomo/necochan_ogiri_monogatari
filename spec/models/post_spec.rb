@@ -64,5 +64,19 @@ RSpec.describe 'Postモデルのテスト', type: :model do
         expect(member.passive_notifications.where('visitor_id = ? and action = ?', other_member.id, 'like')).to exist
       end
     end
+
+    context '答え投稿による獲得経験値・マネー' do
+      it '経験値をランダムに算出する' do
+        exp = post.get_exp()
+        expect(exp).to be <= 5
+        expect(exp).to be >= 1
+      end
+
+      it 'マネーをランダムに算出する' do
+        money = post.get_money()
+        expect(money).to be <= 6
+        expect(money).to be >= 3
+      end
+    end
   end
 end

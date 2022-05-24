@@ -10,7 +10,7 @@ describe 'お題の投稿テスト' do
     click_button 'ログイン'
   end
 
-  before(:each) do
+  before do
     load Rails.root.join("db/seeds.rb")
   end
 

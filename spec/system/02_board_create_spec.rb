@@ -28,4 +28,41 @@ describe 'お題の投稿テスト' do
     end
   end
 
+  context 'お題投稿失敗のテスト：お題を空の状態で送信' do
+    before do
+      visit new_board_path
+      fill_in 'board[title]', with: ''
+    end
+
+    it '自分の新しいお題が保存されない' do
+      expect { click_button '送信' }.not_to change(member.boards, :count)
+    end
+
+    it 'バリデーションエラーが表示される' do
+      click_button '送信'
+      expect(page).to have_content "お題を入力してください"
+    end
+  end
+
+  context 'お題投稿失敗のテスト：お題を51文字で送信' do
+    before do
+      visit new_board_path
+      @title = Faker::Lorem.characters(number: 51)
+      fill_in 'board[title]', with: @title
+    end
+
+    it '自分の新しいお題が保存されない' do
+      expect { click_button '送信' }.not_to change(member.boards, :count)
+    end
+
+    it '新規投稿フォームの内容が正しい' do
+      expect(page).to have_field 'board[title]', with: @title
+    end
+
+    it 'バリデーションエラーが表示される' do
+      click_button '送信'
+      expect(page).to have_content "お題は50文字以内で入力してください"
+    end
+  end
+
 end

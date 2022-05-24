@@ -32,4 +32,20 @@ describe '答えの投稿テスト' do
     end
   end
 
+  context '答え投稿失敗のテスト：答えを空の状態で送信' do
+    before do
+      visit board_path(board)
+      fill_in 'post[content]', with: ''
+    end
+
+    it '自分の新しいお題が保存されない' do
+      expect { click_button '送信' }.not_to change(member.posts, :count)
+    end
+
+    it 'バリデーションエラーが表示される' do
+      click_button '送信'
+      expect(page).to have_content "答えを入力してください"
+    end
+  end
+
 end

@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
       member = current_member
       member.update(:money => remainder)
       member.update(:exp => member.exp + @order.item.having_exp)
-      level = Level.where("threshold <= #{member.exp}").order(level: :desc).first
+      level = Level.where("threshold <= ?", member.exp).order(level: :desc).first
       if level != member.level
         member.update(:level => level.level)
       end

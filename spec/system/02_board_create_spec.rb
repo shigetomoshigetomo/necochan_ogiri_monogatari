@@ -4,14 +4,11 @@ describe 'お題の投稿テスト' do
   let!(:member) { create(:member) }
 
   before do
+    load Rails.root.join("db/seeds.rb")
     visit new_member_session_path
     fill_in 'member[email]', with: member.email
     fill_in 'member[password]', with: member.password
     click_button 'ログイン'
-  end
-
-  before do
-    load Rails.root.join("db/seeds.rb")
   end
 
   context 'お題投稿成功のテスト' do

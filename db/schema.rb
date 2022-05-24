@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_16_023042) do
+ActiveRecord::Schema.define(version: 2022_05_24_071529) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_023042) do
   create_table "boards", force: :cascade do |t|
     t.text "title", null: false
     t.integer "member_id", null: false
-    t.boolean "recruiting_status", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_boards_on_member_id"
@@ -156,6 +155,9 @@ ActiveRecord::Schema.define(version: 2022_05_16_023042) do
     t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "item_name"
+    t.integer "item_price"
+    t.integer "item_exp"
     t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["member_id"], name: "index_orders_on_member_id"
   end

@@ -11,8 +11,8 @@
       <% end %>
     </div>
     <div class="form-group row">
-      <label class="col-3">アイテム名</label>
-      <label class="col-8"><%= @item.name %></label>
+      <%= f.label :アイテム名, class: "col-3" %>
+      <%= f.text_field :name, class:"col-8" %>
     </div>
     <div class="form-group row">
       <%= f.label :アイテム説明, class: "col-3" %>
@@ -23,12 +23,12 @@
       <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { prompt: '選択してください' } %>
     </div>
     <div class="form-group row">
-      <label class="col-3">価格</label>
-      <label class="col-8"><%= @item.price %></label>
+      <%= f.label :価格, class: "col-3" %>
+      <%= f.text_field :price, class:"col-4" %> マネー
     </div>
     <div class="form-group row">
-      <label class="col-3">経験値</label>
-      <label class="col-8"><%= @item.having_exp %></label>
+      <%= f.label :経験値, class: "col-3" %>
+      <%= f.text_field :having_exp, class:"col-4" %>
     </div>
     <div class="form-group row mt-3">
       <div class="mx-auto">

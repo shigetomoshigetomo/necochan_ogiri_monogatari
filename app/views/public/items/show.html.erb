@@ -25,6 +25,9 @@
   <div class="mx-auto mt-3">
     <%= form_with model:[@item, @order], url: item_orders_path(@item), method: :post do |f| %>
       <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.hidden_field :item_name, :value => @item.name %>
+      <%= f.hidden_field :item_price, :value => @item.price %>
+      <%= f.hidden_field :item_exp, :value => @item.having_exp %>
       <%= f.submit "購入する", class: 'btn btn-success', data: { confirm: "#{@item.name}を購入しますか？" } %>
     <% end %>
   </div>

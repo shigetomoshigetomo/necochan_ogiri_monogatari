@@ -38,9 +38,9 @@ describe '買い物のテスト' do
       expect { click_button '購入する' }.not_to change(member.orders, :count)
     end
 
-    it 'リダイレクト先が、アイテム一覧画面になっている' do
+    it 'エラーメッセージが表示される' do
       click_button '購入する'
-      expect(current_path).to eq '/items/' + @test_item_expensive.id.to_s
+      expect(page).to have_content "マネーが足りません"
     end
   end
 

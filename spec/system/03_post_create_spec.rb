@@ -5,14 +5,11 @@ describe '答えの投稿テスト' do
   let!(:board) { create(:board) }
 
   before do
+    load Rails.root.join("db/seeds.rb")
     visit new_member_session_path
     fill_in 'member[email]', with: member.email
     fill_in 'member[password]', with: member.password
     click_button 'ログイン'
-  end
-
-  before do
-    load Rails.root.join("db/seeds.rb")
   end
 
   context '答え投稿成功のテスト' do
@@ -48,4 +45,24 @@ describe '答えの投稿テスト' do
     end
   end
 
+   context '答え投稿失敗のテスト：答えを101文字で送信' do
+    before do
+      visit board_path(board)
+      @content = Faker::Lorem.characters(number: 101)
+      fill_in 'post[content]', with: @content
+    end
+
+    it '自分の新しい答えが保存されない' do
+      expect { click_button '送信' }.not_to change(member.posts, :count)
+    end
+
+    it '新規投稿フォームの内容が正しい' do
+      expect(page).to have_field 'post[content]', with: @content
+    end
+
+    it 'バリデーションエラーが表示される' do
+      click_button '送信'
+      expect(page).to have_content "答えは100文字以内で入力してください"
+    end
+  end
 end

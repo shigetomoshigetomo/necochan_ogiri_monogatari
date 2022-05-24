@@ -21,6 +21,32 @@ describe 'ユーザ新規登録のテスト' do
       expect(current_path).to eq '/about_before'
     end
   end
+
+  context '新規登録失敗のテスト: nameを9文字にする' do
+    before do
+      visit new_member_registration_path
+      @name = Faker::Lorem.characters(number: 9)
+      @email = Faker::Internet.email
+      fill_in 'member[name]', with: @name
+      fill_in 'member[email]', with: @email
+      fill_in 'member[password]', with: 'password'
+      fill_in 'member[password_confirmation]', with: 'password'
+    end
+
+    it '新規登録されない' do
+      expect { click_button '登録' }.not_to change(Member.all, :count)
+    end
+    it '新規登録画面を表示しており、フォームの内容が正しい' do
+      click_button '登録'
+      expect(page).to have_content '登録'
+      expect(page).to have_field 'member[name]', with: @name
+      expect(page).to have_field 'member[email]', with: @email
+    end
+    it 'バリデーションエラーが表示される' do
+      click_button '登録'
+      expect(page).to have_content "名前は8文字以内で入力してください"
+    end
+  end
 end
 
  describe 'ユーザログイン' do

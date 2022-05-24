@@ -1,9 +1,9 @@
 <% if post.favorited_by?(current_member) %>
-  <%= link_to board_post_favorites_path(post.board, post), method: :delete, remote: true, class: "neko", style:"text-decoration:none;" do %>
+  <%= link_to board_post_favorites_path(post.board, post), method: :delete, remote: true, class: "pink-favorite", style:"text-decoration:none;" do %>
     <i class="fas fa-paw favorite" onmousedown="party.confetti(this)"></i><span class="favorite mr-3"><%= post.favorites.count %></span>
   <% end %>
 <% else %>
-  <%= link_to board_post_favorites_path(post.board, post), method: :post, remote: true, class: "neko", style:"text-decoration:none;" do %>
+  <%= link_to board_post_favorites_path(post.board, post), method: :post, remote: true, class: "white-favorite", style:"text-decoration:none;" do %>
     <i class="fas fa-paw unfavorite"></i><span class="unfavorite mr-3"><%= post.favorites.count %></span>
   <% end %>
 <% end %>

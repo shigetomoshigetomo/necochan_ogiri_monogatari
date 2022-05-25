@@ -5,6 +5,7 @@ describe 'アクセス制限のテスト' do
   let!(:other_member) { create(:member) }
   let!(:board) { create(:board) }
   let!(:post) { create(:post, board: board) }
+  let!(:admin) { create(:admin) }
 
   describe '[会員側]ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する' do
     subject { current_path }
@@ -15,6 +16,55 @@ describe 'アクセス制限のテスト' do
     end
     it '会員詳細画面' do
       visit member_path(member)
+      is_expected.to eq '/members/sign_in'
+    end
+    it '会員情報編集画面' do
+      visit edit_member_path(member)
+      is_expected.to eq '/members/sign_in'
+    end
+    it 'お題一覧画面' do
+      visit boards_path
+      is_expected.to eq '/members/sign_in'
+    end
+    it 'お題詳細画面' do
+      visit board_path(board)
+      is_expected.to eq '/members/sign_in'
+    end
+    it '答え一覧画面' do
+      visit posts_index_path
+      is_expected.to eq '/members/sign_in'
+    end
+    it '答え詳細画面' do
+      visit board_post_path(board, post)
+      is_expected.to eq '/members/sign_in'
+    end
+    it '検索結果画面' do
+      visit search_path
+      is_expected.to eq '/members/sign_in'
+    end
+    it 'お知らせ画面' do
+      visit member_notifications_path(member)
+      is_expected.to eq '/members/sign_in'
+    end
+    it 'お買い物画面' do
+      visit items_path
+      is_expected.to eq '/members/sign_in'
+    end
+    it 'お気に入り画面' do
+      visit member_my_favorites_path(member)
+      is_expected.to eq '/members/sign_in'
+    end
+  end
+
+  describe '[管理者側]ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する' do
+    subject { current_path }
+
+    it '通報一覧画面' do
+      visit admin_reports_path
+      is_expected.to eq '/admin/sign_in'
+    end
+    it '通報詳細画面' do
+      visit admin_report_path(report)
       is_expected.to eq '/members/sign_in'
     end
     it '会員情報編集画面' do

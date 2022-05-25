@@ -26,10 +26,10 @@ end
 
 Member.create!(
   [
-    {email: ENV['USER1_EMAIL'], name: 'ももこ', password: ENV['USER1_PASSWORD']},
-    {email: ENV['USER2_EMAIL'], name: 'りんご', password: ENV['USER2_PASSWORD']},
-    {email: ENV['USER3_EMAIL'], name: 'にゃんこ', password: ENV['USER3_PASSWORD']},
-    {email: ENV['USER4_EMAIL'], name: '金魚', password: ENV['USER4_PASSWORD']},
+    {email: ENV['USER1_EMAIL'], name: 'ももこ', password: ENV['USER1_PASSWORD'], level: 18, exp: 37, money: 59},
+    {email: ENV['USER2_EMAIL'], name: 'りんご', password: ENV['USER2_PASSWORD'], level: 5, exp: 14, money: 25},
+    {email: ENV['USER3_EMAIL'], name: 'にゃんこ', password: ENV['USER3_PASSWORD'], level: 8, exp: 17, money: 33},
+    {email: ENV['USER4_EMAIL'], name: '金魚', password: ENV['USER4_PASSWORD'], image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/flower.jpeg"), filename:"flower.jpeg")},
     {email: ENV['USER5_EMAIL'], name: 'のりお', password: ENV['USER5_PASSWORD']},
     {email: ENV['USER6_EMAIL'], name: 'よしお', password: ENV['USER6_PASSWORD']},
     {email: ENV['USER7_EMAIL'], name: 'ゆめじ', password: ENV['USER7_PASSWORD']},

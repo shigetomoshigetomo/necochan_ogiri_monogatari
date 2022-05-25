@@ -118,22 +118,22 @@ Board.create!(
 
 Post.create!(
   [
-    {content: '転生の手続きの準備', board_id: 1, member_id: 1 },
+    {content: '転生の準備', board_id: 1, member_id: 1 },
     {content: 'エンドロールを流す', board_id: 1, member_id: 4 },
     {content: 'ロッカーを空にする', board_id: 1, member_id: 6 },
     {content: 'ひまわりの種を植える', board_id: 1, member_id: 1 },
-    {content: 'ジャンプしようとしてる人の腕を押さえる', board_id: 1, member_id: 1 },
+    {content: 'ジャンプする人の腕を押さえてみる', board_id: 1, member_id: 1 },
     {content: 'セミ取り以外', board_id: 1, member_id: 1 },
-    {content: 'ごめん、歯周病なの', board_id: 7, member_id: 1 },
-    {content: '私おしぼりアレルギーなんです', board_id: 7, member_id: 11 },
+    {content: 'すみません。今日は飼ってる金魚の誕生日なんです。', board_id: 7, member_id: 1 },
+    {content: 'おしぼりアレルギーなんで...', board_id: 7, member_id: 11 },
     {content: '最初から肉が詰め込んである', board_id: 9, member_id: 1 },
     {content: '自己紹介で照れる', board_id: 9, member_id: 5, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/piman.png"), filename:"piman.png") },
-    {content: '切られるときだけ赤くなる', board_id: 9, member_id: 2 },
-    {content: '2円くれる', board_id: 9, member_id: 2 },
-    {content: 'おしゃべりなピーマン', board_id: 9, member_id: 1 },
-    {content: 'パプリカを差別する', board_id: 9, member_id: 1 },
-    {content: 'ずっと後ろをついてくる', board_id: 9, member_id: 2 },
-    {content: '感情が豊か', board_id: 9, member_id: 11 }
+    {content: '切られるときだけ赤くなっちゃう', board_id: 9, member_id: 2 },
+    {content: 'たまに2円くれる', board_id: 9, member_id: 2 },
+    {content: 'おしゃべりピーマン', board_id: 9, member_id: 1 },
+    {content: 'パプリカに憧れている', board_id: 9, member_id: 1 },
+    {content: 'ずっと後ろをついてきてくれる', board_id: 9, member_id: 2 },
+    {content: '感情豊か', board_id: 9, member_id: 11 }
   ]
 )
 

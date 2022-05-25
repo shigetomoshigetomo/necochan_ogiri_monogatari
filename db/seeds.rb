@@ -29,7 +29,7 @@ Member.create!(
     {email: ENV['USER1_EMAIL'], name: 'ももこ', password: ENV['USER1_PASSWORD'], level: 18, exp: 37, money: 59},
     {email: ENV['USER2_EMAIL'], name: 'りんご', password: ENV['USER2_PASSWORD'], level: 5, exp: 14, money: 25},
     {email: ENV['USER3_EMAIL'], name: 'にゃんこ', password: ENV['USER3_PASSWORD'], level: 8, exp: 17, money: 33},
-    {email: ENV['USER4_EMAIL'], name: '金魚', password: ENV['USER4_PASSWORD'], image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/flower.jpeg"), filename:"flower.jpeg")},
+    {email: ENV['USER4_EMAIL'], name: '金魚', password: ENV['USER4_PASSWORD'], profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/flower.jpeg"), filename:"flower.jpeg")},
     {email: ENV['USER5_EMAIL'], name: 'のりお', password: ENV['USER5_PASSWORD']},
     {email: ENV['USER6_EMAIL'], name: 'よしお', password: ENV['USER6_PASSWORD']},
     {email: ENV['USER7_EMAIL'], name: 'ゆめじ', password: ENV['USER7_PASSWORD']},
@@ -124,6 +124,8 @@ Post.create!(
     {content: 'ひまわりの種を植える', board_id: 1, member_id: 1 },
     {content: 'ジャンプしようとしてる人の腕を押さえる', board_id: 1, member_id: 1 },
     {content: 'セミ取り以外', board_id: 1, member_id: 1 },
+    {content: 'ごめん、歯周病なの', board_id: 7, member_id: 1 },
+    {content: '私おしぼりアレルギーなんです', board_id: 7, member_id: 11 },
     {content: '最初から肉が詰め込んである', board_id: 9, member_id: 1 },
     {content: '自己紹介で照れる', board_id: 9, member_id: 5, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/piman.png"), filename:"piman.png") },
     {content: '切られるときだけ赤くなる', board_id: 9, member_id: 2 },
@@ -131,9 +133,7 @@ Post.create!(
     {content: 'おしゃべりなピーマン', board_id: 9, member_id: 1 },
     {content: 'パプリカを差別する', board_id: 9, member_id: 1 },
     {content: 'ずっと後ろをついてくる', board_id: 9, member_id: 2 },
-    {content: '感情が豊か', board_id: 9, member_id: 11 },
-    {content: 'ごめん、歯周病なの', board_id: 7, member_id: 1 },
-    {content: '私おしぼりアレルギーなんです', board_id: 7, member_id: 11 }
+    {content: '感情が豊か', board_id: 9, member_id: 11 }
   ]
 )
 

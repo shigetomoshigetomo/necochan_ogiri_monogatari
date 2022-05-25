@@ -1,19 +1,19 @@
 <% members.each do |member| %>
   <div class="box mb-2">
-    <div class="row justify-content-between">
+    <div class="row">
       <div>
         <%= image_tag member.get_profile_image, class: "rounded-circle member-mini-image m-1" %>
         <%= link_to member.name, member_path(member), class: "h4 link" %>（Lv.<%= member.level %>）
       </div>
-      <div id="follow_<%= member.id %>" class="mr-2">
-        <% if current_member.id != member.id %>
-          <%= render "public/relationships/relationship", member: member %>
-        <% end %>
-      </div>
+    </div>
+    <div id="follow_<%= member.id %>" class="mr-2 mb-2 text-right">
+      <% if current_member.id != member.id %>
+        <%= render "public/relationships/relationship", member: member %>
+      <% end %>
     </div>
     <div>
       <span class="detail_tag">全<i class="fas fa-paw"></i>数：<%= member.posts.inject(0) { |sum, post| sum + post.favorites.count } %></span>
-      <span class="detail_tag">所持マネー：<%= member.money.to_i %></span>
+      <span class="detail_tag">マネー：<%= member.money.to_i %></span>
       <span id="follow_count_<%= member.id %>" class="detail_tag">
         <%= render "public/relationships/follow_count", member: member %>
       </span>

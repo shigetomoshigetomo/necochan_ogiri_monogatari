@@ -101,3 +101,46 @@ Item.create!(
     {name: 'カンガルー', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kangaroo.png"), filename:"kangaroo.png"), introduction: '草を食べます。グオーと鳴きます。', genre_id: 5, price: 700, having_exp: 390 }
   ]
 )
+
+Board.create!(
+  [
+    {title: '地球最後の日にすべきことは？', tag_list: '地球', member_id: 1 },
+    {title: '考える人の像が考えていることとは？', tag_list: '人,像', member_id: 1 },
+    {title: '泥酔した人を一言で正気に戻してください', tag_list: '一言', member_id: 5 },
+    {title: '写真でひとこと', tag_list: '一言,写真', member_id: 5, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shika.jpeg"), filename:"shika.jpeg") },
+    {title: '元気100倍になる方法を教えてください', tag_list: '100倍', member_id: 1 },
+    {title: '力こぶの新しい使い道を教えてください', member_id: 9 },
+    {title: '飲みの誘いを意外な方法で断ってください', tag_list: '飲み会', member_id: 1 },
+    {title: '人間になりたい犬にアドバイスしてあげてください', tag_list: '人,犬', member_id: 4 },
+    {title: 'こんなピーマンは大好きだ', tag_list: 'ピーマン,大好き,野菜', member_id: 1 }
+  ]
+)
+
+Post.create!(
+  [
+    {content: '転生の手続きの準備', board_id: 1, member_id: 1 },
+    {content: 'エンドロールを流す', board_id: 1, member_id: 4 },
+    {content: 'ロッカーを空にする', board_id: 1, member_id: 6 },
+    {content: 'ひまわりの種を植える', board_id: 1, member_id: 1 },
+    {content: 'ジャンプしようとしてる人の腕を押さえる', board_id: 1, member_id: 1 },
+    {content: 'セミ取り以外', board_id: 1, member_id: 1 },
+    {content: '最初から肉が詰め込んである', board_id: 9, member_id: 1 },
+    {content: '自己紹介で照れる', board_id: 9, member_id: 5, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/piman.png"), filename:"piman.png") },
+    {content: '切られるときだけ赤くなる', board_id: 9, member_id: 2 },
+    {content: '2円くれる', board_id: 9, member_id: 2 },
+    {content: 'おしゃべりなピーマン', board_id: 9, member_id: 1 },
+    {content: 'パプリカを差別する', board_id: 9, member_id: 1 },
+    {content: 'ずっと後ろをついてくる', board_id: 9, member_id: 2 },
+    {content: '感情が豊か', board_id: 9, member_id: 11 },
+    {content: 'ごめん、歯周病なの', board_id: 7, member_id: 1 },
+    {content: '私おしぼりアレルギーなんです', board_id: 7, member_id: 11 }
+  ]
+)
+
+Report.create!(
+  [
+    {reason: '不適切な内容が含まれているので投稿を削除してほしいです。', url: 'https://neconeco/〇〇/△△/〇〇', reporter_id: 1, reported_id: 10 },
+    {reason: '経験値稼ぎの投稿ばかりしているユーザーです。', reporter_id: 2, reported_id: 11 },
+    {reason: '間違えて画像を送信してしまったので投稿を削除して頂きたいです。', url: 'https://neconeco/〇〇/△△/〇〇', reporter_id: 3, reported_id: 3 }
+  ]
+)

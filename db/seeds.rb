@@ -119,7 +119,7 @@ Board.create!(
 Post.create!(
   [
     {content: '転生の準備', board_id: 1, member_id: 1 },
-    {content: 'エンドロールを流す', board_id: 1, member_id: 4 },
+    {content: 'プチ整形', board_id: 1, member_id: 4 },
     {content: 'ロッカーを空にする', board_id: 1, member_id: 6 },
     {content: 'ひまわりの種を植える', board_id: 1, member_id: 1 },
     {content: 'ジャンプする人の腕を押さえてみる', board_id: 1, member_id: 1 },

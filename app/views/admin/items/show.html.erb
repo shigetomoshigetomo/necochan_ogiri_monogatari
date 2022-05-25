@@ -2,9 +2,9 @@
   <h3 class="page-title">アイテム詳細</h3>
 </div>
 <div class="text-center my-2"><%= link_to "アイテム一覧へ", admin_items_path, class: "btn btn-info btn-sm" %></div>
-<div class="box-item-show row">
+<div class="box-item-show row p-lg-5">
   <div class="col-md-4 text-center d-flex align-items-center">
-    <%= image_tag @item.image, class: "not-link-image" %>
+    <span class="d-inline-block"><%= image_tag @item.image, class: "item-show-image py-5" %></span>
   </div>
   <table class="table table-borderless col-md-7 offset-md-1 text-white">
     <tbody>

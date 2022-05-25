@@ -1,5 +1,9 @@
 <div class="text-center mb-3">
-  <h3 class="page-title">通報</h3>
+  <% if (@member != current_member) %>
+    <h3 class="page-title">通報</h3>
+  <% else %>
+    <h3 class="page-title">投稿削除申請</h3>
+  <% end %>
 </div>
 
 <div class="text-center my-2"><%= link_to "プロフィールへ", member_path(@member), class: "btn btn-info btn-sm" %></div>
@@ -11,7 +15,11 @@
     <label>該当するお題や答えのURLや、補足情報をこちらにお願いします。</label>
     <%= f.text_field :url, class:"form-control" %>
     <div class="text-center mt-4">
-      <%= f.submit "通報する", class: "btn btn-danger", data: { confirm: "#{@member.name}さんを通報しますか？" } %>
+      <% if (@member != current_member) %>
+        <%= f.submit "通報する", class: "btn btn-danger", data: { confirm: "#{@member.name}さんを通報しますか？" } %>
+      <% else %>
+        <%= f.submit "申請する", class: "btn btn-danger", data: { confirm: "#{@member.name}さんを通報しますか？" } %>
+      <% end %>
     </div>
   </div>
 <% end %>

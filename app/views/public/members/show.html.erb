@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-8 mb-5">
     <div class="box row">
       <%= render "public/members/show", member: @member, gap_exp: @gap_exp %>
 
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="col-lg-3 offset-lg-1 mt-5">
+  <div class="col-lg-3 offset-lg-1">
     <div class="box px-md-5">
       <% if (@member == current_member) && (current_member.name != "ゲスト") %>
         <p><i class="fas fa-caret-right"></i>　<%= link_to "プロフィール編集", edit_member_path(@member), class: "shrink" %></p>
@@ -37,10 +37,12 @@
         </div>
       <% end %>
     </div>
-    <% if (@member != current_member) && (current_member.name != "ゲスト") %>
-      <div class="row mt-5">
+    <div class="row mt-5">
+      <% if (@member != current_member) && (current_member.name != "ゲスト") %>
         <%= link_to "ユーザーを通報", new_member_report_path(@member), class: "btn btn-danger btn-sm mx-auto" %>
-      </div>
-    <% end %>
+      <% else %>
+        <%= link_to "投稿削除申請", new_member_report_path(@member), class: "btn btn-danger btn-sm mx-auto" %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -7,7 +7,7 @@
         <div id="favorite_buttons_<%= @post.board.id %>_<%= @post.id %>" class="neko">
           <%= render "public/favorites/favorite", board: @board, post: @post %>
         </div>
-        <div id="unlike_buttons_<%= @post.board.id %>_<%= @post.id %>">
+        <div id="unlike_buttons_<%= @post.board.id %>_<%= @post.id %>" class="unchi">
           <%= render "public/unlikes/unlike", board: @board, post: @post %>
         </div>
       </div>

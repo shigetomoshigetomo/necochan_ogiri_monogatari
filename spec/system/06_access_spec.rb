@@ -140,4 +140,68 @@ describe 'アクセス制限のテスト' do
       is_expected.to eq '/admin/sign_in'
     end
   end
+
+  describe '[ゲスト]アクセス制限のテスト: アクセスできず、エラーメッセージが表示される' do
+    subject { current_path }
+    before do
+      visit root_path
+      click_on "ゲストログイン"
+    end
+
+    it 'お題新規画面' do
+      visit boards_path
+      click_on "お題を投稿"
+      is_expected.to eq '/boards'
+      expect(page).to have_content "権限がありません"
+    end
+    it 'いいねを押す' do
+      visit board_post_path(board, post)
+      find(".neko a").click
+      is_expected.to eq board_post_path(board, post)
+      expect(page).to have_content "権限がありません"
+    end
+    it 'よくないねを押す' do
+      visit board_post_path(board, post)
+      find(".unchi a").click
+      is_expected.to eq board_post_path(board, post)
+      expect(page).to have_content "権限がありません"
+    end
+    it 'フォローボタンを押す' do
+      visit members_path
+      find_all(".btn-success")[1].click
+      is_expected.to eq '/members'
+      expect(page).to have_content "権限がありません"
+    end
+    it 'アイテムの購入ボタンを押す' do
+      visit item_path(Item.find(1))
+      click_on "購入する"
+      is_expected.to eq item_path(Item.find(1))
+      expect(page).to have_content "権限がありません"
+    end
+  end
+
+  describe '他人の画面のテスト' do
+    before do
+      visit new_member_session_path
+      fill_in 'member[email]', with: member.email
+      fill_in 'member[password]', with: member.password
+      click_button 'ログイン'
+    end
+
+    context '他人の会員詳細画面' do
+      before do
+        visit member_path(other_member)
+      end
+      it '編集画面へのリンクは存在しない' do
+        expect(page).not_to have_link '', href: edit_member_path(other_member)
+      end
+      it 'お知らせ画面へのリンクは存在しない' do
+        expect(page).not_to have_link '', href: member_notifications_path(other_member)
+      end
+      it '他人の編集画面に遷移できず、自分のユーザ詳細画面にリダイレクトされる' do
+        visit edit_member_path(other_member)
+        expect(current_path).to eq boards_path
+      end
+    end
+  end
 end

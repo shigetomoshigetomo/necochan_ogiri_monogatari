@@ -40,7 +40,7 @@
     <div class="row mt-5">
       <% if (@member != current_member) && (current_member.name != "ゲスト") %>
         <%= link_to "ユーザーを通報", new_member_report_path(@member), class: "btn btn-danger btn-sm mx-auto" %>
-      <% else %>
+      <% elsif (@member == current_member) && (current_member.name != "ゲスト") %>
         <%= link_to "投稿削除申請", new_member_report_path(@member), class: "btn btn-danger btn-sm mx-auto" %>
       <% end %>
     </div>

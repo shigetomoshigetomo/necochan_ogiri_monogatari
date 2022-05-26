@@ -24,7 +24,7 @@ class Member < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-  scope :not_guest, -> { where.not(name: "ゲスト") } # ゲスト以外の会員
+  scope :not_guest, -> { where.not(email: "guest@example.com") } # ゲスト以外の会員
   scope :all_favorites, -> {
                           sort do |a, b|
                             b.posts.inject(0) { |sum, post| sum + post.favorites.count } <=>

@@ -24,6 +24,7 @@ class Public::MembersController < ApplicationController
   end
 
   def index
+    @members = Member.not_guest.page(params[:page]).per(10)
     if params[:sort] == "favorites"
       members = Member.not_guest.all_favorites
       @members = Kaminari.paginate_array(members).page(params[:page]).per(10)

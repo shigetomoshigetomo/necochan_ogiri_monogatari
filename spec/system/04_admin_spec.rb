@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe '管理者側のテスト' do
   let!(:admin) { create(:admin) }
+  let!(:member) { create(:member) }
 
   describe '管理者ログインのテスト' do
      before do
@@ -73,7 +74,7 @@ describe '管理者側のテスト' do
         expect { click_button '新規登録' }.to change(Item, :count).by(1)
       end
 
-      it 'リダイレクト先が、ジャンル一覧画面になっている' do
+      it 'リダイレクト先が、アイテム詳細画面になっている' do
         click_button '新規登録'
         expect(current_path).to eq '/admin/items/' + Item.last.id.to_s
       end
@@ -97,6 +98,27 @@ describe '管理者側のテスト' do
       it 'バリデーションエラーが表示される' do
         click_button '新規登録'
         expect(page).to have_content "アイテム名を入力してください"
+      end
+    end
+  end
+
+  describe '会員情報のテスト' do
+    before do
+      visit new_admin_session_path
+      fill_in 'admin[email]', with: admin.email
+      fill_in 'admin[password]', with: admin.password
+      click_button 'ログイン'
+      visit edit_admin_member_path(member)
+    end
+
+    context '会員ステータス変更のテスト' do
+      it 'ステータスが退会に変更される' do
+        choose '退会'
+        expect(member.is_deleted).to eq true
+      end
+      it '会員詳細画面へ遷移する' do
+        choose '退会'
+        expect(current_path).to eq admin_member_path(member)
       end
     end
   end

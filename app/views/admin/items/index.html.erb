@@ -18,16 +18,16 @@
   <thead class="thead-light">
     <tr>
       <th>アイテムID</th>
-      <th>アイテム名</th>
-      <th>価格</th>
+      <th>アイテム</th>
+      <th>price</th>
       <th>ジャンル</th>
-      <th>経験値</th>
+      <th>exp</th>
     </tr>
   </thead>
   <tbody>
     <% @items.each do |item| %>
       <tr onclick='window.location="<%= '/admin/items/' + item.id.to_s %>"' role="link">
-        <td class="py-4" style="width: 10%">
+        <td class="py-4">
           <%= item.id %>
         </td>
         <td class="py-4">

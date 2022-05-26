@@ -45,8 +45,13 @@ class Public::MembersController < ApplicationController
 
   def friends
     @member = Member.find(params[:member_id])
-    @follower_members = @member.followers.page(params[:page]).per(10)
-    @following_members = @member.followings.page(params[:page]).per(10)
+    if params[:sort] == "follower"
+      @members = @member.followers.page(params[:page]).per(10)
+      @message = "フォロワーのねこちゃんはいません"
+    else
+      @members = @member.followings.page(params[:page]).per(10)
+      @message = "フォロー中のねこちゃんはいません"
+    end
   end
 
   def member_boards

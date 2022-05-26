@@ -21,7 +21,7 @@
 - ゲストログイン機能があるので、会員登録しなくても投稿を閲覧できます。（投稿は登録が必要）
 
 ## 設計書
-<...>
+- ER図：https://app.diagrams.net/#G1PTFPXS1R7gg_2STdeq1QydzlNjt23e8s
 
 ## 開発環境
 - OS：Linux(CentOS)

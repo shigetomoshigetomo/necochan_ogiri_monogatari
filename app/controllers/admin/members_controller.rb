@@ -2,7 +2,7 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @members = Member.not_guest.page(params[:page]).per(10)
+    @members = Member.not_guest.order(created_at: "ASC").page(params[:page]).per(10)
   end
 
   def show

@@ -3,6 +3,8 @@ require 'rails_helper'
 describe '管理者側のテスト' do
   let!(:admin) { create(:admin) }
   let!(:member) { create(:member) }
+  let!(:board) { create(:board) }
+  let!(:post) { create(:post) }
 
   describe '管理者ログインのテスト' do
      before do
@@ -102,23 +104,37 @@ describe '管理者側のテスト' do
     end
   end
 
-  describe '会員情報のテスト' do
+  describe '投稿削除のテスト' do
     before do
       visit new_admin_session_path
       fill_in 'admin[email]', with: admin.email
       fill_in 'admin[password]', with: admin.password
       click_button 'ログイン'
-      visit edit_admin_member_path(member)
     end
 
-    context '会員ステータス変更のテスト' do
-      it 'ステータスが退会に変更される' do
-        choose '退会'
-        expect(member.is_deleted).to eq true
+    context 'お題削除のテスト' do
+      before do
+        visit admin_board_path(board)
+        click_on "削除する"
       end
-      it '会員詳細画面へ遷移する' do
-        choose '退会'
-        expect(current_path).to eq admin_member_path(member)
+      it '正しく削除される' do
+        expect(Board.where(id: board.id).count).to eq 0
+      end
+      it '検索結果画面へ遷移する' do
+        expect(current_path).to eq admin_search_path
+      end
+    end
+
+    context '答え削除のテスト' do
+      before do
+        visit admin_board_post_path(board, post)
+        click_on "削除する"
+      end
+      it '正しく削除される' do
+        expect(Post.where(id: post.id).count).to eq 0
+      end
+      it '検索結果画面へ遷移する' do
+        expect(current_path).to eq admin_search_path
       end
     end
   end

@@ -24,15 +24,18 @@ class Public::MembersController < ApplicationController
   end
 
   def index
-    @members = Member.not_guest.order(created_at: "ASC")
     if params[:sort] == "favorites"
       members = Member.not_guest.all_favorites
       @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
     elsif params[:sort] == "followers"
       members = Member.not_guest.follower_rank
       @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
-    else
+    elsif params[:sort] == "level DESC"
       @members = Member.not_guest.order(params[:sort]).page(params[:page]).per(10)
+    elsif params[:sort] == "money DESC"
+      @members = Member.not_guest.order(params[:sort]).page(params[:page]).per(10)
+    else
+      @members = Member.not_guest.order(created_at: "ASC").page(params[:page]).per(10)
     end
   end
 

@@ -24,7 +24,7 @@ describe 'お題の投稿テスト' do
 
     it 'リダイレクト先が、保存できたお題の詳細画面になっている' do
       click_button '送信'
-      expect(current_path).to eq '/boards/' + Board.last.id.to_s
+      expect(current_path).to eq '/boards/' + Board.first.id.to_s
     end
   end
 

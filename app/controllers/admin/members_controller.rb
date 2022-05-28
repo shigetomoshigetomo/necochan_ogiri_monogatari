@@ -3,6 +3,9 @@ class Admin::MembersController < ApplicationController
 
   def index
     @members = Member.not_guest.order(created_at: "ASC").page(params[:page]).per(10)
+    if params[:is_deleted]
+      @members = Member.not_guest.where(is_deleted: params[:is_deleted]).page(params[:page]).per(10)
+    end
   end
 
   def show

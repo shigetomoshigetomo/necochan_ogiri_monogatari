@@ -27,7 +27,7 @@
         </p>
       <% end %>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "お買い物", items_path, class: "shrink" %></p>
-      <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんの仲間たち", member_friends_path(@member), class: "shrink" %></p>
+      <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんの仲間", member_friends_path(@member), class: "shrink" %></p>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんのお気に入り", member_my_favorites_path(@member), class: "shrink" %></p>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんのお題", member_member_boards_path(@member), class: "shrink" %></p>
       <p><i class="fas fa-caret-right"></i>　<%= link_to "#{@member.name}さんの答え", member_member_posts_path(@member), class: "shrink" %></p>

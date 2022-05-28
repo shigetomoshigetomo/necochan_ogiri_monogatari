@@ -55,6 +55,9 @@ ja:
         name: "名前"
         password_confirmation: "パスワード（確認用）"
 
+      admin:
+        email: "メールアドレス"
+
       board:
         title: "お題"
 

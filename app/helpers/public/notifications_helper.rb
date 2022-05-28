@@ -9,6 +9,7 @@ module Public::NotificationsHelper
     end
   end
 
+  #確認済みでない通知
   def unchecked_notifications
     @notifications = current_member.passive_notifications.where(checked: false)
   end

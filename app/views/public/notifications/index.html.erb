@@ -5,7 +5,6 @@
 <div class="text-center mb-2"><%= link_to "プロフィールへ", member_path(current_member), class: "btn btn-info btn-sm" %></div>
 <% if @notifications.any? %>
   <% @notifications.each do |notification| %>
-    <% visitor = notification.visitor %>
     <div class="box mb-2">
       <%= image_tag notification.visitor.get_profile_image, class: "rounded-circle member-mini-image" %>
       <%= notification_form(notification) %>

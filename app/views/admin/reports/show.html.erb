@@ -28,14 +28,10 @@
       <tr>
         <td>対応ステータス</td>
         <td>
-          <% if @report.status_i18n == "対応待ち" %>
-            <b class="text-danger"><%= @report.status_i18n %></b>
-          <% elsif @report.status_i18n == "保留" %>
-            <b class="text-primary"><%= @report.status_i18n %></b>
-          <% else %>
-            <b class="text-success"><%= @report.status_i18n %></b>
-          <% end %>
-          <%= form_with model:@report, url:admin_report_path(@report), method: :patch do |f| %>
+          <div id="report-status">
+            <%= render 'admin/reports/status', report: @report %>
+          </div>
+          <%= form_with model:@report, url:admin_report_path(@report), method: :patch, local: false do |f| %>
             <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
             <%= f.submit '更新', class: "btn btn-outline-light btn-sm ml-3" %>
           <% end %>

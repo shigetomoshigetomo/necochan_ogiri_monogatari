@@ -16,4 +16,6 @@ class Report < ApplicationRecord
   validates :url, length: { maximum: 100 }
 
   enum status: { waiting: 0, keep: 1, finish: 2 } # 対応ステータス
+
+  paginates_per 10
 end

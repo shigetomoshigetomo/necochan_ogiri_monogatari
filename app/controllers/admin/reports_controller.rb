@@ -3,12 +3,12 @@ class Admin::ReportsController < ApplicationController
 
   def index
     if params[:status] == "all"
-      @reports = Report.all.page(params[:page]).per(10)
+      @reports = Report.all.page(params[:page])
     elsif params[:status]
       report_statuses = Report.where(status: params[:status])
-      @reports = report_statuses.page(params[:page]).per(10)
+      @reports = report_statuses.page(params[:page])
     else
-      @reports = Report.all.page(params[:page]).per(10)
+      @reports = Report.all.page(params[:page])
     end
   end
 

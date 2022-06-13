@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @order = Order.new(order_params)
     @order.member_id = current_member.id
+    #残金
     remainder = current_member.money.to_i - @order.item.price.to_i
     if remainder >= 0
       @order.save

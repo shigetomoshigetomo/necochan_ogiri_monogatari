@@ -8,4 +8,6 @@ class Order < ApplicationRecord
     validates :member_id
     validates :item_id
   end
+
+  paginates_per 10
 end

@@ -7,7 +7,7 @@ class Board < ApplicationRecord
   scope :views_rank, -> {
                        all.sort do |a, b|
                          b.impressionist_count(:filter => :session_hash) <=>
-                                        a.impressionist_count(:filter => :session_hash)
+                         a.impressionist_count(:filter => :session_hash)
                        end
                      }   # 閲覧多い順
 
@@ -19,10 +19,12 @@ class Board < ApplicationRecord
 
   acts_as_taggable
 
+  #お題投稿によって獲得する経験値
   def board_get_exp()
     rand(1..2)
   end
 
+  #お題投稿によって獲得するお金
   def board_get_money()
     rand(1..3)
   end

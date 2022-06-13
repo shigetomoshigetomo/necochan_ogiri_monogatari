@@ -12,9 +12,9 @@ class Public::PostsController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.all
     if params[:sort] == "popular"
       posts = Post.favorites_rank
-      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
+      @posts = Kaminari.paginate_array(posts).page(params[:page])
     else
-      @posts = Post.all.page(params[:page]).per(6)
+      @posts = Post.all.page(params[:page])
     end
   end
 
@@ -40,7 +40,7 @@ class Public::PostsController < ApplicationController
       redirect_to board_path(@board)
     else
       @tags = ActsAsTaggableOn::Tag.all
-      @board_posts = @board.posts.page(params[:page]).per(6)
+      @board_posts = @board.posts.page(params[:page])
       render "public/boards/show"
     end
   end

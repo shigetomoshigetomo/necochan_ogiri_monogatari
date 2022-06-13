@@ -12,6 +12,8 @@ class Post < ApplicationRecord
 
   validates :content, length: { maximum: 100 }, presence: true
 
+  paginates_per 6
+
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end

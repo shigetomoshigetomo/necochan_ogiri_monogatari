@@ -78,7 +78,7 @@ class Public::MembersController < ApplicationController
   end
 
   def shoppings
-    @orders = current_member.orders.page(params[:page]).per(10)
+    @orders = current_member.orders.page(params[:page])
   end
 
   private

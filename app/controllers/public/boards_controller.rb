@@ -52,11 +52,12 @@ class Public::BoardsController < ApplicationController
       money = @board.board_get_money
       member.add_money(money)
       member.update(:exp => member.exp + exp)
+      #memberの新しい経験値以下の闘値から、一番近いものを探し出す
       level = Level.where("threshold <= ?", member.exp).order(level: :desc).first
       if level != member.level
         member.update(:level => level.level)
       end
-      if member.saved_change_to_level?
+      if member.saved_change_to_level?　　#memberのlebelカラムが更新されているか？
         flash[:alert] = "お題を投稿し、経験値#{exp}と#{money}マネーを獲得！レベルが#{member.level}になった！"
       else
         flash[:notice] = "お題を投稿し、経験値#{exp}と#{money}マネーを獲得！"

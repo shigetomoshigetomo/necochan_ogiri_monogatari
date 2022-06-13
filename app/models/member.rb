@@ -50,6 +50,8 @@ class Member < ApplicationRecord
   validates :name, length: { maximum: 8 }
   validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
 
+  paginates_per 10
+
   # ゲストユーザー作成
   def self.guest
     find_or_create_by!(name: 'ゲスト', email: 'guest@example.com') do |member|

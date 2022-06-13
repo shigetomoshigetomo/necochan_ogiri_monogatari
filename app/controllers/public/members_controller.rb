@@ -26,16 +26,16 @@ class Public::MembersController < ApplicationController
   def index
     if params[:sort] == "favorites"
       members = Member.not_guest.all_favorites
-      @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
+      @members = Kaminari.paginate_array(members).page(params[:page])
     elsif params[:sort] == "followers"
       members = Member.not_guest.follower_rank
-      @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
+      @members = Kaminari.paginate_array(members).page(params[:page])
     elsif params[:sort] == "level DESC"
-      @members = Member.not_guest.order(params[:sort]).page(params[:page]).per(10)
+      @members = Member.not_guest.order(params[:sort]).page(params[:page])
     elsif params[:sort] == "money DESC"
-      @members = Member.not_guest.order(params[:sort]).page(params[:page]).per(10)
+      @members = Member.not_guest.order(params[:sort]).page(params[:page])
     else
-      @members = Member.not_guest.order(created_at: "ASC").page(params[:page]).per(10)
+      @members = Member.not_guest.order(created_at: "ASC").page(params[:page])
     end
   end
 
@@ -49,10 +49,10 @@ class Public::MembersController < ApplicationController
   def friends
     @member = Member.find(params[:member_id])
     if params[:sort] == "follower"
-      @members = @member.followers.page(params[:page]).per(10)
+      @members = @member.followers.page(params[:page])
       @message = "フォロワーのねこちゃんはいません"
     else
-      @members = @member.followings.page(params[:page]).per(10)
+      @members = @member.followings.page(params[:page])
       @message = "フォロー中のねこちゃんはいません"
     end
   end

@@ -12,4 +12,6 @@ class Item < ApplicationRecord
     validates :introduction
     validates :image
   end
+
+  paginates_per 10
 end

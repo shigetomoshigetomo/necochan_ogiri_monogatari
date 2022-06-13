@@ -15,10 +15,10 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.page(params[:page]).per(10)
+    @items = Item.all.page(params[:page])
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @items = @genre.items.page(params[:page]).per(10)
+      @items = @genre.items.page(params[:page])
     end
   end
 

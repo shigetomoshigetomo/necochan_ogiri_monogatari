@@ -4,4 +4,6 @@ class Notification < ApplicationRecord
 
   belongs_to :visitor, class_name: 'Member', optional: true
   belongs_to :visited, class_name: 'Member', optional: true
+
+  paginates_per 10
 end

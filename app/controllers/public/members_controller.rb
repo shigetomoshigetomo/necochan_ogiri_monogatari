@@ -26,10 +26,10 @@ class Public::MembersController < ApplicationController
   def index
     if params[:sort] == "favorites"
       members = Member.not_guest.all_favorites
-      @members = Kaminari.paginate_array(members).page(params[:page])
+      @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
     elsif params[:sort] == "followers"
       members = Member.not_guest.follower_rank
-      @members = Kaminari.paginate_array(members).page(params[:page])
+      @members = Kaminari.paginate_array(members).page(params[:page]).per(10)
     elsif params[:sort] == "level DESC"
       @members = Member.not_guest.order(params[:sort]).page(params[:page])
     elsif params[:sort] == "money DESC"
@@ -63,7 +63,7 @@ class Public::MembersController < ApplicationController
       boards = @member.boards.posts_rank
       @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
     else
-      @boards = @member.boards.all.order(params[:sort]).page(params[:page]).per(6)
+      @boards = @member.boards.all.order(params[:sort]).page(params[:page])
     end
   end
 
@@ -73,7 +73,7 @@ class Public::MembersController < ApplicationController
       posts = @member.posts.favorites_rank
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
     else
-      @posts = @member.posts.all.order(params[:sort]).page(params[:page]).per(6)
+      @posts = @member.posts.all.order(params[:sort]).page(params[:page])
     end
   end
 

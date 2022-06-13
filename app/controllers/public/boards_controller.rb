@@ -13,7 +13,7 @@ class Public::BoardsController < ApplicationController
       boards = Board.views_rank
       @boards = Kaminari.paginate_array(boards).page(params[:page]).per(6)
     else
-      @boards = Board.all.page(params[:page]).per(6)
+      @boards = Board.all.page(params[:page])
     end
   end
 
@@ -21,7 +21,7 @@ class Public::BoardsController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.all
     if params[:tag]
       @tag = params[:tag]
-      @boards = Board.tagged_with(@tag).page(params[:page]).per(6)
+      @boards = Board.tagged_with(@tag).page(params[:page])
     end
   end
 
@@ -31,7 +31,7 @@ class Public::BoardsController < ApplicationController
       board_posts = @board.posts.favorites_rank
       @board_posts = Kaminari.paginate_array(board_posts).page(params[:page]).per(6)
     else
-      @board_posts = @board.posts.page(params[:page]).per(6)
+      @board_posts = @board.posts.page(params[:page])
     end
     @post = Post.new
     impressionist(@board, nil, unique: [:session_hash.to_s])

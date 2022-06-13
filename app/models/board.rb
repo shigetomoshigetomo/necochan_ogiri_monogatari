@@ -19,6 +19,8 @@ class Board < ApplicationRecord
 
   acts_as_taggable
 
+  paginates_per 6
+
   #お題投稿によって獲得する経験値
   def board_get_exp()
     rand(1..2)

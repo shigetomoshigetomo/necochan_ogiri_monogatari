@@ -4,19 +4,27 @@
   </div>
 </div>
 
-<div class="row">
-  <p class="mx-auto click-message pe-none">＼クリックしてね／</p>
-</div>
-<div class="row">
-  <div class="accordion1 mx-auto">
-    <p class="ac1 m-0">さっそくはじめる　<i class="fas fa-caret-left"></i></p>
-    <div class="inner text-center mt-3">
-      <div class="top-btn"><%= link_to 'ログイン', new_member_session_path %></div>
-      <div class="top-btn"><%= link_to '新規登録（無料）', new_member_registration_path %></div>
-      <div class="top-btn"><%= link_to 'ゲスト（閲覧のみ）', public_guest_sign_in_path, method: :post %></div>
+<% if member_signed_in? %>
+  <div class="text-center">
+    <div class="button004">
+      <%= link_to "冒険へ戻る", boards_path  %>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="row">
+    <p class="mx-auto click-message pe-none">＼クリックしてね／</p>
+  </div>
+  <div class="row">
+    <div class="accordion1 mx-auto">
+      <p class="ac1 m-0">さっそくはじめる　<i class="fas fa-caret-left"></i></p>
+      <div class="inner text-center mt-3">
+        <div class="top-btn"><%= link_to 'ログイン', new_member_session_path %></div>
+        <div class="top-btn"><%= link_to '新規登録（無料）', new_member_registration_path %></div>
+        <div class="top-btn"><%= link_to 'ゲスト（閲覧のみ）', public_guest_sign_in_path, method: :post %></div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <script>
   $(function(){

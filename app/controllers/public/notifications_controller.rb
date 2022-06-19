@@ -12,4 +12,11 @@ class Public::NotificationsController < ApplicationController
       notification.update(:checked => true)
     end
   end
+
+  def ensure_current_member
+    if current_member.id != params[:member_id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to boards_path
+    end
+  end
 end

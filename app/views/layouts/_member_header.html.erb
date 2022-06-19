@@ -30,11 +30,13 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><%= link_to "マイページ", member_path(current_member), class: "dropdown-item" %></li>
-              <li>
-                <%= link_to member_notifications_path(current_member), class: "dropdown-item" do %>
-                  お知らせ　<% if unchecked_notifications.any? %><i class="fas fa-star" style="color: gold;"></i><% end %>
-                <% end %>
-              </li>
+              <% if current_member.name != "ゲスト" %>
+                <li>
+                  <%= link_to member_notifications_path(current_member), class: "dropdown-item" do %>
+                    お知らせ　<% if unchecked_notifications.any? %><i class="fas fa-star" style="color: gold;"></i><% end %>
+                  <% end %>
+                </li>
+              <% end %>
               <li><%= link_to "お気に入り", member_my_favorites_path(current_member), class: "dropdown-item" %></li>
               <li><%= link_to "お買い物", items_path, class: "dropdown-item" %></li>
               <div class="dropdown-divider"></div>

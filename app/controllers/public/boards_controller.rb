@@ -19,8 +19,10 @@ class Public::BoardsController < ApplicationController
 
   def tag_index
     @tags = ActsAsTaggableOn::Tag.all
-    if params[:tag]
       @tag = params[:tag]
+    if @tag.blank?
+      redirect_to boards_path
+    else
       @boards = Board.tagged_with(@tag).page(params[:page])
     end
   end

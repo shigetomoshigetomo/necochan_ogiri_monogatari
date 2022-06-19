@@ -11,9 +11,7 @@
 </div>
 
 <% if @members.any? %>
-  <% @members.each do |board| %>
-    <%= render "public/members/index", members: @members %>
-  <% end %>
+  <%= render "public/members/index", members: @members %>
   <div class="row">
     <div class="mx-auto">
       <%= paginate @members, theme: 'twitter-bootstrap-4' %>

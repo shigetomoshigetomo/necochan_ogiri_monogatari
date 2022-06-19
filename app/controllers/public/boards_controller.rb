@@ -57,7 +57,8 @@ class Public::BoardsController < ApplicationController
       if level != member.level
         member.update(:level => level.level)
       end
-      if member.saved_change_to_level?　　#memberのlebelカラムが更新されているか？
+      #memberのlebelカラムが更新されているか？
+      if member.saved_change_to_level?
         flash[:alert] = "お題を投稿し、経験値#{exp}と#{money}マネーを獲得！レベルが#{member.level}になった！"
       else
         flash[:notice] = "お題を投稿し、経験値#{exp}と#{money}マネーを獲得！"

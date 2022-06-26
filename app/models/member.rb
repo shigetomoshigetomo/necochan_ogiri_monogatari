@@ -75,7 +75,7 @@ class Member < ApplicationRecord
 
   def active_for_authentication?
     # is_deletedがfalseならtrueを返すようにする
-    super && (is_deleted == false)
+    is_deleted == false
   end
 
   def get_profile_image

@@ -121,7 +121,7 @@ describe '管理者側のテスト' do
         expect(Board.where(id: board.id).count).to eq 0
       end
       it '検索結果画面へ遷移する' do
-        expect(current_path).to eq admin_search_path
+        expect(current_path).to eq admin_reports_path
       end
     end
 
@@ -134,7 +134,7 @@ describe '管理者側のテスト' do
         expect(Post.where(id: post.id).count).to eq 0
       end
       it '検索結果画面へ遷移する' do
-        expect(current_path).to eq admin_search_path
+        expect(current_path).to eq admin_reports_path
       end
     end
   end

@@ -8,6 +8,6 @@ class Admin::BoardsController < ApplicationController
   def destroy
     @board = Board.find(params[:id])
     @board.destroy
-    redirect_to admin_search_path, notice: "お題を削除しました。"
+    redirect_to admin_reports_path, notice: "お題を削除しました。"
   end
 end

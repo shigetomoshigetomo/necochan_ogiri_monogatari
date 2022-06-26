@@ -10,6 +10,6 @@ class Admin::PostsController < ApplicationController
     @board = Board.find(params[:board_id])
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to admin_search_path, notice: "答えを削除しました。"
+    redirect_to admin_reports_path, notice: "答えを削除しました。"
   end
 end
